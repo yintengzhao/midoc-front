@@ -15,6 +15,9 @@ var npmDist     = require('gulp-npm-dist');
 gulp.task('copy:libs', function() {
   gulp.src(npmDist({copyUnminified: true}), {base:'./node_modules'})
     .pipe(gulp.dest('./dist/libs'));
+
+  gulp.src(['node_modules/nixie-clock/*'])
+      .pipe(gulp.dest('./dist/libs/nixie-clock/'));
 });
 
 gulp.task('assets', function() {

@@ -25,7 +25,14 @@
     "gulp-sass": "^3.1.0",
     "gulp-scss": "^1.4.0",
     "gulp-typescript": "^3.2.3",
+    "napa": "^3.0.0",
     "tiny-lr": "^1.0.5",
     "typescript": "^2.6.1"
+  },
+  "scripts": {
+    "install": "napa"
+  },
+  "napa": {
+    "nixie-clock": "https://github.com/nkapliev/nixie#5a0be5266d939f108a719efdc8d4b4a8d2b7a0fd"
   }
 }
