@@ -1,3 +1,6 @@
 node_modules/
 dist/
 .sass-cache/
+
+none_npm/*
+!none_npm/.keep
