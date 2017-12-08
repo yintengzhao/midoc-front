@@ -10,13 +10,63 @@
   </head>
   <body ng-controller="MainCtrl" id="main" ng-class="" ng-cloak>
 
-    <md-button class="md-raised md-primary">{{ liuliu }}</md-button>
-    <img src="assets/example.jpg" alt="">
+    <div id="mc-map">
+      <div id="mc-map-header">
+        <span class="mc-header-cell">物资总质量：{{map_header.total_m}}吨</span>
+        <span class="mc-header-cell">物资总体积：{{map_header.total_v}}立方米</span>
+        <span class="mc-header-cell">平台数量：{{map_header.platform}}</span>
+        <span class="mc-header-cell">运输船：{{map_header.ship}}</span>
+      </div>
+      <div id="mc-map-main" ng-click="handle_click_on_map($event)">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="470px" width="675px">
+          <defs>
+            <filter id="filter">
+              <feGaussianBlur stdDeviation="5"/>
+            </filter>
+            <mask id="mask">
+            <rect x="0" y="0" height="470px" width="675px" fill="white" filter="url(#filter)"></rect>
+            </mask>
+          </defs>
 
-    <ng-md-icon icon="send"></ng-md-icon>
+          <image class="test" xlink:href="assets/cn_south_sea.jpeg" mask="url(#mask)" width="{{map.slider}}%"></image>
+          <!-- <img src="assets/cn_south_sea.jpeg" alt="" > -->
+        </svg>
+      </div>
+      <md-slider-container id="mc-slider">
+        <md-slider flex min="100" max="150" ng-model="map.slider" aria-label="blue" id="blue-slider" class="md-primary">
+        </md-slider>
+      </md-slider-container>
 
-    <div class="">
-      <div id="some-nixie-html-value-id">{{ liuliu }}</div>
+      <div id="mc-bottom">
+        <div id="mc-tool-bar">
+          <ng-md-icon class="mc-tool-icon" icon="location_on"  size="40"></ng-md-icon>
+          <ng-md-icon class="mc-tool-icon" icon="star"  size="40"></ng-md-icon>
+          <ng-md-icon class="mc-tool-icon" icon="grid_on"  size="40"></ng-md-icon>
+
+          <ng-md-icon class="mc-tool-icon" icon="clear"  size="40"></ng-md-icon>
+          <ng-md-icon class="mc-tool-icon" icon="language"  size="40"></ng-md-icon>
+          <ng-md-icon class="mc-tool-icon" icon="remove_red_eye"  size="40"></ng-md-icon>
+        </div>
+        <div id="mc-select" ng-click="prevent_bubble($event)">
+
+        </div>
+
+        <div id="mc-coor">
+          <div id="mc-coor-info">
+            <div>东经：123.4</div>
+            <div>北纬：567.8</div>
+            <div>海拔：-123米</div>
+          </div>
+          <div id="mc-coor-pointer">
+
+            <ng-md-icon class="" icon="gps_fixed"  size="72"></ng-md-icon>
+          </div>
+        </div>
+      </div>
+
+
+
+
     </div>
 
   </body>
