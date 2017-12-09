@@ -92,47 +92,79 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     //time
     $interval(function() {
       $scope.nowtime = new Date();
+
+      for( let i of [0,1]){
+        var ar = $scope.data[i];
+        ar.shift();
+        ar.push(Math.floor(Math.random() * 100) + 1);
+      }
+      var ar = $scope.data2[0];
+      ar.shift();
+      ar.push(Math.floor(Math.random() * 100) + 1);
     }, 1000)
     //chart----------------------------------------
-    var a = 0.2; var b = 0.2; var c = 0.2; var d = 0.2; var e = 0.2; var f = 0.2; var g = 0.2;
-    var h = 0.2; var i = 0.2; var j = 0.2; var k = 0.2; var l = 0.2; var m = 0.2; var n = 0.2;
-    var o = 0.2; var p = 0.2; var q = 0.2; var r = 0.2; var s = 0.2; var t = 0.2; var w = 0.2;
-    var v = 0.2; var u = 0.2; var x = 0.2; var y = 0.2; var z = 0.2;
-
-    var aa = 0.2; var bb = 0.3; var cc = 0.4; var dd = 0.5; var ee = 0.6; var ff = 0.7;
-    var gg = 0.8; var hh = 0.9; var ii = 1.0; var jj = 0.1; var kk = 0.2; var ll = 0.3;
-    var mm = 0.4; var nn = 0.5; var oo = 0.5; var pp = 0.5; var qq = 0.5; var rr = 0.5;
-    var ss = 0.5; var tt = 0.5; var ww = 0.5; var vv = 0.5; var uu = 0.5; var xx = 0.5;
-    var yy = 0.5; var zz = 0.5;
-    $interval(function() {
-      $scope.colors = ['#45b7cd', '#ff6384', '#ff8e72'];
-      $scope.labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
-      $scope.data = [
-        [100 * a, 100 * b, 100 * c, 100 * d, 100 * e, 100 * f, 100 * g, 100 * h, 100 * i, 100 * j, 100 * k, 100 * l, 100 * m, 100 * n, 100 * o, 100 * p, 100 * q, 100 * r, 100 * s, 100 * t, 100 * w, 100 * v, 100 * u, 100 * x, 100 * y, 100 * z],
-        [100 * aa, 100 * bb, 100 * cc, 100 * dd, 100 * ee, 100 * ff, 100 * gg, 100 * hh, 100 * ii, 100 * jj, 100 * kk, 100 * ll, 100 * mm, 100 * nn, 100 * oo, 100 * pp, 100 * qq, 100 * rr, 100 * ss, 100 * tt, 100 * ww, 100 * vv, 100 * uu, 100 * xx, 100 * yy, 100 * zz]
-      ];
-      $scope.datasetOverride = [
-        {
-          label: "Bar chart",
-          borderWidth: 1,
-          type: 'bar'
-        },
-        {
-          label: "Line chart",
-          borderWidth: 3,
-          hoverBackgroundColor: "rgba(255,99,132,0.4)",
-          hoverBorderColor: "rgba(255,99,132,1)",
-          type: 'line'
-        }
-      ];
-      a = b; b = c; c = d; d = e; e = f; f = g; g = h; h = i; i = j; j = k; k = l; l = m; m = n; n = o; o = p;
-      p = q; q = r; r = s; s = t; t = w; w = v; v = u; u = x; x = y; y = z; z = Math.random();
-
-      aa = bb; bb = cc; cc = dd; dd = ee; ee = ff; ff = gg; gg = hh; hh = ii; ii = jj; jj = kk; kk = ll;
-      ll = mm; mm = nn; nn = oo; oo = pp; pp = qq; qq = rr; rr = ss; ss = tt; tt = ww; ww = vv;
-      vv = uu; uu = xx; xx = yy; yy = zz; zz = Math.random();
-
-    }, 1);
+    const DATA_NUM = 30;
+    $scope.labels = Array(DATA_NUM).join(1).split('').map(function(){return "";});
+    $scope.series = ['Series A', 'Series B'];
+    $scope.data = [
+      Array(DATA_NUM).join(1).split('').map(function(){return 0;}),
+      Array(DATA_NUM).join(1).split('').map(function(){return 0;}),
+    ];
+    $scope.data2 = [
+      Array(DATA_NUM).join(1).split('').map(function(){return 0;}),
+    ];
+    $scope.onClick = function(points, evt) {
+      console.log(points, evt);
+    };
+    $scope.colors = ['#FF5C00', '#167BAC'];
+    $scope.colors2 = ['#10BE1C'];
+    $scope.datasetOverride = [{ lineTension: 0, fill: false }, { lineTension: 0, fill: false }, { lineTension: 0, fill: true }];
+    $scope.datasetOverride2 = [{ fill: true }];
+    $scope.options = {
+      scales: {
+        yAxes: [{
+          ticks: {display: false,suggestedMin:0}
+        }],
+        xAxes: [{
+          ticks: {display: false,suggestedMin:0}
+        }]
+      }
+      // https://stackoverflow.com/questions/37621020/setting-width-and-height
+      responsive: true,
+      maintainAspectRatio: false,
+      legends:{
+        display: false
+      }
+    };
+    // $interval(function() {
+    //   $scope.colors = ['#45b7cd', '#ff6384', '#ff8e72'];
+    //   $scope.labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
+    //   $scope.data = [
+    //     [100 * a, 100 * b, 100 * c, 100 * d, 100 * e, 100 * f, 100 * g, 100 * h, 100 * i, 100 * j, 100 * k, 100 * l, 100 * m, 100 * n, 100 * o, 100 * p, 100 * q, 100 * r, 100 * s, 100 * t, 100 * w, 100 * v, 100 * u, 100 * x, 100 * y, 100 * z],
+    //     [100 * aa, 100 * bb, 100 * cc, 100 * dd, 100 * ee, 100 * ff, 100 * gg, 100 * hh, 100 * ii, 100 * jj, 100 * kk, 100 * ll, 100 * mm, 100 * nn, 100 * oo, 100 * pp, 100 * qq, 100 * rr, 100 * ss, 100 * tt, 100 * ww, 100 * vv, 100 * uu, 100 * xx, 100 * yy, 100 * zz]
+    //   ];
+    //   $scope.datasetOverride = [
+    //     {
+    //       label: "Bar chart",
+    //       borderWidth: 1,
+    //       type: 'bar'
+    //     },
+    //     {
+    //       label: "Line chart",
+    //       borderWidth: 3,
+    //       hoverBackgroundColor: "rgba(255,99,132,0.4)",
+    //       hoverBorderColor: "rgba(255,99,132,1)",
+    //       type: 'line'
+    //     }
+    //   ];
+    //   a = b; b = c; c = d; d = e; e = f; f = g; g = h; h = i; i = j; j = k; k = l; l = m; m = n; n = o; o = p;
+    //   p = q; q = r; r = s; s = t; t = w; w = v; v = u; u = x; x = y; y = z; z = Math.random();
+    //
+    //   aa = bb; bb = cc; cc = dd; dd = ee; ee = ff; ff = gg; gg = hh; hh = ii; ii = jj; jj = kk; kk = ll;
+    //   ll = mm; mm = nn; nn = oo; oo = pp; pp = qq; qq = rr; rr = ss; ss = tt; tt = ww; ww = vv;
+    //   vv = uu; uu = xx; xx = yy; yy = zz; zz = Math.random();
+    //
+    // }, 1000);
     //-------------------------这--里--是--第--二--行--的--函--数--------------------------//
     //后台数据展示------------------------------------
     $http.get("http://10.134.78.134:8888/ssh/material/list")
@@ -270,5 +302,5 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     });
 
 
-}])
+  }])
 angular.bootstrap(document.getElementsByTagName("body")[0], ['fmid']);
