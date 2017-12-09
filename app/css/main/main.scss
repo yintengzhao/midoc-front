@@ -53,6 +53,7 @@ body{
 #mc-map-main{
 	width: 675px;
 	height: 470px;
+	position: relative;
 	.test{
 		// transform: scale(1);
 		// width: 120%;
@@ -63,6 +64,36 @@ body{
 		// -webkit-clip-path: rect(0px 500px 500px 0px);
 		// width: 100%;
 		// clip: rect(0px,60px,200px,0px);
+	}
+}
+
+#mc-current-point{
+	position: absolute;
+	fill: red;
+	pointer-events: none;
+}
+
+$ship-color: rgb(35, 103, 182);
+$platform-color: rgb(31, 213, 9);
+$base-color: rgb(210, 62, 204);
+
+#mc-points{
+	// pointer-events: none;
+	cursor: pointer;
+	.mc-point{
+		margin: -20px auto auto -20px;
+		position: absolute;
+		background-color: #EFEFEF;
+		border-radius: 5px;
+	}
+	.ship{
+		fill: $ship-color;
+	}
+	.platform{
+		fill: $platform-color;
+	}
+	.base{
+		fill: $base-color;
 	}
 }
 
@@ -79,6 +110,7 @@ body{
 	position:relative;
 	margin-top: -16px;
 	z-index: 10;
+	user-select: none;
 }
 
 #mc-tool-bar{
@@ -101,6 +133,16 @@ body{
 	background-color: rgb(249, 249, 255);
 	border: solid 1px gray;
 	border-radius: 3px;
+	vertical-align: top;
+	.mc-selected-point{
+		display: inline-block;
+		cursor: not-allowed;
+	}
+	.mc-select-icon{
+		&.ship{ fill: $ship-color; }
+		&.platform{ fill: $platform-color; }
+		&.base{ fill: $base-color; }
+	}
 }
 
 #mc-coor{
@@ -112,5 +154,10 @@ body{
 	position: absolute;
 	right: 10px;
 	top: 2px;
-	fill: rgb(85, 81, 136);
+	fill: rgb(119, 118, 126);
+	cursor: pointer;
+	-webkit-user-select: none;
+	&.enabled{
+		fill: rgb(85, 81, 136);
+	}
 }
