@@ -1,8 +1,99 @@
-body{
-  background-color: gray;
+@font-face {
+	font-family: 'sa-digital-number';
+	src: url('../assets/sa-digital-number.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
 }
 
-#some-nixie-html-value-id{
-  font-size: 60px;
-  line-height: 60px;
+
+body{
+  background-color: gray;
+  padding-bottom:  170px;
+  padding-left:50px;
+  padding-right:50px
 }
+
+//#some-nixie-html-value-id{
+//  font-size: 60px;
+//  line-height: 60px;
+//}
+
+#logo{
+  width: 80px;
+	position: relative;
+	top: 20px
+}
+
+
+.diginum{
+  font-family: 'sa-digital-number';
+  font-size: 48px;
+  position: relative;
+  .frnum{
+    color: darken(red, 10%);
+    background-color: rgba(255, 0, 0, 0.0);
+    position: absolute;
+    z-index: 1;
+  }
+  .bgnum{
+      position: absolute;
+      top: 0;
+      color: rgba(107, 107, 107, 0.45);
+      z-index: 0;
+  }
+}
+h2{
+	position: absolute;
+	left: 600px;
+	top: 30px
+}
+h3{
+	position: absolute;
+	left: 650px;
+	top: -15px;
+}
+#clock{
+	position: absolute;
+	left: 900px;
+}
+.ship{
+	background-color: white;
+	position: relative;
+  height: 600px;
+  width: 250px;
+  margin-left:auto;
+  margin-right: auto;
+	margin-top: -50px;
+  border: 1px solid #333;
+}
+.goods{
+	background-color: gray;
+	position: relative;
+  height: 600px;
+  width: 3200px;
+	margin-top: -60px;
+  margin-left: 10px;
+  margin-right: auto;
+  border: 5px solid #333;
+}
+//复选框
+.checkboxdemoSelectAll .demo-legend {
+  color: #3F51B5; }
+
+.checkboxdemoSelectAll .demo-fieldset {
+  border-style: solid;
+  border-width: 1px;
+  height: 10%; }
+
+.checkboxdemoSelectAll .demo-select-all-checkboxes {
+  padding-left: 30px; }
+//TEST
+.contentdemoBasicUsage div.demo-content {
+  height: 450px; }
+
+.contentdemoBasicUsage div[ng-controller] {
+  height: 100%;
+  padding-bottom: 15px; }
+
+.contentdemoBasicUsage md-content {
+  padding: 24px; }

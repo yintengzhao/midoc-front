@@ -7,7 +7,14 @@ require.config({
       "ng-animate"    : libUrl+"angular-animate/angular-animate",
       "ngAria"        : libUrl+'angular-aria/angular-aria',
       "ngMdIcons"     : libUrl+'angular-material-icons/angular-material-icons',
-      "nixie-clock"   : libUrl+'nixie-clock/nixie',
+      // "nixie-clock"   : libUrl+'nixie-clock/nixie',
+      "chart"         : libUrl+'chart.js/dist/Chart',
+      "angular-chart" : libUrl+'angular-chart.js/dist/angular-chart',
+      "simpleWeather" : libUrl+'monkeecreate-jquery.simpleWeather-0d95e82/jquery.simpleWeather',
+      "simpleWeathermin" : libUrl+'monkeecreate-jquery.simpleWeather-0d95e82/jquery.simpleWeather.min',
+
+
+      "angular-weather-widget":libUrl+'angular-weather-widget',
     },
     // https://www.codeproject.com/articles/1123309/configure-angular-material-with-require-js
     shim: {
@@ -20,7 +27,7 @@ require.config({
         main_ctrl: {
             exports: "MainCtrl",
             deps: [
-                "ng_app", "nixie-clock"
+                "ng_app", "angular-chart"
             ]
         },
         angular: {
@@ -29,9 +36,9 @@ require.config({
         jquery: {
             exports: "$"
         },
-        'nixie-clock': {
-            deps: ['jquery']
-        },
+        // 'nixie-clock': {
+        //     deps: ['jquery']
+        // },
         'ng-animate': {
             deps: ['angular']
         },
@@ -44,6 +51,9 @@ require.config({
         ngMdIcons: {
             deps: ['angular', 'ngMaterial']
         },
+        "angular-chart": {
+            deps: ["chart"]
+        }
     }
 });
 

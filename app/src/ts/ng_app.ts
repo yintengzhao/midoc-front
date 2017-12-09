@@ -16,8 +16,15 @@ let ng_app = angular.module(
     'ngMdIcons',
     // 'ngResource',
     // 'ngMessages',
+    'chart.js'
   ]
 )
+
+ng_app.config(['$httpProvider',function($httpProvider) {
+$httpProvider.defaults.useXDomain=true;
+$httpProvider.defaults.headers.common['X-Requested-With'];
+}
+]);
 //
 
 export { ng_app }
