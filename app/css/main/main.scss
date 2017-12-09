@@ -1,64 +1,73 @@
 @font-face {
 	font-family: 'sa-digital-number';
-	src: url('../assets/sa-digital-number.ttf') format('truetype');
+	src: url("../assets/sa-digital-number.ttf") format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
-body{
-  background-color: #05333E;
+body {
+	background-color: #05333E;
+	position: relative;
+	padding-bottom:  170px;
+  padding-left:40px;
+  padding-right:40px
+
 }
 
+.diginum {
+	font-family: 'sa-digital-number';
+	font-size: 48px;
+	position: relative;
 
-.diginum{
-  font-family: 'sa-digital-number';
-  font-size: 48px;
-  position: relative;
-  .frnum{
-    color: darken(red, 10%);
-    background-color: rgba(255, 0, 0, 0.0);
-    position: absolute;
-    z-index: 1;
-  }
-  .bgnum{
-      position: absolute;
-      top: 0;
-      color: rgba(107, 107, 107, 0.45);
-      z-index: 0;
-  }
+	.frnum {
+		color: darken(red, 10%);
+		background-color: rgba(255, 0, 0, 0.0);
+		position: absolute;
+		z-index: 1;
+	}
+
+	.bgnum {
+		position: absolute;
+		top: 0;
+		color: rgba(107, 107, 107, 0.45);
+		z-index: 0;
+	}
 }
 
-
-#mc-map{
-	display: inline-block;
+#mc-map {
+	position: absolute;
 	width: 675px;
 	height: 625px;
+	left: 315-40px;
+	top: 105-40px;
 	border: dashed 1px blue;
 	margin: 20px auto auto 20px;
-
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#26aef2+0,eff6ff+100 */
 	background: linear-gradient(to bottom, #ACDFF6 0%,#eff6ff 100%);
 }
 
-#mc-map-header{
+#mc-map-header {
 	height: 30px;
 	// background-color: rgb(20, 85, 182);
 	margin: 10px auto auto 10px;
-	.mc-header-cell{
+
+	.mc-header-cell {
 		margin-right: 16px;
 		font-weight: bold;
 	}
 }
 
-#mc-map-main{
+#mc-map-main {
 	width: 675px;
 	height: 470px;
 	position: relative;
-	.test{
+
+	.test {
 		// transform: scale(1);
 		// width: 120%;
 	}
-	img{
+
+	img {
 		// position: absolute;
 		// transform: scale(2, 2);
 		// -webkit-clip-path: rect(0px 500px 500px 0px);
@@ -67,66 +76,69 @@ body{
 	}
 }
 
-#mc-current-point{
+#mc-current-point {
 	position: absolute;
 	fill: red;
 	pointer-events: none;
 }
-
 $ship-color: rgb(35, 103, 182);
 $platform-color: rgb(31, 213, 9);
 $base-color: rgb(210, 62, 204);
 
-#mc-points{
+#mc-points {
 	// pointer-events: none;
 	cursor: pointer;
-	.mc-point{
+
+	.mc-point {
 		margin: -20px auto auto -20px;
 		position: absolute;
 		background-color: #EFEFEF;
 		border-radius: 5px;
 	}
-	.ship{
+
+	.ship {
 		fill: $ship-color;
 	}
-	.platform{
+
+	.platform {
 		fill: $platform-color;
 	}
-	.base{
+
+	.base {
 		fill: $base-color;
 	}
 }
 
-
-#mc-slider{
-	position:relative;
+#mc-slider {
+	position: relative;
 	margin: -16px auto;
 	// background-color: white;
 	z-index: 1;
 	width: 95%;
 }
 
-#mc-bottom{
-	position:relative;
+#mc-bottom {
+	position: relative;
 	margin-top: -16px;
 	z-index: 10;
 	user-select: none;
 }
 
-#mc-tool-bar{
+#mc-tool-bar {
 	display: inline-block;
 	height: 96px;
 	width: 140px;
 	// background-color: green;
 	// padding-top: 5px;
 	padding-left: 5px;
-	.mc-tool-icon{
+
+	.mc-tool-icon {
 		fill: rgb(83, 146, 228);
 		cursor: pointer;
 	}
 }
 
-#mc-select{
+#mc-select {
 	display: inline-block;
 	width: 335px;
 	height: 88px;
@@ -134,30 +146,118 @@ $base-color: rgb(210, 62, 204);
 	border: solid 1px gray;
 	border-radius: 3px;
 	vertical-align: top;
-	.mc-selected-point{
+
+	.mc-selected-point {
 		display: inline-block;
 		cursor: not-allowed;
 	}
-	.mc-select-icon{
-		&.ship{ fill: $ship-color; }
-		&.platform{ fill: $platform-color; }
-		&.base{ fill: $base-color; }
+
+	.mc-select-icon {
+		&.ship {
+			fill: $ship-color;
+		}
+
+		&.platform {
+			fill: $platform-color;
+		}
+
+		&.base {
+			fill: $base-color;
+		}
 	}
 }
 
-#mc-coor{
+#mc-coor {
 	display: inline-block;
 	vertical-align: top;
 }
 
-#mc-coor-pointer{
+#mc-coor-pointer {
 	position: absolute;
 	right: 10px;
 	top: 2px;
 	fill: rgb(119, 118, 126);
 	cursor: pointer;
 	-webkit-user-select: none;
-	&.enabled{
+
+	&.enabled {
 		fill: rgb(85, 81, 136);
 	}
+}
+
+#logo {
+	width: 80px;
+	position: relative;
+	top: 20px;
+}
+
+
+h2{
+	position: absolute;
+	left: 600px;
+	top: 30px
+}
+
+
+
+h3 {
+	position: absolute;
+	left: 650px;
+	top: -15px;
+}
+
+#clock {
+	position: absolute;
+	left: 900px;
+}
+
+.ship {
+	background-color: white;
+	position: relative;
+	height: 600px;
+	width: 250px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: -50px;
+	border: 1px solid #333;
+}
+
+.goods {
+	background-color: gray;
+	position: relative;
+	height: 600px;
+	width: 3200px;
+	margin-top: -60px;
+	margin-left: 10px;
+	margin-right: auto;
+	border: 5px solid #333;
+}
+//复选框
+
+.checkboxdemoSelectAll .demo-legend {
+	color: #3F51B5;
+}
+
+.checkboxdemoSelectAll .demo-fieldset {
+	border-style: solid;
+	border-width: 1px;
+	height: 10%;
+}
+
+.checkboxdemoSelectAll .demo-select-all-checkboxes {
+	padding-left: 30px;
+}
+//TEST
+
+.contentdemoBasicUsage div.demo-content {
+	height: 450px;
+}
+
+.contentdemoBasicUsage div[ng-controller] {
+	height: 100%;
+	padding-bottom: 15px;
+}
+
+.contentdemoBasicUsage md-content {
+	padding: 24px;
 }
