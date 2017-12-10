@@ -128,7 +128,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
         xAxes: [{
           ticks: {display: false,suggestedMin:0}
         }]
-      }
+      },
       // https://stackoverflow.com/questions/37621020/setting-width-and-height
       responsive: true,
       maintainAspectRatio: false,
@@ -281,7 +281,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     $scope.color = {
       red: Math.floor(Math.random() * 25),
       green: Math.floor(Math.random() * 255),
-      blue: Math.floor(Math.random() * 255) ，
+      blue: Math.floor(Math.random() * 255),
       white: Math.floor(Math.random() * 25),
       black: Math.floor(Math.random() * 25),
       yellow: Math.floor(Math.random() * 25),
