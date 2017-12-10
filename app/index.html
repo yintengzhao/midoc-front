@@ -54,16 +54,19 @@
 
 
   <!--。。。这。。。里。。。是。。。第。。。二。。。行。。。组。。。件。。。-->
-  <div layout="column" class="test">
+  <div layout="column" style="height:635px;background-color:#B0BEC5">
     <div layout="{{ vm.direction }}" layout-md="row">
       <!--ship组件-->
 
-      <div>
+      <div style="position:relative;margin-left:5px">
         <div layout="column" class="">
           <div class="ship" hide-lg flex='20'>
-            <md-content flex layout-padding ng-show="svar">
+            <md-content flex layout-padding ng-show="svar" style="height:570px">
               <md-list-item class="md-2-line" ng-click="null">
                 <div class="md-list-item-text" layout="column">
+                  <div  id="logo">
+                    <img src="assets/ship615.png" style="width:200px">
+                  </div>
                   <h1 class="md-display-1">海洋石油615</h1>
                   <p style="text-align:center">所属海区 渤海<br>船旗国 中国<br>船籍港 天津</p>
                   海洋石油615由XXX单位于XXX年购入ssssss，是专为石油平台服务设计的具有供应、拖拽、抛起锚、救助和守护、对外消防灭火等功能的船舶。
@@ -79,8 +82,8 @@
               <p>所属海区：{{seazone}}</p>
               <p>简介：{{info}}</p>
             </div>
-            <md-button class="md-raised md-primary" md-colors="{background: 'BLUE'}">添加</md-button>
-            <md-button class="md-raised">编辑</md-button>
+            <md-button class="md-raised md-primary" md-colors="{background: 'BLUE'}" style="position:absolute;top:580px">添加</md-button>
+            <md-button class="md-raised" style="position:absolute;top:580px;margin-left:140px">编辑</md-button>
           </div>
         </div>
       </div>
@@ -187,7 +190,7 @@
 
 
         <!--物资、载具、海上平台---------------->
-        <div layout="column" class="test" style="position:relative;left:690px;top:50px">
+        <div layout="column" class="test" style="position:relative;left:710px;top:55px">
           <div layout="{{ vm.direction }}" layout-md="row" class="">
 
             <div>
@@ -196,7 +199,7 @@
                 <md-content flex layout-padding>
                   <md-list-item class="md-2-line" ng-repeat="material in materials" ng-click="null">
                     <div class="md-list-item-text" layout="column">
-                      <h1 class="md-display-1">{{ material.name }}</h1>
+                      <h3 class="">{{ material.name }}</h3>
                       <p>{{ material.detail }}</p>
                     </div>
                   </md-list-item>
@@ -211,7 +214,7 @@
                 <md-content flex layout-padding ng-show="myvar">
                   <md-list-item class="md-2-line" ng-repeat="boat in boats" ng-click="null">
                     <div class="md-list-item-text" layout="column">
-                      <h1 class="md-display-1">{{ boat.name }}</h1>
+                      <h3 class="">{{ boat.name }}</h3>
                       <p>{{ boat.info }}</p>
                     </div>
                   </md-list-item>
@@ -221,7 +224,7 @@
                 <md-content flex layout-padding ng-hide="myvar">
                   <md-list-item class="md-2-line" ng-repeat="answer in answers">
                     <div class="md-list-item-text" layout="column" ng-click="showall(answer.id,answer.name,answer.info,answer.nation,answer.port,answer.seazone)">
-                      <h1 class="md-display-1">{{ answer.name }}</h1>
+                      <h3 class="">{{ answer.name }}</h3>
                       <p>{{answer.id}} {{answer.info}} {{answer.nation}}{{answer.port}}{{answer.seazone}}
                       </div>
                   </md-list-item>
@@ -236,7 +239,7 @@
                 <md-content flex layout-padding>
                   <md-list-item class="md-2-line" ng-repeat="base in bases" ng-click="null">
                     <div class="md-list-item-text" layout="column">
-                      <h1>{{ base.id}}</h1>
+                      <h3>{{ base.id}}</h3>
                       <p>{{ base.storage_place }}</p>
                     </div>
                   </md-list-item>
@@ -256,8 +259,8 @@
              </canvas>
             </div>
             <div style="width:300px;height:230px;background-color:#4CAF50;margin-left:10px">
-              <h2 class="md-flex" style="position:relative;margin-left:-510px;margin-top:-36px">数据统计</h2>
-              <md-content flex layout-padding style="width:280px;height:200px;position:relative;margin-left:10px;margin-top:26px">
+              <h3 class="md-flex" style="position:relative;margin-left:100px;margin-top:0px">数据统计</h3>
+              <md-content flex layout-padding style="width:280px;height:200px;position:relative;margin-left:10px;margin-top:-20px">
               </md-content>
             </div>
             <div style="position:relative;margin-top:50px">
@@ -281,17 +284,17 @@
 
 
   <!--物资滑动条/天气------------------------------------------------------------------------------->
-  <div layout="column" class="test">
-    <div layout="{{ vm.direction }}" layout-md="row" class="">
+  <div layout="column"  style="height:390px;background-color:#B0BEC5">
+    <div layout="{{ vm.direction }}" layout-md="row" >
       <!--仿真简介-------------------------------------------------------->
 
-      <div>
+      <div style="position;margin-left:5px">
         <div style="width:300px">
-          <p>仿真名称</p>
+          <p >仿真名称</p>
           <textarea rows="1" ng-model="notice.content" style="width:80%;position:relative;margin-top:-15px">{{ notice.content }}</textarea>
-          <p>仿真简介</p>
+          <p style="position:relative;margin-top:-3px">仿真简介</p>
           <textarea rows="10" ng-model="notice.content" style="width:80%;position:relative;margin-top:-15px">{{ notice.content }}</textarea>
-          <p>备注</p>
+          <p style="position:relative;margin-top:-3px">备注</p>
           <textarea rows="1" ng-model="notice.content" style="width:80%;position:relative;margin-top:-15px">{{ notice.content }}</textarea>
         </div>
       </div>
@@ -299,7 +302,7 @@
       <!--物资滑动条-------------------------------------------------------->
         <div style="width:300px;position:relative;margin-left:50px">
           <md-slider-container>
-            <md-button class="md-raised md-primary" style="background-color:#E040FB">物资B</md-button>
+            <md-button class="md-raised md-primary" style="rgba(255,255,255,0.2);background-color:#E040FB">物资B</md-button>
             <md-slider flex min="0" max="4000" ng-model="color.white" aria-label="white" id="white-slider">
             </md-slider>
             <md-input-container>
@@ -391,41 +394,52 @@
               </md-option>
             </md-select>
           </div>
-          <div>
+          <!-- <div>
             <label>风力</label>
             <md-select ng-model="user.state">
               <md-option ng-repeat="state in states" value="{{state.abbrev}}">
                 {{state.abbrev}}
               </md-option>
             </md-select>
+          </div> -->
+          <div>
+            <md-slider-container>
+              <label>风力(级)</label>
+              <md-slider flex ng-model="wind.level" min="0" max="14" aria-label="level" id="level-slider" class="md-accent">
+              </md-slider>
+              <md-input-container>
+                <input flex type="number" ng-model="wind.level" aria-label="level" aria-controls="level-slider">
+              </md-input-container>
+            </md-slider-container>
           </div>
+
           <div>
             <md-slider-container>
               <label>温度(℃)</label>
-              <md-slider flex ng-model="color.pink" min="-40" max="50" aria-label="pink" id="pink-slider" class="md-accent">
+              <md-slider flex ng-model="temperature" min="-40" max="50" aria-label="tem" id="tem-slider" class="md-accent">
               </md-slider>
               <md-input-container>
-                <input flex type="number" ng-model="color.pink" aria-label="pink" aria-controls="pink-slider">
+                <input flex type="number" ng-model="temperature" aria-label="tem" aria-controls="tem-slider">
               </md-input-container>
             </md-slider-container>
         </div>
         <div>
           <md-slider-container>
-            <label>湿度(RH)</label>
-            <md-slider flex ng-model="color.pink" min="-40" max="50" aria-label="pink" id="pink-slider" class="md-accent">
+            <label>湿度(RH%)</label>
+            <md-slider flex ng-model="humidity" min="0" max="100" aria-label="humi" id="humi-slider" class="md-accent">
             </md-slider>
             <md-input-container>
-              <input flex type="number" ng-model="color.pink" aria-label="pink" aria-controls="pink-slider">
+              <input flex type="number" ng-model="humidity" aria-label="humi" aria-controls="humi-slider">
             </md-input-container>
           </md-slider-container>
         </div>
         <div>
           <md-slider-container>
             <label>能见度(m)</label>
-            <md-slider flex ng-model="color.pink" min="-40" max="50" aria-label="pink" id="pink-slider" class="md-accent">
+            <md-slider flex ng-model="visibility" min="0" max="10000" aria-label="visi" id="visi-slider" class="md-accent">
             </md-slider>
             <md-input-container>
-              <input flex type="number" ng-model="color.pink" aria-label="pink" aria-controls="pink-slider">
+              <input flex type="number" ng-model="visibility" aria-label="visi" aria-controls="visi-slider">
             </md-input-container>
           </md-slider-container>
         </div>
@@ -433,7 +447,7 @@
 
 
   <!--设置/仿真开始------------------------------------------------------------------------------------->
-<div style="position:relative;margin-left:150px">
+<div style="position:relative;margin-left:200px">
 
 
 
@@ -471,7 +485,7 @@
       </div>
     </div>
     <!--仿真开始------------------------------------------------------------------------------>
-    <md-button class="md-fab" aria-label="Eat cake" style="width:130px;height:130px;">仿真开始
+    <md-button class="md-fab" aria-label="Eat cake" style="position:relative;margin-top:-10px;right:50px;width:130px;height:130px;">仿真开始
       <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
     </md-button>
     <!--仿真开始------------------------------------------------------------------------------>
