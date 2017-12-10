@@ -292,6 +292,10 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     //  $scope.rating1 = 0;
     //  $scope.rating2 = 2;
     //  $scope.rating3 = 4;
+    //天气----------------
+
+
+
     //风向选择----------------
 
 
