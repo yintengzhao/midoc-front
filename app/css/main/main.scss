@@ -8,7 +8,7 @@
 body {
 	background-color: #05333E;
 	position: relative;
-	padding-bottom:  170px;
+	padding-bottom:  120px;
   padding-left:40px;
 }
 
@@ -89,25 +89,25 @@ body {
 
 .ship {
 	background-color: white;
-	position: relative;
-	height: 600px;
+	//position: ;
+	height: 630px;
 	width: 250px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: -50px;
+	margin-top: 5px;
 	border: 1px solid #333;
 }
 
-.goods {
-	background-color: gray;
-	position: relative;
-	height: 600px;
-	width: 3200px;
-	margin-top: -60px;
-	margin-left: 10px;
-	margin-right: auto;
-	border: 5px solid #333;
-}
+// .goods {
+// 	background-color: gray;
+// 	position: relative;
+// 	height: 600px;
+// 	width: 3200px;
+// 	margin-top: -60px;
+// 	margin-left: 10px;
+// 	margin-right: auto;
+// 	border: 5px solid #333;
+// }
 //复选框
 
 .checkboxdemoSelectAll .demo-legend {
