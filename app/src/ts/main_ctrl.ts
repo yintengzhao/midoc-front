@@ -166,7 +166,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     //
     // }, 1000);
     //-------------------------这--里--是--第--二--行--的--函--数--------------------------//
-    //后台数据展示------------------------------------
+//后台数据展示------------------------------------
     $http.get("http://10.134.78.134:8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
@@ -293,13 +293,11 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     //  $scope.rating2 = 2;
     //  $scope.rating3 = 4;
     //风向选择----------------
-    $scope.states = ('一级 二级 三级 四级 五级 六级 七级 八级 九级 十级 十一级 十二级 十三级 十四级 跑吧！！').split(' ').map(function(state) {
-      return { abbrev: state };
-    });
-    //风力选择----------------
+
+
     $scope.dirs = ('东风 东南风 南风 西南风 西风 西北风 北风 东北风').split(' ').map(function(dir) {
-      return { abbre: dir };
-    });
+           return {abbre: dir};
+         });
 
 
   }])
