@@ -8,47 +8,47 @@
 body {
 	background-color: #05333E;
 	position: relative;
-	padding-bottom:  110px;
-  padding-left:20px;
-	padding-right:20px;
-
+	padding-bottom: 110px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
-
-
 @import 'mc_map.scss';
-#sys-title-logo{
+
+#sys-title-logo {
 	width: 500px;
 	padding-top: 16px;
 }
 
 #logo {
 	display: inline-block;
-	img{
+
+	img {
 		width: 60px;
 	}
 	// top: 20px;
 }
 
-#sys-title{
+#sys-title {
 	color: white;
 	display: inline-block;
 	vertical-align: top;
 	font-size: 36px;
 }
 
-#date-show{
+#date-show {
 	color: white;
 	font-size: 24px;
 }
-#emmmmmm{
-	padding: 0px 24px;
+
+#emmmmmm {
+	padding: 0 24px;
 	font-size: 28px;
 	font-weight: 600;
 	color: rgb(234, 238, 187);
 	background: linear-gradient(to bottom, #f2f2f2 0%,#e86c57 43%,#630021 100%);
 }
 
-#sys-time{
+#sys-time {
 	display: block;
 	position: relative;
 	margin-left: 64px;
@@ -75,10 +75,11 @@ body {
 	}
 }
 
-#sys-monitor{
+#sys-monitor {
 	display: block;
 	position: relative;
-	.sub-chart{
+
+	.sub-chart {
 		margin-left: 32px;
 		display: inline-block;
 		background-color: white;
@@ -87,18 +88,153 @@ body {
 	}
 }
 
-
-
-.ship {
-	background-color: white;
-	//position: ;
-	height: 627px;
-	width: 250px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 5px;
-	border: 1px solid #333;
+#middle-part {
+	height: 635px;
+	background-color: #B0BEC5;
 }
+
+#detail-show {
+	position: relative;
+	margin-left: 5px;
+	background-color: white;
+	border: 1px solid #333;
+	padding-top: 20px;
+	opacity: 0.8;
+
+	p {
+		font-size: 16px;
+	}
+
+	.ship {
+		//position: ;
+		height: 627px;
+		width: 250px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 5px;
+	}
+
+	.logo {
+		img {
+			width: 200px;
+		}
+	}
+
+	.title {
+		font-weight: bolder;
+		font-size: 32px;
+	}
+
+	.attr {
+		margin-top: 20px;
+		width: 70%;
+	}
+
+	.attr-value {
+		float: right;
+		color: rgb(16, 145, 68);
+	}
+
+	.description {
+		margin-top: 16px;
+		color: rgb(182, 115, 15);
+	}
+}
+
+
+#middle-right-part{
+	margin-left: 10px;
+}
+
+#search-switches {
+	margin-left: 32px;
+
+	md-switch {
+		display: inline-block;
+	}
+}
+
+
+// ----------------------------------
+#search-bar{
+	position:relative;
+	// left:1000px;
+	// top:80px;
+}
+
+#object-list-containers {
+	margin-top: -28px;
+	.object-list-container {
+		width: 290px;
+		height: 330px;
+		margin-right: 10px;
+		opacity: 0.8;
+		.object-counter{
+			float: right;
+			margin-top: 4px;
+			color: white;
+			padding: 1px 4px;
+			border-radius: 10px;
+			&.material{ background-color: darken(#69F0AE, 40%);  }
+			&.boat{ background-color: darken(#FF6384, 40%);  }
+			&.base{ background-color: darken(#45B7CD, 40%);  }
+		}
+		.header{
+			border-radius: 8px 8px 0px 0px;
+			height:30px;
+			padding: 0px 4px;
+			font-weight: bolder;
+			&.material{ background-color:#A2F2CB; color: darken(#69F0AE, 40%);}
+			&.boat{ background-color:#FBB0C0; color: darken(#FF6384, 40%);}
+			&.base{ background-color:#9FD0D9; color: darken(#45B7CD, 40%);}
+		}
+
+		.goods-list-item {
+			.title {
+				font-size: 20px;
+				line-height: 22px;
+				font-weight: 500;
+			}
+
+			.description {
+				font-size: 14px;
+				line-height: 14px;
+				margin-top: 6px;
+				color: gray;
+			}
+		}
+	}
+}
+
+
+
+// ------------------
+#chart-container{
+	position:relative;
+	margin-top: 8px;
+	#bar-chart{
+		margin-top: 36px;
+	}
+	#table-chart{
+		background: linear-gradient(
+			to bottom, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+			border-radius: 8px 8px 0px 0px;
+		padding: 6px;
+		width: 278px;
+	}
+	#table-chart-title{
+		text-align: center;
+		color: white;
+		font-weight: 600;
+	}
+	#pie-chart{
+		// margin-top: 20px;
+
+	}
+	// margin-left:
+	// 700px;top:70px
+}
+
 
 // .goods {
 // 	background-color: gray;
@@ -111,6 +247,8 @@ body {
 // 	border: 5px solid #333;
 // }
 //复选框
+
+
 
 .checkboxdemoSelectAll .demo-legend {
 	color: #3F51B5;

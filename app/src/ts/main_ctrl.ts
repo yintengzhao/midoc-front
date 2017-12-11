@@ -241,6 +241,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     //饼图----------------------------------------
     $scope.labelsb = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
     $scope.datab = [300, 500, 100];
+    $scope.pieoptions = { responsive: true, maintainAspectRatio: false, };
 
     //鲁棒度-------------------------------------------
     $scope.bass = Math.floor(Math.random() * 100);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title></title>
@@ -7,16 +8,17 @@
   <link rel="stylesheet" href="/build/application.css">
   <script src="require.js" defer async="true" data-main="build/root"></script>
 </head>
+
 <body ng-controller="MainCtrl" id="main" ng-class="" ng-cloak>
   <div layout="column" class="zero">
 
-    <div layout="{{ vm.direction }}" layout-md="row" >
+    <div layout="{{ vm.direction }}" layout-md="row">
 
       <div id="sys-title-logo">
-        <div  id="logo">
+        <div id="logo">
           <img src="assets/logo.png">
         </div>
-        <div id="sys-title" >保障体系模拟仿真系统</div>
+        <div id="sys-title">保障体系模拟仿真系统</div>
       </div>
 
       <div id="sys-date-bar">
@@ -36,15 +38,11 @@
       <!--chart-->
       <div id="sys-monitor">
         <div class="sub-chart">
-          <canvas class="chart-line" chart-data="data"
-          chart-labels="labels" chart-series="series" chart-options="options"
-          chart-dataset-override="datasetOverride" chart-colors="colors">
+          <canvas class="chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-colors="colors">
           </canvas>
         </div>
         <div class="sub-chart">
-          <canvas class="chart-line" chart-data="data2"
-          chart-labels="labels" chart-series="series" chart-options="options"
-          chart-dataset-override="datasetOverride2" chart-colors="colors2">
+          <canvas class="chart-line" chart-data="data2" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride2" chart-colors="colors2">
           </canvas>
         </div>
       </div>
@@ -54,42 +52,49 @@
 
 
   <!--。。。这。。。里。。。是。。。第。。。二。。。行。。。组。。。件。。。-->
-  <div layout="column" style="height:635px;background-color:#B0BEC5">
+  <div layout="column" id="middle-part">
     <div layout="{{ vm.direction }}" layout-md="row">
       <!--ship组件-->
 
-      <div style="position:relative;margin-left:5px">
-        <div layout="column" class="">
-          <div class="ship" hide-lg flex='20'>
-            <md-content flex layout-padding ng-show="svar" style="height:570px">
-              <md-list-item class="md-2-line" ng-click="null">
-                <div class="md-list-item-text" layout="column">
-                  <div  id="logo">
-                    <img src="assets/ship615.png" style="width:200px">
-                  </div>
-                  <h1 class="md-display-1">海洋石油615</h1>
-                  <p style="text-align:center;">所属海区 渤海<br>船旗国 中国<br>船籍港 天津</p>
+      <div layout="column" id="detail-show">
+
+        <div class="ship" hide-lg flex='20'>
+          <md-list-item class="md-2-line" ng-click="null">
+            <div class="md-list-item-text" layout="column">
+              <div class="logo">
+                <img src="assets/ship615.png">
+              </div>
+              <div class="title">海洋石油615</div>
+              <div class="attr">
+                <p>
+                  所属海区 <span class="attr-value">渤海</span><br> 船旗国 <span class="attr-value">中国</span><br> 船籍港 <span class="attr-value">天津</span>
+                </p>
+              </div>
 
 
-                  <p style="color:brown">海洋石油615由XXX单位于XXX年购入ssssss，是专为石油平台服务设计的具有供应、拖拽、抛起锚、救助和守护、对外消防灭火等功能的船舶。</p>
-                </div>
-              </md-list-item>
-            </md-content>
-
-            <div ng-show="tvar" style="text-align:center">
-              <h1 class="md-display-1">{{name}} </h1>
-              <p>编号：{{id}}</p>
-              <p>船旗国：{{nation}}</p>
-              <p>船旗港：{{port}}</p>
-              <p>所属海区：{{seazone}}</p>
-              <p>简介：{{info}}</p>
+              <div class="description">
+                <p>
+                  海洋石油615由XXX单位于XXX年购入ssssss，是专为石油平台服务设计的具有供应、拖拽、抛起锚、救助和守护、对外消防灭火等功能的船舶。
+                </p>
+              </div>
             </div>
-            <md-button class="md-raised md-primary" md-colors="{background: 'BLUE'}" style="position:absolute;top:580px">添加</md-button>
-            <md-button class="md-raised" style="position:absolute;top:580px;margin-left:140px">编辑</md-button>
+          </md-list-item>
+
+          <div ng-show="tvar" style="text-align:center">
+            <h1 class="md-display-1">{{name}} </h1>
+            <p>编号：{{id}}</p>
+            <p>船旗国：{{nation}}</p>
+            <p>船旗港：{{port}}</p>
+            <p>所属海区：{{seazone}}</p>
+            <p>简介：{{info}}</p>
           </div>
+          <md-button class="md-raised md-primary" md-colors="{background: 'BLUE'}" style="position:absolute;top:580px">添加</md-button>
+          <md-button class="md-raised" style="position:absolute;top:580px;margin-left:140px">编辑</md-button>
         </div>
+
+
       </div>
-  <!--map组件-------------------------------------------------------------------------------->
+      <!--map组件-------------------------------------------------------------------------------->
       <div>
         <div id="mc-map">
           <div id="mc-map-header">
@@ -159,32 +164,26 @@
           </div>
         </div>
       </div>
-  <!--组件-------------------------------------------------------------------------------->
+      <!--组件-------------------------------------------------------------------------------->
 
-      <div>
+      <div id="middle-right-part">
         <!--搜索组件-------------------------------------------------------------------------------->
 
-        <div layout="column" class="three" style="position:absolute;left:1000px;top:80px">
-          <div layout="{{ vm.direction }}" layout-md="row" class="two">
-            <div class="two_two">
-              <md-input-container class="md-block" flex-gt-sm md-colors=s tyle="width:500px;">
-                <label>搜索</label>
+        <div layout="column" id="search-bar">
+          <div layout="{{ vm.direction }}" layout-md="row">
+            <div>
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>请输入关键字</label>
                 <input ng-model="theMax">
               </md-input-container>
             </div>
             <div>
               <md-button class="md-raised" ng-click="search()">搜索</md-button>
             </div>
-            <div flex-md="10" hide-lg class="two_one" style="margin-left:20px">
+            <div id="search-switches">
               <md-switch class="md-accent md-raised md-hue-1" name="" required></md-switch>
-            </div>
-            <div class="two_two" style="margin-left:20px">
               <md-switch class="md-primary" name="" ng-model="d" required></md-switch>
-            </div>
-            <div style="margin-left:20px">
-              <md-switch class="md-primary md-warn" name="special" ng-model="c" required></md-switch>
-            </div>
-            <div style="margin-left:20px">
+              <md-switch class="md-primary " name="special" ng-model="c" required></md-switch>
               <md-switch class="md-raised" name="" ng-model="s" required>仅搜索添加</md-switch>
             </div>
           </div>
@@ -192,61 +191,45 @@
 
 
         <!--物资、载具、海上平台---------------->
-        <div layout="column" class="test" style="position:relative;left:710px;top:55px">
+        <div layout="column" id="object-list-containers">
           <div layout="{{ vm.direction }}" layout-md="row" class="">
 
-            <div>
-              <div layout="column" ng-cloak style="width:290px;height:330px">
-                <span style="height:30px;background-color:#69F0AE">物资</span>
-                <md-content flex layout-padding>
-                  <md-list-item class="md-2-line" ng-repeat="material in materials" ng-click="null">
-                    <div class="md-list-item-text" layout="column">
-                      <h3 class="">{{ material.name }}</h3>
-                      <p>{{ material.detail }}</p>
-                    </div>
-                  </md-list-item>
-                </md-content>
-              </div>
+            <div layout="column" class="object-list-container">
+              <div class="header material">物资 <span class="object-counter material">99</span></div>
+              <md-content flex>
+                <md-list-item class="goods-list-item" ng-repeat="material in materials" ng-click="null">
+                  <div>
+                    <div class="title">{{ material.name }}</div>
+                    <div class="description">{{ material.detail }}</div>
+                  </div>
+                </md-list-item>
+              </md-content>
             </div>
 
 
-            <div style="margin-left:10px">
-              <div layout="column" ng-cloak style="width:290px;height:330px">
-                <span style="height:30px;background-color:#ff6384">载具</span>
-                <md-content flex layout-padding ng-show="myvar">
-                  <md-list-item class="md-2-line" ng-repeat="boat in boats" ng-click="null">
-                    <div class="md-list-item-text" layout="column">
-                      <h3 class="">{{ boat.name }}</h3>
-                      <p>{{ boat.info }}</p>
-                    </div>
-                  </md-list-item>
-                </md-content>
-
-
-                <md-content flex layout-padding ng-hide="myvar">
-                  <md-list-item class="md-2-line" ng-repeat="answer in answers">
-                    <div class="md-list-item-text" layout="column" ng-click="showall(answer.id,answer.name,answer.info,answer.nation,answer.port,answer.seazone)">
-                      <h3 class="">{{ answer.name }}</h3>
-                      <p>{{answer.id}} {{answer.info}} {{answer.nation}}{{answer.port}}{{answer.seazone}}
-                      </div>
-                  </md-list-item>
-                </md-content>
-              </div>
+            <div layout="column" class="object-list-container">
+              <div class="header boat">载具 <span class="object-counter boat">99</span></div>
+              <md-content flex>
+                <md-list-item class="goods-list-item" ng-repeat="boat in boats" ng-click="null">
+                  <div class="md-list-item-text" layout="column">
+                    <div class="title">{{ boat.name }}</div>
+                    <div class="description">{{ boat.info }}</div>
+                  </div>
+                </md-list-item>
+              </md-content>
             </div>
 
 
-            <div style="margin-left:10px">
-              <div layout="column" ng-cloak style="width:290px;height:330px">
-                <span style="height:30px;background-color:#45b7cd">海上平台</span>
-                <md-content flex layout-padding>
-                  <md-list-item class="md-2-line" ng-repeat="base in bases" ng-click="null">
-                    <div class="md-list-item-text" layout="column">
-                      <h3>{{ base.id}}</h3>
-                      <p>{{ base.storage_place }}</p>
-                    </div>
-                  </md-list-item>
-                </md-content>
-              </div>
+            <div layout="column" class="object-list-container">
+              <div class="header base">海上平台 <span class="object-counter base">99</span></div>
+              <md-content flex>
+                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="null">
+                  <div class="md-list-item-text" layout="column">
+                    <div class="title">{{ base.id}}</div>
+                    <div class="description">{{ base.storage_place }}</div>
+                  </div>
+                </md-list-item>
+              </md-content>
             </div>
 
 
@@ -254,18 +237,16 @@
         </div>
 
         <!--数据统计、柱状图 、、饼图---------------------------------------------------------------------------->
-        <div layout="column" class="test" style="position:relative;left:700px;top:70px">
+        <div layout="column" id="chart-container">
           <div layout="{{ vm.direction }}" layout-md="row" class="">
-            <div style="position:relative;margin-left:0px;margin-top:50px">
+            <div id="bar-chart">
               <canvas id="bar" class="chart chart-bar" chart-data="datac" chart-labels="labelsc" chart-series="series">
              </canvas>
             </div>
-            <div style="width:300px;height:230px;background-color:#4CAF50;margin-left:10px">
-              <h3 class="md-flex" style="position:relative;margin-left:100px;margin-top:0px">数据统计</h3>
-              <md-content flex layout-padding style="width:280px;height:200px;position:relative;margin-left:10px;margin-top:-20px">
-
-
-                <table border="1" >
+            <div  id="table-chart">
+              <div id="table-chart-title">数据统计</div>
+              <md-content flex layout-padding >
+                <table>
                   <tr>
                     <th>year</th>
                     <th>mater</th>
@@ -299,29 +280,26 @@
 
                   </tr>
                   <tr>
-                  <td>2013</td>
-                  <td>4300</td>
-                  <td>xxx</td>
-                  <td>xxx</td>
-                  <td>xxx</td>
+                    <td>2013</td>
+                    <td>4300</td>
+                    <td>xxx</td>
+                    <td>xxx</td>
+                    <td>xxx</td>
 
-                </tr>
-                <tr>
-                 <td>2012</td>
-                  <td>3000</td>
-                  <td>xxx</td>
-                  <td>xxx</td>
-                  <td>xxx</td>
+                  </tr>
+                  <tr>
+                    <td>2012</td>
+                    <td>3000</td>
+                    <td>xxx</td>
+                    <td>xxx</td>
+                    <td>xxx</td>
 
-                </tr>
-              </table>
-
-
-
+                  </tr>
+                </table>
               </md-content>
             </div>
-            <div style="position:relative;margin-top:50px">
-              <canvas id="pie" class="chart chart-pie" chart-data="datab" chart-labels="labelb" chart-options="options">
+            <div  id="pie-chart">
+              <canvas class="chart chart-pie" chart-data="datab" chart-labels="labelb" chart-options="pieoptions">
               </canvas>
             </div>
           </div>
@@ -335,19 +313,19 @@
   </div>
 
 
-<!--分割线--------------------------------------------------------------------------------->
+  <!--分割线--------------------------------------------------------------------------------->
   <md-divider style="margin-top:10px;background-color:#37474F"></md-divider>
-<!--第三行组件------------------------------------------------------------------------------>
+  <!--第三行组件------------------------------------------------------------------------------>
 
 
   <!--物资滑动条/天气------------------------------------------------------------------------------->
-  <div layout="column"  style="height:390px;background-color:#B0BEC5">
-    <div layout="{{ vm.direction }}" layout-md="row" >
+  <div layout="column" style="height:390px;background-color:#B0BEC5">
+    <div layout="{{ vm.direction }}" layout-md="row">
       <!--仿真简介-------------------------------------------------------->
 
       <div style="position;margin-left:5px">
         <div style="width:300px">
-          <p >仿真名称</p>
+          <p>仿真名称</p>
           <textarea rows="1" ng-model="notice.content" style="width:80%;position:relative;margin-top:-15px">{{ notice.content }}</textarea>
           <p style="position:relative;margin-top:-3px">仿真简介</p>
           <textarea rows="10" ng-model="notice.content" style="width:80%;position:relative;margin-top:-15px">{{ notice.content }}</textarea>
@@ -357,135 +335,135 @@
       </div>
 
       <!--物资滑动条-------------------------------------------------------->
-        <div style="width:320px;position:relative;margin-left:0px">
-          <md-slider-container>
-            <!-- <md-button class="md-raised md-primary" md-colors="{background: 'BLUE'}">添加</md-button> -->
+      <div style="width:320px;position:relative;margin-left:0px">
+        <md-slider-container>
+          <!-- <md-button class="md-raised md-primary" md-colors="{background: 'BLUE'}">添加</md-button> -->
 
-            <md-button  style="rgba(255,255,255,0.2);background-color:#E040FB">物资</md-button>
-            <md-slider flex min="0" max="4000" ng-model="color.white" aria-label="white" id="white-slider">
-            </md-slider>
-            <md-input-container>
-              <input flex type="number" ng-model="color.white" aria-label="white" aria-controls="white-slider">
-            </md-input-container>
-          </md-slider-container>
-          <md-slider-container>
-            <md-button class="md-raised">物资</md-button>
-            <md-slider flex ng-model="color.black" min="0" max="4000" aria-label="black" id="black-slider" class="md-accent">
-            </md-slider>
-            <md-input-container>
-              <input flex type="number" ng-model="color.black" aria-label="black" aria-controls="black-slider">
-            </md-input-container>
-          </md-slider-container>
-          <md-slider-container>
+          <md-button style="rgba(255,255,255,0.2);background-color:#E040FB">物资</md-button>
+          <md-slider flex min="0" max="4000" ng-model="color.white" aria-label="white" id="white-slider">
+          </md-slider>
+          <md-input-container>
+            <input flex type="number" ng-model="color.white" aria-label="white" aria-controls="white-slider">
+          </md-input-container>
+        </md-slider-container>
+        <md-slider-container>
+          <md-button class="md-raised">物资</md-button>
+          <md-slider flex ng-model="color.black" min="0" max="4000" aria-label="black" id="black-slider" class="md-accent">
+          </md-slider>
+          <md-input-container>
+            <input flex type="number" ng-model="color.black" aria-label="black" aria-controls="black-slider">
+          </md-input-container>
+        </md-slider-container>
+        <md-slider-container>
 
 
-            <md-button class="md-raised md-primary md-warn">物资</md-button>
+          <md-button class="md-raised md-primary md-warn">物资</md-button>
 
-            <md-slider flex ng-model="color.yellow" min="0" max="30" aria-label="yellow" id="yellow-slider" class="md-primary">
-            </md-slider>
-            <md-input-container>
-              <input flex type="number" ng-model="color.yellow" aria-label="yellow" aria-controls="yellow-slider">
-            </md-input-container>
-          </md-slider-container>
-          <md-slider-container>
-            <md-button class="md-raised md-warn" style="background-color:#69F0AE">淡水</md-button>
-            <md-slider flex min="0" max="4000" ng-model="color.red" aria-label="red" id="red-slider">
-            </md-slider>
-            <md-input-container>
-              <input flex type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider">
-            </md-input-container>
-          </md-slider-container>
+          <md-slider flex ng-model="color.yellow" min="0" max="30" aria-label="yellow" id="yellow-slider" class="md-primary">
+          </md-slider>
+          <md-input-container>
+            <input flex type="number" ng-model="color.yellow" aria-label="yellow" aria-controls="yellow-slider">
+          </md-input-container>
+        </md-slider-container>
+        <md-slider-container>
+          <md-button class="md-raised md-warn" style="background-color:#69F0AE">淡水</md-button>
+          <md-slider flex min="0" max="4000" ng-model="color.red" aria-label="red" id="red-slider">
+          </md-slider>
+          <md-input-container>
+            <input flex type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider">
+          </md-input-container>
+        </md-slider-container>
 
-          <md-slider-container>
-            <md-button class="md-raised md-primary">石油</md-button>
-            <md-slider flex ng-model="color.green" min="0" max="4000" aria-label="green" id="green-slider" class="md-accent">
-            </md-slider>
-            <md-input-container>
-              <input flex type="number" ng-model="color.green" aria-label="green" aria-controls="green-slider">
-            </md-input-container>
-          </md-slider-container>
+        <md-slider-container>
+          <md-button class="md-raised md-primary">石油</md-button>
+          <md-slider flex ng-model="color.green" min="0" max="4000" aria-label="green" id="green-slider" class="md-accent">
+          </md-slider>
+          <md-input-container>
+            <input flex type="number" ng-model="color.green" aria-label="green" aria-controls="green-slider">
+          </md-input-container>
+        </md-slider-container>
 
-          <md-slider-container>
-            <md-button class="md-accent md-raised md-hue-1">物资</md-button>
-            <md-slider flex ng-model="color.blue" min="0" max="30" aria-label="blue" id="blue-slider" class="md-primary">
-            </md-slider>
-            <md-input-container>
-              <input flex type="number" ng-model="color.blue" aria-label="blue" aria-controls="blue-slider">
-            </md-input-container>
-          </md-slider-container>
+        <md-slider-container>
+          <md-button class="md-accent md-raised md-hue-1">物资</md-button>
+          <md-slider flex ng-model="color.blue" min="0" max="30" aria-label="blue" id="blue-slider" class="md-primary">
+          </md-slider>
+          <md-input-container>
+            <input flex type="number" ng-model="color.blue" aria-label="blue" aria-controls="blue-slider">
+          </md-input-container>
+        </md-slider-container>
+      </div>
+
+      <!--天气/约束条件---------------------------------------------------------------------------->
+
+
+      <div style="position:relative;margin-left:80px">
+        <!--天气---------------------------->
+        <div layout="column" class="test">
+          <div layout="{{ vm.direction }}" layout-md="row" class="">
+            <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
+            <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
+            <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
+            <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
+            <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
+          </div>
+        </div>
+        <!--约束条件---------------------------->
+        <div layout="column" ng-cloak style="width:400px;height:200px;">
+          <div class="md-toolbar-tools">
+            <p>约束条件</p>
+          </div>
+          <md-content flex layout-padding>
+            <p>Label</p>
+            <p>Label</p>
+            <p>Label</p>
+            <p>Label</p>
+            <p>Label</p>
+            <p>Label</p>
+          </md-content>
         </div>
 
-<!--天气/约束条件---------------------------------------------------------------------------->
+      </div>
+      <!--天气参数选择------------------------------------------------------------------------------------->
+      <div style="width:320px;position:relative;margin-left:70px">
 
 
-        <div style="position:relative;margin-left:80px">
-<!--天气---------------------------->
-          <div layout="column" class="test">
-            <div  layout="{{ vm.direction }}" layout-md="row" class="">
-              <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
-              <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
-              <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
-              <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
-              <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
+
+        <div layout="column" class="test">
+          <div layout="{{ vm.direction }}" layout-md="row" class="">
+            <div>
+              <label>白天</label>
+              <md-select ng-model="dw">
+                <md-option value="app">sunny</md-option>
+                <md-option value="web">rainny</md-option>
+                <md-option value="app">snowy</md-option>
+                <md-option value="web">cloudy</md-option>
+              </md-select>
+            </div>
+
+            <p style="position:relative;margin-left:50px">转</p>
+
+            <div style="position:relative;margin-left:50px">
+              <label>夜晚</label>
+              <md-select ng-model="nw">
+                <md-option>sunny</md-option>
+                <md-option>rainy</md-option>
+                <md-option>snowy</md-option>
+                <md-option>cloudy</md-option>
+              </md-select>
             </div>
           </div>
-<!--约束条件---------------------------->
-          <div layout="column" ng-cloak style="width:400px;height:200px;">
-            <div class="md-toolbar-tools">
-              <p>约束条件</p>
-            </div>
-            <md-content flex layout-padding>
-              <p>Label</p>
-              <p>Label</p>
-              <p>Label</p>
-              <p>Label</p>
-              <p>Label</p>
-              <p>Label</p>
-            </md-content>
-          </div>
-
         </div>
-<!--天气参数选择------------------------------------------------------------------------------------->
-        <div style="width:320px;position:relative;margin-left:70px">
 
-
-
-          <div layout="column" class="test">
-            <div  layout="{{ vm.direction }}" layout-md="row" class="">
-              <div>
-                <label>白天</label>
-                <md-select ng-model="dw">
-                  <md-option value="app">sunny</md-option>
-                  <md-option value="web">rainny</md-option>
-                  <md-option value="app">snowy</md-option>
-                  <md-option value="web">cloudy</md-option>
-                </md-select>
-              </div>
-
-              <p style="position:relative;margin-left:50px">转</p>
-
-              <div style="position:relative;margin-left:50px">
-                <label>夜晚</label>
-                <md-select ng-model="nw">
-                  <md-option >sunny</md-option>
-                  <md-option >rainy</md-option>
-                  <md-option >snowy</md-option>
-               <md-option >cloudy</md-option>
-                </md-select>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <label>风向</label>
-            <md-select ng-model="dir">
-              <md-option >west</md-option>
-              <md-option >east</md-option>
-              <md-option >south</md-option>
-              <md-option >north</md-option>
-            </md-select>
-          </div>
-          <!-- <div>
+        <div>
+          <label>风向</label>
+          <md-select ng-model="dir">
+            <md-option>west</md-option>
+            <md-option>east</md-option>
+            <md-option>south</md-option>
+            <md-option>north</md-option>
+          </md-select>
+        </div>
+        <!-- <div>
             <label>风力</label>
             <md-select ng-model="user.state">
               <md-option ng-repeat="state in states" value="{{state.abbrev}}">
@@ -496,55 +474,55 @@
 
 
 
-          <div>
-            <md-slider-container>
-              <label>风力(级)</label>
-              <md-slider flex ng-model="wind.level" min="0" max="14" aria-label="level" id="level-slider" class="md-accent">
-              </md-slider>
-              <md-input-container>
-                <input flex type="number" ng-model="wind.level" aria-label="level" aria-controls="level-slider">
-              </md-input-container>
-            </md-slider-container>
-          </div>
-
-          <div>
-            <md-slider-container>
-              <label>温度(℃)</label>
-              <md-slider flex ng-model="temperature" min="-40" max="50" aria-label="tem" id="tem-slider" class="md-accent">
-              </md-slider>
-              <md-input-container>
-                <input flex type="number" ng-model="temperature" aria-label="tem" aria-controls="tem-slider">
-              </md-input-container>
-            </md-slider-container>
-        </div>
-
-      </div>
-
-
-  <!--设置/仿真开始------------------------------------------------------------------------------------->
-<div style="position:relative;margin-left:80px">
-
-
-
-  <div layout="column" class="test">
-    <div  layout="{{ vm.direction }}" layout-md="row" class="">
-<!--鲁棒度------------------->
-      <div>
-        <div style="position:relative;right:10px">
-          <md-slider-container flex>
-            <md-input-container>
-              <input flex type="number" ng-model="bass" aria-label="bass" aria-controls="bass-slider">
-            </md-input-container>
-            <md-slider md-discrete ng-model="bass" min="0" max="100" step="10" aria-label="bass" class="md-primary" md-vertical></md-slider>
+        <div>
+          <md-slider-container>
+            <label>风力(级)</label>
+            <md-slider flex ng-model="wind.level" min="0" max="14" aria-label="level" id="level-slider" class="md-accent">
             </md-slider>
-            <h5>base</h5>
+            <md-input-container>
+              <input flex type="number" ng-model="wind.level" aria-label="level" aria-controls="level-slider">
+            </md-input-container>
           </md-slider-container>
         </div>
-      </div>
-      <!--鲁棒度------------------->
 
-      <!--开关复选框----------------->
-        <!-- <div>
+        <div>
+          <md-slider-container>
+            <label>温度(℃)</label>
+            <md-slider flex ng-model="temperature" min="-40" max="50" aria-label="tem" id="tem-slider" class="md-accent">
+            </md-slider>
+            <md-input-container>
+              <input flex type="number" ng-model="temperature" aria-label="tem" aria-controls="tem-slider">
+            </md-input-container>
+          </md-slider-container>
+        </div>
+
+      </div>
+
+
+      <!--设置/仿真开始------------------------------------------------------------------------------------->
+      <div style="position:relative;margin-left:80px">
+
+
+
+        <div layout="column" class="test">
+          <div layout="{{ vm.direction }}" layout-md="row" class="">
+            <!--鲁棒度------------------->
+            <div>
+              <div style="position:relative;right:10px">
+                <md-slider-container flex>
+                  <md-input-container>
+                    <input flex type="number" ng-model="bass" aria-label="bass" aria-controls="bass-slider">
+                  </md-input-container>
+                  <md-slider md-discrete ng-model="bass" min="0" max="100" step="10" aria-label="bass" class="md-primary" md-vertical></md-slider>
+                  </md-slider>
+                  <h5>base</h5>
+                </md-slider-container>
+              </div>
+            </div>
+            <!--鲁棒度------------------->
+
+            <!--开关复选框----------------->
+            <!-- <div>
           <div flex-xs flex="50">
             <md-checkbox aria-label="Select All" ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()">
               <span ng-if="isChecked()">Un-</span>Select All
@@ -556,61 +534,61 @@
             </md-checkbox>
           </div>
         </div> -->
-        <div style="position:relative;margin-left:20px">
-          <div>
-          <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关1  </md-checkbox>
-          <md-checkbox ng-checked="" ng-click="toggle(item, selected)">天气</md-checkbox>
+            <div style="position:relative;margin-left:20px">
+              <div>
+                <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关1 </md-checkbox>
+                <md-checkbox ng-checked="" ng-click="toggle(item, selected)">天气</md-checkbox>
 
 
+              </div>
+              <div>
+                <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关2</md-checkbox>
+                <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关3</md-checkbox>
+
+              </div>
+              <div>
+                <md-checkbox ng-checked="" ng-click="toggle(item, selected)">设置1</md-checkbox>
+                <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关2</md-checkbox>
+
+              </div>
+              <div>
+                <md-checkbox ng-checked="" ng-click="toggle(item, selected)">设置2</md-checkbox>
+                <md-checkbox ng-checked="" ng-click="toggle(item, selected)">设置3</md-checkbox>
+
+              </div>
+              <div>
+                <md-checkbox ng-checked="" ng-click="toggle(item, selected)">设置4</md-checkbox>
+                <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关</md-checkbox>
+
+              </div>
+
+
+
+
+
+
+            </div>
+
+
+            <!--开关复选框----------------->
+          </div>
         </div>
-          <div>
-          <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关2</md-checkbox>
-          <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关3</md-checkbox>
-
-        </div>
-          <div>
-          <md-checkbox ng-checked="" ng-click="toggle(item, selected)">设置1</md-checkbox>
-          <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关2</md-checkbox>
-
-        </div>
-          <div>
-          <md-checkbox ng-checked="" ng-click="toggle(item, selected)">设置2</md-checkbox>
-          <md-checkbox ng-checked="" ng-click="toggle(item, selected)">设置3</md-checkbox>
-
-        </div>
-          <div>
-          <md-checkbox ng-checked="" ng-click="toggle(item, selected)">设置4</md-checkbox>
-          <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关</md-checkbox>
-
-        </div>
+        <!--仿真开始------------------------------------------------------------------------------>
+        <md-button class="md-fab" aria-label="Eat cake" style="position:relative;margin-top:-10px;right:-20px;width:130px;height:130px;">
+          <div class="md-display-2">仿真</div>
+          <div class="md-display-1">开始</div>
 
 
 
+          <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+        </md-button>
+        <!--仿真开始------------------------------------------------------------------------------>
 
-
-
-        </div>
-
-
-  <!--开关复选框----------------->
       </div>
+
+
     </div>
-    <!--仿真开始------------------------------------------------------------------------------>
-    <md-button class="md-fab" aria-label="Eat cake" style="position:relative;margin-top:-10px;right:-20px;width:130px;height:130px;">
-      <div class="md-display-2">仿真</div>
-      <div class="md-display-1">开始</div>
-
-
-
-      <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
-    </md-button>
-    <!--仿真开始------------------------------------------------------------------------------>
-
   </div>
-
-
-</div>
-</div>
 
 
 
