@@ -23,10 +23,10 @@
 
       <div id="sys-date-bar">
         <div>
-          <div id="date-show" class="md-display-1" style="text-align:center">{{nowtime|date:'yyyy年MM月dd日'}}</div>
+          <div id="date-show" class="md-display-1">{{nowtime|date:'yyyy年MM月dd日'}}</div>
         </div>
         <div>
-          <div id="emmmmmm" class="md-display-1" style="background-color:#C62828  ;text-align:right">爱国 敬业 诚信 友善</div>
+          <div id="emmmmmm" class="md-display-1">爱国 敬业 诚信 友善</div>
         </div>
       </div>
 
@@ -58,8 +58,8 @@
 
       <div layout="column" id="detail-show">
 
-        <div class="ship" hide-lg flex='20'>
-          <md-list-item class="md-2-line" ng-click="null">
+        <div class="ship">
+          <!-- <md-list-item class="md-2-line" ng-click="null"> -->
             <div class="md-list-item-text" layout="column">
               <div class="logo">
                 <img src="assets/ship615.png">
@@ -78,7 +78,7 @@
                 </p>
               </div>
             </div>
-          </md-list-item>
+          <!-- </md-list-item> -->
 
           <div ng-show="tvar" style="text-align:center">
             <h1 class="md-display-1">{{name}} </h1>
@@ -88,8 +88,8 @@
             <p>所属海区：{{seazone}}</p>
             <p>简介：{{info}}</p>
           </div>
-          <md-button class="md-raised md-primary" md-colors="{background: 'BLUE'}" style="position:absolute;top:580px">添加</md-button>
-          <md-button class="md-raised" style="position:absolute;top:580px;margin-left:140px">编辑</md-button>
+          <md-button class="md-raised md-primary" md-colors="{background: 'BLUE'}">添加</md-button>
+          <md-button class="md-raised">编辑</md-button>
         </div>
 
 
@@ -314,119 +314,74 @@
 
 
   <!--分割线--------------------------------------------------------------------------------->
-  <md-divider style="margin-top:10px;background-color:#37474F"></md-divider>
   <!--第三行组件------------------------------------------------------------------------------>
 
 
   <!--物资滑动条/天气------------------------------------------------------------------------------->
-  <div layout="column" style="height:390px;background-color:#B0BEC5">
+  <div layout="column" id="bottom-part">
     <div layout="{{ vm.direction }}" layout-md="row">
       <!--仿真简介-------------------------------------------------------->
 
-      <div style="position;margin-left:5px">
-        <div style="width:300px">
-          <p>仿真名称</p>
-          <textarea rows="1" ng-model="notice.content" style="width:80%;position:relative;margin-top:-15px">{{ notice.content }}</textarea>
-          <p style="position:relative;margin-top:-3px">仿真简介</p>
-          <textarea rows="10" ng-model="notice.content" style="width:80%;position:relative;margin-top:-15px">{{ notice.content }}</textarea>
-          <p style="position:relative;margin-top:-3px">备注</p>
-          <textarea rows="1" ng-model="notice.content" style="width:80%;position:relative;margin-top:-15px">{{ notice.content }}</textarea>
-        </div>
+      <div id="bottom-form">
+          <div>仿真名称</div>
+          <textarea rows="1" ng-model="notice.content">{{ notice.content }}</textarea>
+          <div>仿真简介</div>
+          <textarea rows="10" ng-model="notice.content">{{ notice.content }}</textarea>
+          <div>备注</div>
+          <textarea rows="1" ng-model="notice.content">{{ notice.content }}</textarea>
       </div>
 
       <!--物资滑动条-------------------------------------------------------->
-      <div style="width:320px;position:relative;margin-left:0px">
-        <md-slider-container>
-          <!-- <md-button class="md-raised md-primary" md-colors="{background: 'BLUE'}">添加</md-button> -->
-
-          <md-button style="rgba(255,255,255,0.2);background-color:#E040FB">物资</md-button>
-          <md-slider flex min="0" max="4000" ng-model="color.white" aria-label="white" id="white-slider">
-          </md-slider>
-          <md-input-container>
-            <input flex type="number" ng-model="color.white" aria-label="white" aria-controls="white-slider">
-          </md-input-container>
-        </md-slider-container>
-        <md-slider-container>
-          <md-button class="md-raised">物资</md-button>
-          <md-slider flex ng-model="color.black" min="0" max="4000" aria-label="black" id="black-slider" class="md-accent">
-          </md-slider>
-          <md-input-container>
-            <input flex type="number" ng-model="color.black" aria-label="black" aria-controls="black-slider">
-          </md-input-container>
-        </md-slider-container>
-        <md-slider-container>
-
-
-          <md-button class="md-raised md-primary md-warn">物资</md-button>
-
-          <md-slider flex ng-model="color.yellow" min="0" max="30" aria-label="yellow" id="yellow-slider" class="md-primary">
-          </md-slider>
-          <md-input-container>
-            <input flex type="number" ng-model="color.yellow" aria-label="yellow" aria-controls="yellow-slider">
-          </md-input-container>
-        </md-slider-container>
-        <md-slider-container>
-          <md-button class="md-raised md-warn" style="background-color:#69F0AE">淡水</md-button>
-          <md-slider flex min="0" max="4000" ng-model="color.red" aria-label="red" id="red-slider">
-          </md-slider>
-          <md-input-container>
-            <input flex type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider">
-          </md-input-container>
-        </md-slider-container>
-
-        <md-slider-container>
-          <md-button class="md-raised md-primary">石油</md-button>
-          <md-slider flex ng-model="color.green" min="0" max="4000" aria-label="green" id="green-slider" class="md-accent">
-          </md-slider>
-          <md-input-container>
-            <input flex type="number" ng-model="color.green" aria-label="green" aria-controls="green-slider">
-          </md-input-container>
-        </md-slider-container>
-
-        <md-slider-container>
-          <md-button class="md-accent md-raised md-hue-1">物资</md-button>
-          <md-slider flex ng-model="color.blue" min="0" max="30" aria-label="blue" id="blue-slider" class="md-primary">
-          </md-slider>
-          <md-input-container>
-            <input flex type="number" ng-model="color.blue" aria-label="blue" aria-controls="blue-slider">
-          </md-input-container>
-        </md-slider-container>
+      <div id="bottom-slider-container">
+        <div id="bottom-slider-group">
+          <div class="bottom-slider-unit" ng-repeat="i in selected_materials">
+            <md-slider-container>
+              <div class="slider-title-btn">物资{{$index}}</div>
+              <md-slider flex min="0" class="md-primary" max="4000" ng-model="i" aria-label="white">
+              </md-slider>
+              <input type="text" ng-model="i"></input>
+            </md-slider-container>
+          </div>
+        </div>
+        <div id="bottom-slider-add">+</div>
       </div>
 
       <!--天气/约束条件---------------------------------------------------------------------------->
 
 
-      <div style="position:relative;margin-left:80px">
+      <div id="weather-and-condition">
         <!--天气---------------------------->
-        <div layout="column" class="test">
-          <div layout="{{ vm.direction }}" layout-md="row" class="">
-            <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
-            <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
-            <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
-            <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
-            <div><img src="assets/wea1.png" style="width:70px;position:relative;margin-left:5px;margin-top:50px"></div>
+        <div id="weather-list">
+          <div id="weather-header">
+            <span id="weather-title">天气</span>
+          <md-button class="md-fab md-mini md-primary" >+</md-button>
+          </div>
+
+          <div id="weather-card-container">
+            <div id="card-wrapper">
+              <div class="weather-card" ng-repeat="i in [1,2,3,4,5,6,7,8,9]">
+                <div>#{{i}}</div>
+                <div>小雨</div>
+                <div>风力:{{i*2}}级</div>
+              </div>
+            </div>
           </div>
         </div>
         <!--约束条件---------------------------->
-        <div layout="column" ng-cloak style="width:400px;height:200px;">
-          <div class="md-toolbar-tools">
-            <p>约束条件</p>
+        <div id="condition-list">
+          <div id="condition-list-title">
+            约束条件<md-button class="md-fab md-mini md-primary" >+</md-button>
           </div>
-          <md-content flex layout-padding>
-            <p>Label</p>
-            <p>Label</p>
-            <p>Label</p>
-            <p>Label</p>
-            <p>Label</p>
-            <p>Label</p>
-          </md-content>
+          <div id="condition-list-container">
+            <div class="condition-cell" ng-repeat="i in [1,2,3,4,5,6,7,8,9]">
+              Condition{{i}}
+            </div>
+          </div>
         </div>
 
       </div>
       <!--天气参数选择------------------------------------------------------------------------------------->
-      <div style="width:320px;position:relative;margin-left:70px">
-
-
+      <div id="control-panel">
 
         <div layout="column" class="test">
           <div layout="{{ vm.direction }}" layout-md="row" class="">
@@ -463,16 +418,6 @@
             <md-option>north</md-option>
           </md-select>
         </div>
-        <!-- <div>
-            <label>风力</label>
-            <md-select ng-model="user.state">
-              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
-                {{state.abbrev}}
-              </md-option>
-            </md-select>
-          </div> -->
-
-
 
         <div>
           <md-slider-container>
@@ -500,40 +445,22 @@
 
 
       <!--设置/仿真开始------------------------------------------------------------------------------------->
-      <div style="position:relative;margin-left:80px">
+      <div id="bottom-right-part">
 
 
 
-        <div layout="column" class="test">
+        <div>
           <div layout="{{ vm.direction }}" layout-md="row" class="">
             <!--鲁棒度------------------->
-            <div>
-              <div style="position:relative;right:10px">
-                <md-slider-container flex>
-                  <md-input-container>
-                    <input flex type="number" ng-model="bass" aria-label="bass" aria-controls="bass-slider">
-                  </md-input-container>
+            <div id="robust-bar">
+                <md-slider-container>
                   <md-slider md-discrete ng-model="bass" min="0" max="100" step="10" aria-label="bass" class="md-primary" md-vertical></md-slider>
                   </md-slider>
-                  <h5>base</h5>
+                  <div>鲁棒度</div>
                 </md-slider-container>
-              </div>
             </div>
             <!--鲁棒度------------------->
 
-            <!--开关复选框----------------->
-            <!-- <div>
-          <div flex-xs flex="50">
-            <md-checkbox aria-label="Select All" ng-checked="isChecked()" md-indeterminate="isIndeterminate()" ng-click="toggleAll()">
-              <span ng-if="isChecked()">Un-</span>Select All
-            </md-checkbox>
-          </div>
-          <div class="demo-select-all-checkboxes" flex="100" ng-repeat="item in items">
-            <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
-                  {{ item }}
-            </md-checkbox>
-          </div>
-        </div> -->
             <div style="position:relative;margin-left:20px">
               <div>
                 <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关1 </md-checkbox>
@@ -574,13 +501,9 @@
           </div>
         </div>
         <!--仿真开始------------------------------------------------------------------------------>
-        <md-button class="md-fab" aria-label="Eat cake" style="position:relative;margin-top:-10px;right:-20px;width:130px;height:130px;">
+        <md-button id="work-start" class="md-fab">
           <div class="md-display-2">仿真</div>
           <div class="md-display-1">开始</div>
-
-
-
-          <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
         </md-button>
         <!--仿真开始------------------------------------------------------------------------------>
 

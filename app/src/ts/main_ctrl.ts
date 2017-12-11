@@ -290,6 +290,8 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
     };
 
+    $scope.selected_materials = [1,2,3,4,5,6,7,8,9,10];
+
     //  $scope.rating1 = 0;
     //  $scope.rating2 = 2;
     //  $scope.rating3 = 4;
