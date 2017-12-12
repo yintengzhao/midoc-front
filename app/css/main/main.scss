@@ -230,25 +230,9 @@ body {
 		font-weight: 600;
 	}
 	#pie-chart{
-		// margin-top: 20px;
-
 	}
-	// margin-left:
-	// 700px;top:70px
 }
 
-
-// .goods {
-// 	background-color: gray;
-// 	position: relative;
-// 	height: 600px;
-// 	width: 3200px;
-// 	margin-top: -60px;
-// 	margin-left: 10px;
-// 	margin-right: auto;
-// 	border: 5px solid #333;
-// }
-//复选框
 
 #bottom-part{
 	padding-left: 40px;
@@ -308,6 +292,7 @@ body {
 	margin: 8px auto;
 }
 #weather-and-condition{
+	margin-top: 6px;
 	margin-left: 16px;
 	.md-fab{
 		vertical-align: top;
@@ -320,8 +305,9 @@ body {
 	}
 }
 #weather-header{
-	background-color: gold;
-	padding-bottom: 4px;
+	background-color: rgb(254, 253, 214);
+	padding-bottom: 8px;
+	border-radius: 6px 6px 0px 0px;
 }
 
 #weather-list{
@@ -341,6 +327,7 @@ body {
 	overflow-x: auto;
 	// border-top: double 2px gray;
 	padding-top: 4px;
+	background-color: rgba(243, 255, 0, 0.54);
 }
 
 #card-wrapper{
@@ -377,12 +364,13 @@ body {
 	font-size: 20px;
 	font-weight: 500;
 	padding-left: 10px;
-	background-color: rgb(230, 159, 254);
+	background-color: rgb(236, 222, 255);
 	opacity: 0.8;
+	border-radius: 6px 6px 0px 0px;
 }
 
 #control-panel{
-	background-color: white;
+	background-color: rgba(255, 255, 255, 0.7);
 	margin-left: 20px;
 	padding: 0px 16px 20px;
 	height: 95%;
