@@ -121,6 +121,31 @@ body {
 		}
 	}
 
+	.logo2{
+		text-align: center;
+		img {
+			width: 200px;
+	}
+}
+
+#addbutton{
+	position: absolute;
+	top:550px;
+	background-color: #2196F3
+}
+#editbutton{
+	position: absolute;
+	margin-left: 140px;
+	top:550px;
+	background-color: #9E9E9E
+}
+
+
+
+
+
+
+
 	.title {
 		font-weight: bolder;
 		font-size: 32px;
@@ -131,7 +156,16 @@ body {
 		width: 70%;
 		margin-left: 10px;
 	}
+	.attr2{
+		margin-top: 20px;
+		width: 70%;
+		margin-left: 10px;
+	}
 
+	.attr-value {
+		float: right;
+		color: rgb(16, 145, 68);
+	}
 	.attr-value {
 		float: right;
 		color: rgb(16, 145, 68);
@@ -323,7 +357,8 @@ body {
 
 #weather-card-container{
 	width: 400px;
-	height: 150px;
+	 height: 150px;
+
 	overflow-x: auto;
 	// border-top: double 2px gray;
 	padding-top: 4px;
@@ -339,10 +374,11 @@ body {
 
 .weather-card{
 	height: 120px;
-	min-width: 90px;
+	min-width: 110px;
 	background-color: white;
 	display: inline-block;
-	margin-left: 20px;
+	margin-left: 15px;
+	margin-right: 15px;
 	border: dashed 1px black;
 }
 
@@ -373,7 +409,8 @@ body {
 	background-color: rgba(255, 255, 255, 0.7);
 	margin-left: 20px;
 	padding: 0px 16px 20px;
-	height: 95%;
+	// height: 95%;
+	height: 330px;
 	margin-top: 8px;
 }
 
@@ -392,4 +429,10 @@ body {
 	margin-top: 20px;
 	width:130px;
 	height:130px;
+}
+#weather-confirm{
+	text-align: center;
+	position: relative;
+	margin-left: 80px;
+	bottom: 5px
 }

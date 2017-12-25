@@ -50,6 +50,17 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
         display: false
       }
     };
+    //添加、编辑------------------------------------
+    // $scope.add=function(){
+    //   $scope.svar=false;
+    //   $scope.addpage=true;
+    //
+    // }
+    // $scope.edit=function(){
+    //   alert('123')
+    // }
+
+
 
     //后台数据展示------------------------------------
     $http.get("http://10.134.78.134:8888/ssh/material/list")
@@ -60,7 +71,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     $http.get("http://10.134.78.134:8888/ssh/ship/list")
       .then(function(response) {
         console.log(response);
-        $scope.boats = response.data;
+        $scope.ships = response.data;
       });
     $http.get("http://10.134.78.134:8888/ssh/base/list")
       .then(function(response) {
@@ -79,34 +90,100 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
                     function(response)
                     {alert('erro')});
     };*/
+    //搜索物资、载具、平台-----------------------------
+    $scope.a=true;
+    $scope.b=true;
+    $scope.c = true;
+    $scope.aa=false;
+    $scope.bb=false;
+    $scope.cc=false;
 
-    $scope.myvar = true;
     $scope.search = function() {
-      $scope.myvar = false;
-      var req = {
+
+      if($scope.switcha){
+        $scope.a=false;
+        $scope.aa=true;
+
+      var reqmater={
+        method:'GET',
+        url:'http://10.134.78.134:8888/ssh/material/match',
+        params: { s: $scope.theMax }
+      }
+      $http(reqmater).then(function(response)
+    {$scope.materials=response.data},
+     function(){alert('err')});
+   }
+
+      if ($scope.switchb){
+      $scope.b = false;
+      $scope.bb =true;
+      var reqship = {
         method: 'GET',
         url: 'http://10.134.78.134:8888/ssh/ship/match',
         params: { s: $scope.theMax }
       }
-      $http(req).then(function(response)
-      { $scope.answers = response.data },
+      $http(reqship).then(function(response)
+      { $scope.ships = response.data },
         function() { alert('erro') });
+      }
+
+
+  //    var reqplat={
+  //      method:'GET',
+  //      url:'http://10.134.78.134:8888/ssh/base/match',
+  //      params: { s: $scope.theMax }
+  //    }
+  //    $http(reqplat).then(function(response)
+  //  {$scope.plats=response.data},
+  //  function(){alert('err')});
+
     };
+    //搜索平台-----------------------------
+
     //展示详细信息-----------------------------
-    $scope.svar = true;
-    $scope.tvar = false;
+    $scope.sta = true;
+    $scope.asta = false;
+    $scope.bsta = false;
+    $scope.csta = false;
 
+    $scope.showmaterial=function(materialname,materialdetail,materialid,materialtype,materialvolume,materialweight){
+      $scope.sta = false;
+      $scope.asta = true;
+      $scope.bsta = false;
+      $scope.csta = false;
 
-    $scope.showall = function(answerid, answername, answerinfo, answernation, answerport, answerseazone) {
-      $scope.svar = false;
-      $scope.tvar = true;
+      $scope.id = materialid;
+      $scope.name = materialname;
+      $scope.type = materialtype;
+      $scope.volume = materialvolume;
+      $scope.weight = materialweight;
+      $scope.detail = materialdetail;
+    }
 
-      $scope.id = answerid;
-      $scope.name = answername;
-      $scope.info = answerinfo;
-      $scope.nation = answernation;
-      $scope.port = answerport;
-      $scope.seazone = answerseazone;
+    //展示详细信息-----------------------------
+    $scope.showship = function(shipid,shipname, shipinfo, shipnation, shipport, shipseazone) {
+      $scope.sta = false;
+      $scope.asta = false;
+      $scope.bsta = true;
+      $scope.csta = false;
+
+      $scope.shipid = shipid;
+      $scope.shipname = shipname;
+      $scope.shipinfo = shipinfo;
+      $scope.nation = shipnation;
+      $scope.port = shipport;
+      $scope.seazone = shipseazone;
+    }
+
+    $scope.showbase=function(baseid,storage_place){
+      $scope.sta = false;
+      $scope.asta = false;
+      $scope.bsta = false;
+      $scope.csta = true;
+
+      $scope.baseid = baseid;
+      $scope.storage_place = storage_place;
+
     }
 
 
@@ -172,19 +249,17 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
     $scope.selected_materials = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+    $scope.addmaterials=function(){
+      $scope.selected_materials.push({});
+    };
+
     //  $scope.rating1 = 0;
     //  $scope.rating2 = 2;
     //  $scope.rating3 = 4;
     //天气----------------
+    //weather-confirm----------------
 
 
-
-    //风向选择----------------
-
-
-    $scope.dirs = ('东风 东南风 南风 西南风 西风 西北风 北风 东北风').split(' ').map(function(dir) {
-      return { abbre: dir };
-    });
 
     //====mc-map====
     $scope.liuliu = 667;
@@ -273,8 +348,93 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       $scope.map.show = !$scope.map.show;
     }
     // ====mc-map-end====
+    $scope.dws = [
+         "阴",
+         "晴",
+         "雨",
+         "雪"
+     ];
+     $scope.nws = [
+          "阴",
+          "晴",
+          "雨",
+          "雪"
+      ];
 
+//weather-click
+    $scope.Day1=function(){
+       document.getElementById("card1").style.background="#69F0AE";
+       $scope.weaconfirm=function(){
+         $scope.zhuan1='转';
+         $scope.dao1='到';
+         $scope.ji1='级'；
+         $scope.dw1=$scope.dw;
+         $scope.nw1=$scope.nw;
+         $scope.lowtem1=$scope.lowtemperature;
+         $scope.hightem1=$scope.hightemperature;
+         $scope.windlevel1=$scope.wind.level
 
+       }
+
+    }
+    $scope.Day2=function(){
+       document.getElementById("card2").style.background="#69F0AE";
+       $scope.weaconfirm=function(){
+         $scope.zhuan2='转';
+         $scope.dao2='到';
+         $scope.ji2='级'；
+         $scope.dw2=$scope.dw;
+         $scope.nw2=$scope.nw;
+         $scope.lowtem2=$scope.lowtemperature;
+         $scope.hightem2=$scope.hightemperature;
+         $scope.windlevel2=$scope.wind.level
+
+       }
+
+    }
+    $scope.Day3=function(){
+       document.getElementById("card3").style.background="#69F0AE";
+       $scope.weaconfirm=function(){
+         $scope.zhuan3='转';
+         $scope.dao3='到';
+         $scope.ji3='级'；
+         $scope.dw3=$scope.dw;
+         $scope.nw3=$scope.nw;
+         $scope.lowtem3=$scope.lowtemperature;
+         $scope.hightem3=$scope.hightemperature;
+         $scope.windlevel3=$scope.wind.level
+
+       }
+
+    }
+    $scope.Day4=function(){
+       document.getElementById("card4").style.background="#69F0AE";
+       $scope.weaconfirm=function(){
+         $scope.zhuan4='转';
+         $scope.dao4='到';
+         $scope.ji4='级'；
+         $scope.dw4=$scope.dw;
+         $scope.nw4=$scope.nw;
+         $scope.lowtem4=$scope.lowtemperature;
+         $scope.hightem4=$scope.hightemperature;
+         $scope.windlevel4=$scope.wind.level
+
+       }
+
+    }
+    $scope.Day5=function(){
+       document.getElementById("card5").style.background="#69F0AE";
+       $scope.weaconfirm=function(){
+         $scope.zhuan5='转';
+         $scope.dao5='到';
+         $scope.ji5='级'；
+         $scope.dw5=$scope.dw;
+         $scope.nw5=$scope.nw;
+         $scope.lowtem5=$scope.lowtemperature;
+         $scope.hightem5=$scope.hightemperature;
+         $scope.windlevel5=$scope.wind.level
+       }
+    }
 }])
 
 angular.bootstrap(document.getElementsByTagName("body")[0], ['fmid']);
