@@ -406,7 +406,7 @@
         <div id="bottom-slider-group">
           <div class="bottom-slider-unit" ng-repeat="i in selected_materials">
             <md-slider-container>
-              <div class="slider-title-btn">物资{{$index}}</div>
+              <div class="slider-title-btn">物资{{i}}</div>
               <md-slider flex min="0" class="md-primary" max="4000" ng-model="i" aria-label="white">
               </md-slider>
               <input type="text" ng-model="i"></input>
@@ -490,10 +490,10 @@
         <!--约束条件---------------------------->
         <div id="condition-list">
           <div id="condition-list-title">
-            约束条件<md-button class="md-fab md-mini md-primary" >+</md-button>
+            约束条件<md-button class="md-fab md-mini md-primary" ng-click="addconditions()">+</md-button>
           </div>
           <div id="condition-list-container">
-            <div class="condition-cell" ng-repeat="i in [1,2,3,4,5,6,7,8,9]">
+            <div class="condition-cell" ng-repeat="i in selected_conditions">
               Condition{{i}}
             </div>
           </div>

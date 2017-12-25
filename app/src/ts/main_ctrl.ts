@@ -126,8 +126,6 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       { $scope.ships = response.data },
         function() { alert('erro') });
       }
-
-
   //    var reqplat={
   //      method:'GET',
   //      url:'http://10.134.78.134:8888/ssh/base/match',
@@ -248,17 +246,25 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     };
 
     $scope.selected_materials = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
+    var a=10
     $scope.addmaterials=function(){
-      $scope.selected_materials.push({});
+      a+=1;
+      $scope.selected_materials.push(a);
     };
+    //约束条件---------------------------------------
+
 
     //  $scope.rating1 = 0;
     //  $scope.rating2 = 2;
     //  $scope.rating3 = 4;
     //天气----------------
     //weather-confirm----------------
-
+    $scope.selected_conditions=[1,2,3,4,5,6,7,8,9];
+    var b=9
+    $scope.addconditions=function(){
+      b+=1;
+      $scope.selected_conditions.push(b);
+    }
 
 
     //====mc-map====
