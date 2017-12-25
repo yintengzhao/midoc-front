@@ -138,7 +138,7 @@
               <p class="description">简介：{{detail}}</p>
             </div>
           </div> -->
-          <md-button id="addbutton" ng-click="add()">添加</md-button>
+          <md-button id="addbutton" ng-click="addship()">添加</md-button>
           <md-button id="editbutton" ng-click='edit()'>编辑</md-button>
         </div>
       </div>
@@ -229,10 +229,11 @@
               <md-button class="md-raised" ng-click="search()">搜索</md-button>
             </div>
             <div id="search-switches">
-              <md-switch class="md-accent md-raised md-hue-1" name="" ng-model="switcha" required>物资</md-switch>
-              <md-switch class="md-primary" name="" ng-model="switchb" required>载具</md-switch>
               <md-switch class="md-primary " name="special" ng-model="switchc" required>平台</md-switch>
-              <md-switch class="md-raised" name=""  required>仅搜索添加</md-switch>
+              <md-switch class="md-primary" name="" ng-model="switchb" required>载具</md-switch>
+              <md-switch class="md-raised" name=""  required>基地</md-switch>
+              <md-switch class="md-accent md-raised md-hue-1" name="" ng-model="switcha" required>物资</md-switch>
+
             </div>
           </div>
         </div>
@@ -242,27 +243,27 @@
         <div layout="column" id="object-list-containers">
           <div layout="{{ vm.direction }}" layout-md="row" class="">
 
-            <div layout="column" class="object-list-container">
-              <div class="header material">物资<span class="object-counter material">99</span></div>
+            <div layout="column" class="object-list-container" ng-click="selectplatform()">
+              <div class="header platform">海上平台<span class="object-counter platform">99</span></div>
               <md-content flex>
-                <md-list-item class="goods-list-item" ng-repeat="material in materials" ng-click="showmaterial(material.name,material.detail,material.id,material.type,material.volume,material.weight)" ng-show="a">
+                <md-list-item class="goods-list-item"  ng-click="showplatform()" >
                   <div>
-                    <div class="title">{{ material.name }}</div>
-                    <div class="description">{{ material.detail }}</div>
+                    <div class="title">平台1</div>
+                    <div class="description">平台简介</div>
                   </div>
                 </md-list-item>
 
-                <md-list-item class="goods-list-item" ng-repeat="material in materials" ng-click="showmaterial(material.name,material.detail,material.id,material.type,material.volume,material.weight)" ng-show="aa">
+                <md-list-item class="goods-list-item" ng-repeat="platform in platforms" ng-click="showplatform()" ng-show="dd">
                   <div class="md-list-item-text" layout="column">
-                    <div class="title">{{ material.name }}</div>
-                    <div class="description">{{ material.detail }}</div>
+                    <div class="title">{{ platform.name }}</div>
+                    <div class="description">{{ platform.detail }}</div>
                   </div>
                 </md-list-item>
               </md-content>
             </div>
 
 
-            <div layout="column" class="object-list-container">
+            <div layout="column" class="object-list-container" ng-click="seleceship()">
               <div class="header boat">载具 <span class="object-counter boat">99</span></div>
               <md-content flex>
                 <md-list-item class="goods-list-item" ng-repeat="ship in ships" ng-click="showship(ship.id,ship.name,ship.info,ship.nation,ship.port,ship.seazone)" ng-show="b">
@@ -283,8 +284,8 @@
             </div>
 
 
-            <div layout="column" class="object-list-container">
-              <div class="header base">海上平台 <span class="object-counter base">99</span></div>
+            <div layout="column" class="object-list-container" ng-click="selectbase()">
+              <div class="header base">基地 <span class="object-counter base">99</span></div>
               <md-content flex>
                 <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.storage_place)" ng-show="c">
                   <div class="md-list-item-text" layout="column">
@@ -313,61 +314,28 @@
               <canvas id="bar" class="chart chart-bar" chart-data="datac" chart-labels="labelsc" chart-series="series">
              </canvas>
             </div>
-            <div  id="table-chart">
-              <div id="table-chart-title">数据统计</div>
-              <md-content flex layout-padding >
-                <table>
-                  <tr>
-                    <th>year</th>
-                    <th>mater</th>
-                    <th>ship</th>
-                    <th>platform</th>
-                    <th>value</th>
 
-                  </tr>
-                  <tr>
-                    <td>2016</td>
-                    <td>5000</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
+          <div id="material-list-containers">
+            <div layout="column" class="object-list-container">
+              <div class="header material">物资<span class="object-counter material">99</span></div>
+              <md-content flex>
+                <md-list-item class="goods-list-item" ng-repeat="material in materials" ng-click="showmaterial(material.name,material.detail,material.id,material.type,material.volume,material.weight)" ng-show="a">
+                  <div>
+                    <div class="title">{{ material.name }}</div>
+                    <div class="description">{{ material.detail }}</div>
+                  </div>
+                </md-list-item>
 
-                  </tr>
-                  <tr>
-                    <td>2015</td>
-                    <td>3800</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-
-                  </tr>
-                  <tr>
-                    <td>2014</td>
-                    <td>4630</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-
-                  </tr>
-                  <tr>
-                    <td>2013</td>
-                    <td>4300</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-
-                  </tr>
-                  <tr>
-                    <td>2012</td>
-                    <td>3000</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-
-                  </tr>
-                </table>
+                <md-list-item class="goods-list-item" ng-repeat="material in materials" ng-click="showmaterial(material.name,material.detail,material.id,material.type,material.volume,material.weight)" ng-show="aa">
+                  <div class="md-list-item-text" layout="column">
+                    <div class="title">{{ material.name }}</div>
+                    <div class="description">{{ material.detail }}</div>
+                  </div>
+                </md-list-item>
               </md-content>
             </div>
+          </div>
+
             <div  id="pie-chart">
               <canvas class="chart chart-pie" chart-data="datab" chart-labels="labelb" chart-options="pieoptions">
               </canvas>

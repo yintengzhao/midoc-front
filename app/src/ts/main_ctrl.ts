@@ -4,6 +4,7 @@ import { ng_app } from './ng_app';
 ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$http', '$sce',
   function($scope, $interval, $timeout, $window, $http, $sce) {
 
+
     //time
     $interval(function() { $scope.nowtime = new Date(); }
     $interval(function() {
@@ -156,6 +157,10 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       $scope.volume = materialvolume;
       $scope.weight = materialweight;
       $scope.detail = materialdetail;
+      // var selected_type='material';
+      // $scope.addship=function(){
+      //      $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
+
     }
 
     //展示详细信息-----------------------------
@@ -171,6 +176,10 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       $scope.nation = shipnation;
       $scope.port = shipport;
       $scope.seazone = shipseazone;
+      var selected_type='ship';
+      $scope.addship=function(){
+           $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
+}
     }
 
     $scope.showbase=function(baseid,storage_place){
@@ -182,6 +191,18 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       $scope.baseid = baseid;
       $scope.storage_place = storage_place;
 
+      var selected_type='base';
+      $scope.addship=function(){
+           $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
+      }
+
+    }
+
+    $scope.showplatform=function(){
+      var selected_type='platform';
+      $scope.addship=function(){
+           $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
+}
     }
 
 
@@ -252,19 +273,34 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       $scope.selected_materials.push(a);
     };
     //约束条件---------------------------------------
-
-
-    //  $scope.rating1 = 0;
-    //  $scope.rating2 = 2;
-    //  $scope.rating3 = 4;
-    //天气----------------
-    //weather-confirm----------------
     $scope.selected_conditions=[1,2,3,4,5,6,7,8,9];
     var b=9
     $scope.addconditions=function(){
       b+=1;
       $scope.selected_conditions.push(b);
     }
+
+
+
+  // var  ppppp=$scope.matervalue;
+  // console.log(ppppp)
+
+    //  $scope.rating1 = 0;
+    //  $scope.rating2 = 2;
+    //  $scope.rating3 = 4;
+    //天气----------------
+    //weather-confirm----------------
+    //添加、编辑------------------------------------
+    // $scope.selectship=function(){
+    //   $scope.addship=function(){
+    //     var selected_type='ship';
+    //     $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
+    //   }
+    //
+    // }
+
+
+
 
 
     //====mc-map====
@@ -277,6 +313,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
         { x: 535, y: 325, t: 'platform' },
         { x: 350, y: 30, t: 'base' },
         { x: 447, y: 234, t: 'ship' },
+
       ],
       coor_pointer: false,
       show: true

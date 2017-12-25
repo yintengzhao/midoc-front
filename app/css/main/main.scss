@@ -211,7 +211,7 @@ body {
 			color: white;
 			padding: 1px 4px;
 			border-radius: 10px;
-			&.material{ background-color: darken(#69F0AE, 40%);  }
+			&.platform{ background-color: darken(#69F0AE, 40%);  }
 			&.boat{ background-color: darken(#FF6384, 40%);  }
 			&.base{ background-color: darken(#45B7CD, 40%);  }
 		}
@@ -220,7 +220,7 @@ body {
 			height:30px;
 			padding: 0px 4px;
 			font-weight: bolder;
-			&.material{ background-color:#A2F2CB; color: darken(#69F0AE, 40%);}
+			&.platform{ background-color:#A2F2CB; color: darken(#69F0AE, 40%);}
 			&.boat{ background-color:#FBB0C0; color: darken(#FF6384, 40%);}
 			&.base{ background-color:#9FD0D9; color: darken(#45B7CD, 40%);}
 		}
@@ -241,6 +241,46 @@ body {
 		}
 	}
 }
+#material-list-containers {
+	margin-top: 0px;
+	.object-list-container {
+		width: 290px;
+		height: 220px;
+		margin-right: 10px;
+		opacity: 0.8;
+		.object-counter{
+			float: right;
+			margin-top: 4px;
+			color: white;
+			padding: 1px 4px;
+			border-radius: 10px;
+			&.material{ background-color: darken(#69F0AE, 40%);  }
+		}
+		.header{
+			border-radius: 8px 8px 0px 0px;
+			height:30px;
+			padding: 0px 4px;
+			font-weight: bolder;
+			&.material{ background-color:darken(#283593,10%); color: white;}
+		}
+
+		.goods-list-item {
+			.title {
+				font-size: 20px;
+				line-height: 22px;
+				font-weight: 500;
+			}
+
+			.description {
+				font-size: 14px;
+				line-height: 14px;
+				margin-top: 6px;
+				color: gray;
+			}
+		}
+	}
+}
+
 
 
 
