@@ -138,8 +138,9 @@
               <p class="description">简介：{{detail}}</p>
             </div>
           </div> -->
-          <md-button id="addbutton" ng-click="addship()">添加</md-button>
+          <md-button id="addbutton" ng-click="addmaterials()">添加</md-button>
           <md-button id="editbutton" ng-click='edit()'>编辑</md-button>
+
         </div>
       </div>
       <!--map组件-------------------------------------------------------------------------------->
@@ -150,6 +151,7 @@
             <span class="mc-header-cell">物资总体积：{{map_header.total_v}}立方米</span>
             <span class="mc-header-cell">平台数量：{{map_header.platform}}</span>
             <span class="mc-header-cell">运输船：{{map_header.ship}}</span>
+
           </div>
 
           <div id="mc-map-main" ng-click="handle_click_on_map($event)">
@@ -198,6 +200,7 @@
                 <ng-md-icon class="mc-select-icon" ng-class="$obj.t" icon="{{get_point_icon($obj)}}" size="40"></ng-md-icon>
               </div>
             </div>
+            <md-button id="xuanding" class="md-raised" ng-click="addship()" style="position:absolute;left:10px">选定</md-button>
 
             <div id="mc-coor">
               <div id="mc-coor-info">
@@ -372,9 +375,9 @@
       <!--物资滑动条-------------------------------------------------------->
       <div id="bottom-slider-container">
         <div id="bottom-slider-group">
-          <div class="bottom-slider-unit" ng-repeat="i in selected_materials">
+          <div class="bottom-slider-unit" ng-repeat="i in selected_materials track by $index">
             <md-slider-container>
-              <div class="slider-title-btn">物资{{i}}</div>
+              <div class="slider-title-btn">{{i}}</div>
               <md-slider flex min="0" class="md-primary" max="4000" ng-model="matervalue" aria-label="white">
               </md-slider>
               <input type="text" ng-model="matervalue"></input>
@@ -533,6 +536,15 @@
           </md-slider-container>
         </div>
 
+        <div>
+          <label>风向</label>
+          <md-select ng-model="dir">
+            <md-option ng-repeat="dir in dirs" value="{{dir}}">
+              {{dir}}
+            </md-option>
+          </md-select>
+        </div>
+
   <md-button id="weather-confirm" md-colors="{background: 'BLUE'}" ng-click="weaconfirm()">确认</md-button>
 
 
@@ -583,9 +595,6 @@
                 <md-checkbox ng-checked="" ng-click="toggle(item, selected)">开关</md-checkbox>
 
               </div>
-
-
-
 
             </div>
 

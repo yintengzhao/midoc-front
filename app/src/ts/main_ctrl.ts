@@ -60,21 +60,23 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     // $scope.edit=function(){
     //   alert('123')
     // }
+    //添加物资------------------------------------
+
 
 
 
     //后台数据展示------------------------------------
-    $http.get("http://10.134.78.134:8888/ssh/material/list")
+    $http.get("http://10.134.92.116:8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
         $scope.materials = response.data;
       });
-    $http.get("http://10.134.78.134:8888/ssh/ship/list")
+    $http.get("http://10.134.92.116:8888/ssh/ship/list")
       .then(function(response) {
         console.log(response);
         $scope.ships = response.data;
       });
-    $http.get("http://10.134.78.134:8888/ssh/base/list")
+    $http.get("http://10.134.92.116:8888/ssh/base/list")
       .then(function(response) {
         console.log(response);
         $scope.bases = response.data;
@@ -83,7 +85,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     /*$scope.search=function(theMax){
     var req = {
       method: 'GET',
-      url:  'http://10.134.78.134:8888/ssh/ship/get?ship.id='+$scope.theMax,
+      url:  'http://10.134.92.116:8888/ssh/ship/get?ship.id='+$scope.theMax,
       //params: {ship.id : $scope.theMax}
     }
     $http(req).then(function(response)
@@ -107,7 +109,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
       var reqmater={
         method:'GET',
-        url:'http://10.134.78.134:8888/ssh/material/match',
+        url:'http://10.134.92.116:8888/ssh/material/match',
         params: { s: $scope.theMax }
       }
       $http(reqmater).then(function(response)
@@ -120,7 +122,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       $scope.bb =true;
       var reqship = {
         method: 'GET',
-        url: 'http://10.134.78.134:8888/ssh/ship/match',
+        url: 'http://10.134.92.116:8888/ssh/ship/match',
         params: { s: $scope.theMax }
       }
       $http(reqship).then(function(response)
@@ -129,7 +131,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       }
   //    var reqplat={
   //      method:'GET',
-  //      url:'http://10.134.78.134:8888/ssh/base/match',
+  //      url:'http://10.134.92.116:8888/ssh/base/match',
   //      params: { s: $scope.theMax }
   //    }
   //    $http(reqplat).then(function(response)
@@ -160,8 +162,26 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       // var selected_type='material';
       // $scope.addship=function(){
       //      $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
-
     }
+
+
+// class Greeter {
+//     id: number;
+//     name:string;
+//     constructor() {
+//    }
+//   }
+
+
+    $scope.selected_materials = [];
+    $scope.addmaterials=function(){
+      // let materobj = new Greeter($scope.id,$scope.name);
+      // $scope.selected_materials.push(materobj);
+      $scope.selected_materials.push($scope.name);
+
+    };
+
+
 
     //展示详细信息-----------------------------
     $scope.showship = function(shipid,shipname, shipinfo, shipnation, shipport, shipseazone) {
@@ -204,7 +224,6 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
            $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
 }
     }
-
 
     //柱状图-----------------------------------------
     $scope.labelsc = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
@@ -266,12 +285,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
     };
 
-    $scope.selected_materials = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    var a=10
-    $scope.addmaterials=function(){
-      a+=1;
-      $scope.selected_materials.push(a);
-    };
+
     //约束条件---------------------------------------
     $scope.selected_conditions=[1,2,3,4,5,6,7,8,9];
     var b=9
@@ -402,6 +416,12 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
           "晴",
           "雨",
           "雪"
+      ];
+      $scope.dirs=[
+        "东风",
+        '西风',
+        '南风',
+        '北风'
       ];
 
 //weather-click
