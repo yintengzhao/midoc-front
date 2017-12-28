@@ -61,10 +61,6 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     //   alert('123')
     // }
     //添加物资------------------------------------
-
-
-
-
     //后台数据展示------------------------------------
     $http.get("http://10.134.81.15:8888/ssh/material/list")
       .then(function(response) {
@@ -102,7 +98,6 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     $scope.cc=false;
 
     $scope.search = function() {
-
       if($scope.switcha){
         $scope.a=false;
         $scope.aa=true;
@@ -163,14 +158,13 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       // $scope.addship=function(){
       //      $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
     }
-    class Greeter {
+    //添加物资-----------------------------
+    class Materobj {
         id: number;
         name:string;
         constructor() {
        }
       }
-
-
       $scope.selected_materials = [];
       $scope.addmaterials=function()
       {
@@ -188,47 +182,30 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
         }
         if(flag==1)
         {
-          var greeter = new Greeter();
-
-          greeter.name=$scope.name;
-          greeter.id=$scope.id;
-          $scope.selected_materials.push(greeter);
+          var materobj = new Materobj();
+          materobj.name=$scope.name;
+          materobj.id=$scope.id;
+          $scope.selected_materials.push(materobj);
         }
       };
-
-
-
-    class Greeter0 {
+//将物资和数量存入数组-----------------------------
+    class Materobjplus {
+        id:number;
         value: number;
-        obj:Greeter
         constructor() {
        }
       }
 
 $scope.matervalues=[];
-
 $scope.myFunction2=function(i,obj,ii){
-  var greeter0 = new Greeter0();
-greeter0.value=ii;
-greeter0.obj=obj
-  $scope.matervalues[i]=greeter0;
+  var materobjplus = new Materobjplus();
+  materobjplus.value=ii;
+  materobjplus.id=obj.id;
+  $scope.matervalues[i]=materobjplus;
   $scope.a=ii;
   console.log($scope.matervalues)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //展示详细信息-----------------------------
+//展示详细信息-----------------------------
     $scope.showship = function(shipid,shipname, shipinfo, shipnation, shipport, shipseazone) {
       $scope.sta = false;
       $scope.asta = false;
@@ -270,7 +247,7 @@ greeter0.obj=obj
 }
     }
 
-    //柱状图-----------------------------------------
+//柱状图-----------------------------------------
     $scope.labelsc = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
     $scope.series = ['Series A', 'Series B'];
 
@@ -278,7 +255,7 @@ greeter0.obj=obj
       [65, 59, 80, 81, 56, 55, 40],
       [28, 48, 40, 19, 86, 27, 90]
     ];
-    //饼图----------------------------------------
+//饼图----------------------------------------
     $scope.labelsb = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
     $scope.datab = [300, 500, 100];
     $scope.pieoptions = { responsive: true, maintainAspectRatio: false, };
@@ -329,19 +306,14 @@ greeter0.obj=obj
       pink: Math.floor(Math.random() * 25),
 
     };
-
-
-    //约束条件---------------------------------------
+//约束条件---------------------------------------
     $scope.selected_conditions=[1,2,3,4,5,6,7,8,9];
     var b=9
     $scope.addconditions=function(){
       b+=1;
       $scope.selected_conditions.push(b);
     }
-
-
-
-  // var  ppppp=$scope.matervalue;
+// var  ppppp=$scope.matervalue;
   // console.log(ppppp)
 
     //  $scope.rating1 = 0;
@@ -357,11 +329,6 @@ greeter0.obj=obj
     //   }
     //
     // }
-
-
-
-
-
     //====mc-map====
     $scope.liuliu = 667;
 
