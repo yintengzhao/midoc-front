@@ -66,17 +66,17 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
 
     //后台数据展示------------------------------------
-    $http.get("http://10.134.92.116:8888/ssh/material/list")
+    $http.get("http://10.134.81.15:8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
         $scope.materials = response.data;
       });
-    $http.get("http://10.134.92.116:8888/ssh/ship/list")
+    $http.get("http://10.134.81.15:8888/ssh/ship/list")
       .then(function(response) {
         console.log(response);
         $scope.ships = response.data;
       });
-    $http.get("http://10.134.92.116:8888/ssh/base/list")
+    $http.get("http://10.134.81.15:8888/ssh/base/list")
       .then(function(response) {
         console.log(response);
         $scope.bases = response.data;
@@ -109,7 +109,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
       var reqmater={
         method:'GET',
-        url:'http://10.134.92.116:8888/ssh/material/match',
+        url:'http://10.134.81.15:8888/ssh/material/match',
         params: { s: $scope.theMax }
       }
       $http(reqmater).then(function(response)
@@ -122,7 +122,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       $scope.bb =true;
       var reqship = {
         method: 'GET',
-        url: 'http://10.134.92.116:8888/ssh/ship/match',
+        url: 'http://10.134.81.15:8888/ssh/ship/match',
         params: { s: $scope.theMax }
       }
       $http(reqship).then(function(response)
@@ -165,20 +165,50 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     }
 
 
-// class Greeter {
-//     id: number;
-//     name:string;
-//     constructor() {
-//    }
-//   }
+
+$scope.matervalues=[];
+
+$scope.myFunction2=function(i,ii){
+  $scope.matervalues[i]=ii;
+  $scope.a=ii;
+  console.log($scope.matervalues)
+}
+
+
+
+
+
+
+class Greeter {
+    id: number;
+    name:string;
+    constructor() {
+   }
+  }
+
+
+
 
 
     $scope.selected_materials = [];
-    $scope.addmaterials=function(){
+    $scope.addmaterials=function()
+    {
       // let materobj = new Greeter($scope.id,$scope.name);
-      // $scope.selected_materials.push(materobj);
-      $scope.selected_materials.push($scope.name);
-
+      // $scope.selected_materials.push(materobj);\
+      var flag=1;
+      for(let num of $scope.selected_materials)
+      {
+        if($scope.name==num)
+        {
+          alert('物资不可重复添加');
+          var flag=0;
+          break;
+        }
+      }
+      if(flag==1)
+      {
+        $scope.selected_materials.push($scope.name);
+      }
     };
 
 
