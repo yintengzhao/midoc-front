@@ -163,13 +163,55 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       // $scope.addship=function(){
       //      $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
     }
+    class Greeter {
+        id: number;
+        name:string;
+        constructor() {
+       }
+      }
 
 
+      $scope.selected_materials = [];
+      $scope.addmaterials=function()
+      {
+        // let materobj = new Greeter($scope.id,$scope.name);
+        // $scope.selected_materials.push(materobj);\
+        var flag=1;
+        for(let num of $scope.selected_materials)
+        {
+          if($scope.id==num.id)
+          {
+            alert('物资不可重复添加');
+            var flag=0;
+            break;
+          }
+        }
+        if(flag==1)
+        {
+          var greeter = new Greeter();
+
+          greeter.name=$scope.name;
+          greeter.id=$scope.id;
+          $scope.selected_materials.push(greeter);
+        }
+      };
+
+
+
+    class Greeter0 {
+        value: number;
+        obj:Greeter
+        constructor() {
+       }
+      }
 
 $scope.matervalues=[];
 
-$scope.myFunction2=function(i,ii){
-  $scope.matervalues[i]=ii;
+$scope.myFunction2=function(i,obj,ii){
+  var greeter0 = new Greeter0();
+greeter0.value=ii;
+greeter0.obj=obj
+  $scope.matervalues[i]=greeter0;
   $scope.a=ii;
   console.log($scope.matervalues)
 }
@@ -179,37 +221,10 @@ $scope.myFunction2=function(i,ii){
 
 
 
-class Greeter {
-    id: number;
-    name:string;
-    constructor() {
-   }
-  }
 
 
 
 
-
-    $scope.selected_materials = [];
-    $scope.addmaterials=function()
-    {
-      // let materobj = new Greeter($scope.id,$scope.name);
-      // $scope.selected_materials.push(materobj);\
-      var flag=1;
-      for(let num of $scope.selected_materials)
-      {
-        if($scope.name==num)
-        {
-          alert('物资不可重复添加');
-          var flag=0;
-          break;
-        }
-      }
-      if(flag==1)
-      {
-        $scope.selected_materials.push($scope.name);
-      }
-    };
 
 
 
