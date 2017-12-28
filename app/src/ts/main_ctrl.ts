@@ -206,6 +206,14 @@ $scope.myFunction2=function(i,obj,ii){
   console.log($scope.matervalues)
 }
 //展示详细信息-----------------------------
+  class Shipobj {
+      id: number;
+      x:number;
+      y:number
+      constructor() {
+      }
+    }
+  $scope.shipvalues=[];
     $scope.showship = function(shipid,shipname, shipinfo, shipnation, shipport, shipseazone) {
       $scope.sta = false;
       $scope.asta = false;
@@ -219,10 +227,29 @@ $scope.myFunction2=function(i,obj,ii){
       $scope.port = shipport;
       $scope.seazone = shipseazone;
       var selected_type='ship';
-      $scope.addship=function(){
-           $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
-}
+      $scope.addship=function()
+      {
+        $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
+
+        var shipobj = new Shipobj();
+        shipobj.id=$scope.shipid;
+        shipobj.x=$scope.target.x;
+        shipobj.y=$scope.target.y;
+        $scope.shipvalues.push(shipobj);
+
+
+
+      }
     }
+
+    class Baseobj {
+        id: number;
+        x:number;
+        y:number
+        constructor() {
+       }
+     }
+     $scope.basevalues=[];
 
     $scope.showbase=function(baseid,storage_place){
       $scope.sta = false;
@@ -235,100 +262,47 @@ $scope.myFunction2=function(i,obj,ii){
 
       var selected_type='base';
       $scope.addship=function(){
-           $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
+           $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type});
+
+           var baseobj = new Baseobj();
+           baseobj.id=$scope.baseid;
+           baseobj.x=$scope.target.x;
+           baseobj.y=$scope.target.y;
+           $scope.basevalues.push(baseobj);
       }
 
     }
 
     $scope.showplatform=function(){
       var selected_type='platform';
-      $scope.addship=function(){
-           $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
-}
+      $scope.addship=function()
+      {
+        $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type});
+
+
+      }
     }
-
-//柱状图-----------------------------------------
-    $scope.labelsc = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    $scope.series = ['Series A', 'Series B'];
-
-    $scope.datac = [
-      [65, 59, 80, 81, 56, 55, 40],
-      [28, 48, 40, 19, 86, 27, 90]
-    ];
-//饼图----------------------------------------
-    $scope.labelsb = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-    $scope.datab = [300, 500, 100];
-    $scope.pieoptions = { responsive: true, maintainAspectRatio: false, };
-
-    //鲁棒度-------------------------------------------
-    $scope.bass = Math.floor(Math.random() * 100);
-    //复选框------------------------------------------
-    $scope.items = [1, 2, 3, 4, 5];
-    $scope.selected = [1];
-    $scope.toggle = function(item, list) {
-      var idx = list.indexOf(item);
-      if (idx > -1) {
-        list.splice(idx, 1);
+//将基地、载具、物资存入数组-----------------------------
+    class Sendobj{
+        base: Array;
+        ship:Array;
+        material:Array;
+        constructor() {
+       }
       }
-      else {
-        list.push(item);
+      var sendobj = new Sendobj();
+      $scope.fangzhen=function(){
+        var sendobj = new Sendobj();
+        sendobj.base=$scope.basevalues;
+        sendobj.ship=$scope.shipvalues;
+        sendobj.material=$scope.matervalues;
+        console.log(sendobj);
+
+
+
       }
-    };
 
-    $scope.exists = function(item, list) {
-      return list.indexOf(item) > -1;
-    };
 
-    $scope.isIndeterminate = function() {
-      return ($scope.selected.length !== 0 &&
-        $scope.selected.length !== $scope.items.length);
-    };
-
-    $scope.isChecked = function() {
-      return $scope.selected.length === $scope.items.length;
-    };
-
-    $scope.toggleAll = function() {
-      if ($scope.selected.length === $scope.items.length) {
-        $scope.selected = [];
-      } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
-        $scope.selected = $scope.items.slice(0);
-      }
-    };
-    //滚动条---------------------------------------
-    $scope.color = {
-      red: Math.floor(Math.random() * 25),
-      green: Math.floor(Math.random() * 255),
-      blue: Math.floor(Math.random() * 255),
-      white: Math.floor(Math.random() * 25),
-      black: Math.floor(Math.random() * 25),
-      yellow: Math.floor(Math.random() * 25),
-      pink: Math.floor(Math.random() * 25),
-
-    };
-//约束条件---------------------------------------
-    $scope.selected_conditions=[1,2,3,4,5,6,7,8,9];
-    var b=9
-    $scope.addconditions=function(){
-      b+=1;
-      $scope.selected_conditions.push(b);
-    }
-// var  ppppp=$scope.matervalue;
-  // console.log(ppppp)
-
-    //  $scope.rating1 = 0;
-    //  $scope.rating2 = 2;
-    //  $scope.rating3 = 4;
-    //天气----------------
-    //weather-confirm----------------
-    //添加、编辑------------------------------------
-    // $scope.selectship=function(){
-    //   $scope.addship=function(){
-    //     var selected_type='ship';
-    //     $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
-    //   }
-    //
-    // }
     //====mc-map====
     $scope.liuliu = 667;
 
@@ -417,6 +391,89 @@ $scope.myFunction2=function(i,obj,ii){
       $scope.map.show = !$scope.map.show;
     }
     // ====mc-map-end====
+//柱状图-----------------------------------------
+    $scope.labelsc = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    $scope.series = ['Series A', 'Series B'];
+
+    $scope.datac = [
+      [65, 59, 80, 81, 56, 55, 40],
+      [28, 48, 40, 19, 86, 27, 90]
+    ];
+//饼图----------------------------------------
+    $scope.labelsb = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+    $scope.datab = [300, 500, 100];
+    $scope.pieoptions = { responsive: true, maintainAspectRatio: false, };
+
+    //鲁棒度-------------------------------------------
+    $scope.bass = Math.floor(Math.random() * 100);
+    //复选框------------------------------------------
+    $scope.items = [1, 2, 3, 4, 5];
+    $scope.selected = [1];
+    $scope.toggle = function(item, list) {
+      var idx = list.indexOf(item);
+      if (idx > -1) {
+        list.splice(idx, 1);
+      }
+      else {
+        list.push(item);
+      }
+    };
+
+    $scope.exists = function(item, list) {
+      return list.indexOf(item) > -1;
+    };
+
+    $scope.isIndeterminate = function() {
+      return ($scope.selected.length !== 0 &&
+        $scope.selected.length !== $scope.items.length);
+    };
+
+    $scope.isChecked = function() {
+      return $scope.selected.length === $scope.items.length;
+    };
+
+    $scope.toggleAll = function() {
+      if ($scope.selected.length === $scope.items.length) {
+        $scope.selected = [];
+      } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
+        $scope.selected = $scope.items.slice(0);
+      }
+    };
+    //滚动条---------------------------------------
+    $scope.color = {
+      red: Math.floor(Math.random() * 25),
+      green: Math.floor(Math.random() * 255),
+      blue: Math.floor(Math.random() * 255),
+      white: Math.floor(Math.random() * 25),
+      black: Math.floor(Math.random() * 25),
+      yellow: Math.floor(Math.random() * 25),
+      pink: Math.floor(Math.random() * 25),
+
+    };
+//约束条件---------------------------------------
+    $scope.selected_conditions=[1,2,3,4,5,6,7,8,9];
+    var b=9
+    $scope.addconditions=function(){
+      b+=1;
+      $scope.selected_conditions.push(b);
+    }
+// var  ppppp=$scope.matervalue;
+  // console.log(ppppp)
+
+    //  $scope.rating1 = 0;
+    //  $scope.rating2 = 2;
+    //  $scope.rating3 = 4;
+    //天气----------------
+    //weather-confirm----------------
+    //添加、编辑------------------------------------
+    // $scope.selectship=function(){
+    //   $scope.addship=function(){
+    //     var selected_type='ship';
+    //     $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
+    //   }
+    //
+    // }
+
     $scope.dws = [
          "阴",
          "晴",
