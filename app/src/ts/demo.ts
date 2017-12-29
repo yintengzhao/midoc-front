@@ -162,12 +162,18 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     $scope.sendobj=
     {
       base:[
+        id: null,
+        x:null,
+        y:null
       ],
       ship:[
-
+        id:null,
+        x:null,
+        y:null
       ],
       material:[
-
+        id:null,
+        value:null
       ]
     }
 
@@ -213,12 +219,11 @@ $scope.myFunction2=function(i,obj,ii){
   var materobjplus = new Materobjplus();
   materobjplus.value=ii;
   materobjplus.id=obj.id;
-  $scope.matervalues[i]=materobjplus;
-  $scope.a=ii;
+    $scope.matervalues[i]=materobjplus;
+    $scope.a=ii;
   console.log($scope.matervalues)
 
   $scope.sendobj.material.push({id:obj.id,value:ii})
-
 }
 //展示详细信息-----------------------------
   class Shipobj {
@@ -254,7 +259,6 @@ $scope.myFunction2=function(i,obj,ii){
 
         $scope.sendobj.ship.push({id:$scope.shipid,x:$scope.target.x,y:$scope.target.y})
 
-
       }
     }
 
@@ -287,7 +291,6 @@ $scope.myFunction2=function(i,obj,ii){
            $scope.basevalues.push(baseobj);
 
            $scope.sendobj.base.push({id:$scope.baseid,x:$scope.target.x,y:$scope.target.x})
-
       }
 
     }
@@ -302,6 +305,8 @@ $scope.myFunction2=function(i,obj,ii){
       }
     }
 //将基地、载具、物资存入数组-----------------------------
+
+
     class Finalobj{
         base: Array;
         ship:Array;
@@ -309,17 +314,15 @@ $scope.myFunction2=function(i,obj,ii){
         constructor() {
        }
       }
-      // var finalobj = new Finalobj();
+      var finalobj = new Finalobj();
       $scope.fangzhen=function(){
         var finalobj = new Finalobj();
         finalobj.base=$scope.basevalues;
         finalobj.ship=$scope.shipvalues;
         finalobj.material=$scope.matervalues;
-        console.log($scope.sendobj);
-
-
-
+        console.log(sendobj);
       }
+
 
 
     //====mc-map====
