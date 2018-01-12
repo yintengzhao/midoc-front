@@ -146,6 +146,7 @@ body {
 
 
 
+
 	.title {
 		font-weight: bolder;
 		font-size: 32px;
@@ -463,12 +464,19 @@ body {
 
 #work-start{
 	position:relative;
-	margin-top:-10px;
+	// margin-top:-10px;
 	// right:-20px;
-	margin-left: 120px;
+	margin-left: 15px;
 	margin-top: 20px;
 	width:130px;
 	height:130px;
+}
+#work-done{
+	position: absolute;
+	margin-top:50px;
+	margin-left: 45px;
+	width:100px;
+
 }
 #weather-confirm{
 	text-align: center;

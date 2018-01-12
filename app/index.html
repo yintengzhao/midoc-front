@@ -10,6 +10,7 @@
 </head>
 
 <body ng-controller="MainCtrl" id="main" ng-class="" ng-cloak>
+<div ng-show="mainhtml">
   <div layout="column" class="zero">
 
     <div layout="{{ vm.direction }}" layout-md="row">
@@ -187,20 +188,20 @@
 
           <div id="mc-bottom">
             <div id="mc-tool-bar">
-              <ng-md-icon class="mc-tool-icon" icon="location_on" size="40"></ng-md-icon>
-              <ng-md-icon class="mc-tool-icon" icon="star" size="40"></ng-md-icon>
-              <ng-md-icon class="mc-tool-icon" icon="grid_on" size="40"></ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="location_on" size="40">1</ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="star" size="40">2</ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="grid_on" size="40" ng-click="addship()">3</ng-md-icon>
 
-              <ng-md-icon class="mc-tool-icon" icon="language" size="40"></ng-md-icon>
-              <ng-md-icon class="mc-tool-icon" icon="remove_red_eye" ng-click="toggle_map()" size="40"></ng-md-icon>
-              <ng-md-icon class="mc-tool-icon" icon="clear" size="40" ng-click="clear_selected()"></ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="language" size="40">4</ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="remove_red_eye" ng-click="toggle_map()" size="40">5</ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="clear" size="40" ng-click="clear_selected()">6</ng-md-icon>
             </div>
             <div id="mc-select" ng-click="prevent_bubble($event)">
               <div class="mc-selected-point" ng-repeat="($index, $obj) in map.points" ng-if="$obj.selected" id="mcsp-{{$index}}" ng-click="handle_selected_point($index, $obj, $event)">
                 <ng-md-icon class="mc-select-icon" ng-class="$obj.t" icon="{{get_point_icon($obj)}}" size="40"></ng-md-icon>
               </div>
             </div>
-            <md-button id="xuanding" class="md-raised" ng-click="addship()" style="position:absolute;left:10px">选定</md-button>
+            <!-- <md-button id="xuanding" class="md-raised" ng-click="addship()" style="position:absolute;left:10px">选定</md-button> -->
 
             <div id="mc-coor">
               <div id="mc-coor-info">
@@ -232,9 +233,9 @@
               <md-button class="md-raised" ng-click="search()">搜索</md-button>
             </div>
             <div id="search-switches">
-              <md-switch class="md-primary " name="special" ng-model="switchc" required>平台</md-switch>
+              <md-switch class="md-primary " name="special" ng-model="switchd" required>平台</md-switch>
               <md-switch class="md-primary" name="" ng-model="switchb" required>载具</md-switch>
-              <md-switch class="md-raised" name=""  required>基地</md-switch>
+              <md-switch class="md-raised" name=""  required ng-model="switchc">基地</md-switch>
               <md-switch class="md-accent md-raised md-hue-1" name="" ng-model="switcha" required>物资</md-switch>
 
             </div>
@@ -290,19 +291,19 @@
             <div layout="column" class="object-list-container" ng-click="selectbase()">
               <div class="header base">基地 <span class="object-counter base">99</span></div>
               <md-content flex>
-                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.storage_place)" ng-show="c">
+                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.name)" ng-show="c">
                   <div class="md-list-item-text" layout="column">
                     <div class="title">{{ base.id}}</div>
-                    <div class="description">{{ base.storage_place }}</div>
+                    <div class="description">{{ base.name }}</div>
                   </div>
                 </md-list-item>
 
-                <!-- <md-list-item class="goods-list-item" ng-repeat="answer in answers" ng-click="showall(answer.id,answer.name,answer.info,answer.nation,answer.port,answer.seazone)">
+                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.name)" ng-show="cc">
                   <div class="md-list-item-text" layout="column">
-                    <div class="title">{{ plat.name }}</div>
-                    <div class="description">{{ plat.info }}</div>
+                    <div class="title">{{ base.id }}</div>
+                    <div class="description">{{ base.name }}</div>
                   </div>
-                </md-list-item> -->
+                </md-list-item>
               </md-content>
             </div>
 
@@ -608,15 +609,61 @@
           <div class="md-display-2">仿真</div>
           <div class="md-display-1">开始</div>
         </md-button>
+
+        <md-button id="work-done" class="md-fab"  ng-click="chakan()">
+          <div >查看报告</div>
+
+        </md-button>
+
+        <!-- <md-button id="work-done" class="md-fab"  href="http://www.w3school.com.cn?no={{responseid}}" target="_blank">
+          <div >查看报告</div>
+
+        </md-button> -->
+
+
+
         <!--仿真开始------------------------------------------------------------------------------>
         <!-- <md-button class="md-raised" style="position:absolute;bottom:20px" ng-click="submitweth()">提交</md-button> -->
 <!-- <span style="position:absolute;left:850px;top:1008px">东风</span> -->
 
-      </div>
-
-
+      </div id="yin">
     </div>
   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+  <!-- 弹窗 -->
+  <!-- <div id="myModal" class="modal" ng-show="tablehtml" >
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div  data-ng-bind-html="modalBody"></div>
+
+      <md-button class="md-raised"  ng-click="closewin()">关闭窗口</md-button>
+    </div>
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </body>

@@ -62,17 +62,17 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     // }
     //添加物资------------------------------------
     //后台数据展示------------------------------------
-    $http.get("http://10.134.81.15:8888/ssh/material/list")
+    $http.get("http://10.134.94.114:8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
         $scope.materials = response.data;
       });
-    $http.get("http://10.134.81.15:8888/ssh/ship/list")
+    $http.get("http://10.134.94.114:8888/ssh/ship/list")
       .then(function(response) {
         console.log(response);
         $scope.ships = response.data;
       });
-    $http.get("http://10.134.81.15:8888/ssh/base/list")
+    $http.get("http://10.134.94.114:8888/ssh/base/list")
       .then(function(response) {
         console.log(response);
         $scope.bases = response.data;
@@ -104,7 +104,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
       var reqmater={
         method:'GET',
-        url:'http://10.134.81.15:8888/ssh/material/match',
+        url:'http://10.134.94.114:8888/ssh/material/match',
         params: { s: $scope.theMax }
       }
       $http(reqmater).then(function(response)
@@ -117,21 +117,27 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       $scope.bb =true;
       var reqship = {
         method: 'GET',
-        url: 'http://10.134.81.15:8888/ssh/ship/match',
+        url: 'http://10.134.94.114:8888/ssh/ship/match',
         params: { s: $scope.theMax }
       }
       $http(reqship).then(function(response)
       { $scope.ships = response.data },
         function() { alert('erro') });
       }
-  //    var reqplat={
-  //      method:'GET',
-  //      url:'http://10.134.92.116:8888/ssh/base/match',
-  //      params: { s: $scope.theMax }
-  //    }
-  //    $http(reqplat).then(function(response)
-  //  {$scope.plats=response.data},
-  //  function(){alert('err')});
+
+
+      if ($scope.switchc){
+        $scope.c = false;
+        $scope.cc =true;
+      }
+     var reqbase={
+       method:'GET',
+       url:'http://10.134.94.114:8888/ssh/base/match',
+       params: { s: $scope.theMax }
+     }
+     $http(reqbase).then(function(response)
+   {$scope.bases=response.data},
+   function(){alert('err')});
 
     };
     //搜索平台-----------------------------
@@ -163,10 +169,10 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     {
       base:[
       ],
-      ship:[
+      material:[
 
       ],
-      material:[
+      ship:[
 
       ]
     }
@@ -217,7 +223,7 @@ $scope.myFunction2=function(i,obj,ii){
   $scope.a=ii;
   console.log($scope.matervalues)
 
-  $scope.sendobj.material.push({id:obj.id,value:ii})
+  $scope.sendobj.material.push({materialid:obj.id,num:ii})
 
 }
 //展示详细信息-----------------------------
@@ -252,7 +258,7 @@ $scope.myFunction2=function(i,obj,ii){
         shipobj.y=$scope.target.y;
         $scope.shipvalues.push(shipobj);
 
-        $scope.sendobj.ship.push({id:$scope.shipid,x:$scope.target.x,y:$scope.target.y})
+        $scope.sendobj.ship.push({shipid:$scope.shipid,x:$scope.target.x,y:$scope.target.y})
 
 
       }
@@ -286,7 +292,7 @@ $scope.myFunction2=function(i,obj,ii){
            baseobj.y=$scope.target.y;
            $scope.basevalues.push(baseobj);
 
-           $scope.sendobj.base.push({id:$scope.baseid,x:$scope.target.x,y:$scope.target.x})
+           $scope.sendobj.base.push({id:$scope.baseid,x:$scope.target.x,y:$scope.target.y})
 
       }
 
@@ -317,9 +323,63 @@ $scope.myFunction2=function(i,obj,ii){
         finalobj.material=$scope.matervalues;
         console.log($scope.sendobj);
 
+      //   var reqaa={
+      //     method:'GET',
+      //     url:'http://10.134.101.121:8888/ssh/schedule/parse',
+      //     data: $scope.sendobj,
+      //
+      //     headers: {
+      //          'Accept': '*/*',
+      //          'Content-Type': 'application/JSONP; charset=UTF-8'
+      //      }
+      //           }
+      //   $http(reqaa).then(function(response)
+      // {console.log(response)},
+      //  function(){alert('err')});
 
 
+      //  $http.post({
+      //              url:'http://10.134.101.121:8888/ssh/schedule/parse',
+      //              method:"POST",
+      //              data: $scope.sendobj,
+      //             //  contentType: "application/JSONP; charset=utf-8"
+      //             header:"Access-Control-Allow-Origin: *",
+      //             header:"Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept"
+       //
+       //
+      //          }).then(function(response)
+      //           {alert('suc')},
+      //            function(){alert('err')});
+
+      $http.post('http://10.134.94.114:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),alert('suc'),
+
+      // $http({
+      //     method:'GET',
+      //     url:'http://10.134.75.163:4567/result_ok',
+      //     params: { no: $scope.responseid }
+      //   }).then(function(response){alert('sec suc'),console.log(response),$scope.responseans=response.data.feedback},
+      //   function(){alert('sec err')});},
+
+        $http({
+            method:'GET',
+            url:'http://10.134.75.163:4567/result',
+            params: { no: $scope.responseid }
+          }).then(function(response){console.log(response),$scope.modalBody=$sce.trustAsHtml(response.data)},
+          function(){alert('sec err')});},
+
+
+
+       function(response){alert('err')});
       }
+
+
+$scope.mainhtml=true
+$scope.tablehtml=false
+$scope.chakan=function(){
+window.open("http://10.134.75.163:4567/result?no="+$scope.responseid)
+}
+
+
 
 
     //====mc-map====
@@ -328,10 +388,7 @@ $scope.myFunction2=function(i,obj,ii){
     $scope.map = {
       slider: 100,
       points: [
-        { x: 281, y: 72, t: 'base' },
         { x: 535, y: 325, t: 'platform' },
-        { x: 350, y: 30, t: 'base' },
-        { x: 447, y: 234, t: 'ship' },
 
       ],
       coor_pointer: false,
