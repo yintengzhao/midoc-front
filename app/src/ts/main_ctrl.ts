@@ -62,17 +62,17 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     // }
     //添加物资------------------------------------
     //后台数据展示------------------------------------
-    $http.get("http://10.134.94.114:8888/ssh/material/list")
+    $http.get("http://10.134.116.178:8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
         $scope.materials = response.data;
       });
-    $http.get("http://10.134.94.114:8888/ssh/ship/list")
+    $http.get("http://10.134.116.178:8888/ssh/ship/list")
       .then(function(response) {
         console.log(response);
         $scope.ships = response.data;
       });
-    $http.get("http://10.134.94.114:8888/ssh/base/list")
+    $http.get("http://10.134.116.178:8888/ssh/base/list")
       .then(function(response) {
         console.log(response);
         $scope.bases = response.data;
@@ -104,7 +104,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
       var reqmater={
         method:'GET',
-        url:'http://10.134.94.114:8888/ssh/material/match',
+        url:'http://10.134.116.178:8888/ssh/material/match',
         params: { s: $scope.theMax }
       }
       $http(reqmater).then(function(response)
@@ -117,7 +117,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       $scope.bb =true;
       var reqship = {
         method: 'GET',
-        url: 'http://10.134.94.114:8888/ssh/ship/match',
+        url: 'http://10.134.116.178:8888/ssh/ship/match',
         params: { s: $scope.theMax }
       }
       $http(reqship).then(function(response)
@@ -129,15 +129,15 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       if ($scope.switchc){
         $scope.c = false;
         $scope.cc =true;
-      }
+
      var reqbase={
        method:'GET',
-       url:'http://10.134.94.114:8888/ssh/base/match',
+       url:'http://10.134.116.178:8888/ssh/base/match',
        params: { s: $scope.theMax }
      }
      $http(reqbase).then(function(response)
    {$scope.bases=response.data},
-   function(){alert('err')});
+   function(){alert('err')});}
 
     };
     //搜索平台-----------------------------
@@ -351,7 +351,7 @@ $scope.myFunction2=function(i,obj,ii){
       //           {alert('suc')},
       //            function(){alert('err')});
 
-      $http.post('http://10.134.94.114:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),alert('suc'),
+      $http.post('http://10.134.116.178:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),alert('suc'),
 
       // $http({
       //     method:'GET',
@@ -378,6 +378,14 @@ $scope.tablehtml=false
 $scope.chakan=function(){
 window.open("http://10.134.75.163:4567/result?no="+$scope.responseid)
 }
+
+
+
+//转圈
+
+
+
+
 
 
 
