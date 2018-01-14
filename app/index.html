@@ -353,6 +353,7 @@
 
     </div>
   </div>
+  <h3 class="md-display-3" style="position:absolute;left:420px;bottom:130px;color:#9E9E9E">添加物资</h3>
 
 
   <!--分割线--------------------------------------------------------------------------------->
@@ -379,7 +380,7 @@
           <div class="bottom-slider-unit" ng-repeat="i in selected_materials track by $index" ng-click="myFunction2($index,i,matervalue)">
             <md-slider-container>
               <div class="slider-title-btn">{{i.name}}</div>
-              <md-slider flex min="0" class="md-primary" max="4000" ng-model="matervalue" aria-label="white">
+              <md-slider flex min="0" class="md-primary" max="500" ng-model="matervalue" aria-label="white">
               </md-slider>
               <input type="text" ng-model="matervalue" ></input>
             </md-slider-container>
@@ -647,7 +648,6 @@
 
     </div>
   </div> -->
-
 
 
 
