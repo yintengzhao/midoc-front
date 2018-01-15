@@ -286,11 +286,17 @@ body {
 
 
 // ------------------
+#bar{
+	chart-colors:red
+}
 #chart-container{
 	position:relative;
 	margin-top: 8px;
 	#bar-chart{
 		margin-top: 36px;
+		.chart-bar{
+			
+		}
 	}
 	#table-chart{
 		background: linear-gradient(

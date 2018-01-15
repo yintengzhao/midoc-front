@@ -62,17 +62,17 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     // }
     //添加物资------------------------------------
     //后台数据展示------------------------------------
-    $http.get("http://10.134.62.48:8888/ssh/material/list")
+    $http.get("http://10.134.62.10:8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
         $scope.materials = response.data;
       });
-    $http.get("http://10.134.62.48:8888/ssh/ship/list")
+    $http.get("http://10.134.62.10:8888/ssh/ship/list")
       .then(function(response) {
         console.log(response);
         $scope.ships = response.data;
       });
-    $http.get("http://10.134.62.48:8888/ssh/base/list")
+    $http.get("http://10.134.62.10:8888/ssh/base/list")
       .then(function(response) {
         console.log(response);
         $scope.bases = response.data;
@@ -104,7 +104,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
       var reqmater={
         method:'GET',
-        url:'http://10.134.62.48:8888/ssh/material/match',
+        url:'http://10.134.62.10:8888/ssh/material/match',
         params: { s: $scope.theMax }
       }
       $http(reqmater).then(function(response)
@@ -117,7 +117,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       $scope.bb =true;
       var reqship = {
         method: 'GET',
-        url: 'http://10.134.62.48:8888/ssh/ship/match',
+        url: 'http://10.134.62.10:8888/ssh/ship/match',
         params: { s: $scope.theMax }
       }
       $http(reqship).then(function(response)
@@ -132,7 +132,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
      var reqbase={
        method:'GET',
-       url:'http://10.134.62.48:8888/ssh/base/match',
+       url:'http://10.134.62.10:8888/ssh/base/match',
        params: { s: $scope.theMax }
      }
      $http(reqbase).then(function(response)
@@ -351,7 +351,7 @@ $scope.myFunction2=function(i,obj,ii){
       //           {alert('suc')},
       //            function(){alert('err')});
 
-      $http.post('http://10.134.62.48:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),alert('suc'),
+      $http.post('http://10.134.62.10:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),alert('suc'),
 
       // $http({
       //     method:'GET',
@@ -362,7 +362,7 @@ $scope.myFunction2=function(i,obj,ii){
 
         $http({
             method:'GET',
-            url:'http://10.134.62.48:14567/result',
+            url:'http://10.134.62.10:14567/result',
             params: { no: $scope.responseid }
           }).then(function(response){console.log(response),$scope.modalBody=$sce.trustAsHtml(response.data)},
           function(){alert('sec err')});},
@@ -376,7 +376,7 @@ $scope.myFunction2=function(i,obj,ii){
 $scope.mainhtml=true
 $scope.tablehtml=false
 $scope.chakan=function(){
-window.open("http://10.134.62.48:14567/result?no="+$scope.responseid)
+window.open("http://10.134.62.10:14567/result?no="+$scope.responseid)
 }
 
 
@@ -476,13 +476,18 @@ window.open("http://10.134.62.48:14567/result?no="+$scope.responseid)
     }
     // ====mc-map-end====
 //柱状图-----------------------------------------
-    $scope.labelsc = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    $scope.labelsc = ['石油', '柴油', '淡水', '食物', '酒精', '饮料', '汽油'];
+    $scope.series = ['Series B'];
     $scope.series = ['Series A', 'Series B'];
 
     $scope.datac = [
       [65, 59, 80, 81, 56, 55, 40],
       [28, 48, 40, 19, 86, 27, 90]
     ];
+    // $scope.datac = [
+    //   [65, 59, 80, 81, 56, 55, 40],
+    //   [28, 48, 40, 19, 86, 27, 90]
+    // ];
 //饼图----------------------------------------
     $scope.labelsb = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
     $scope.datab = [300, 500, 100];
