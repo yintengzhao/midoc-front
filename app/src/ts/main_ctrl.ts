@@ -317,6 +317,12 @@ $scope.myFunction2=function(i,obj,ii){
       }
       // var finalobj = new Finalobj();
       $scope.fangzhen=function(){
+//仿真名称、仿真简介、备注-----------------------------------------------------
+      //  $scope.sendobj.content1.push($scope.content1)
+      //  $scope.sendobj.content2.push($scope.content2)
+      //  $scope.sendobj.content3.push($scope.content3)
+
+
         var finalobj = new Finalobj();
         finalobj.base=$scope.basevalues;
         finalobj.ship=$scope.shipvalues;
@@ -476,12 +482,12 @@ window.open("http://10.134.62.10:14567/result?no="+$scope.responseid)
     }
     // ====mc-map-end====
 //柱状图-----------------------------------------
-    $scope.labelsc = ['石油', '柴油', '淡水', '食物', '酒精', '饮料', '汽油'];
+    $scope.labelsc = ['石油', '柴油', '汽油', '淡水', '食物', '酒精', '饮料'];
     $scope.series = ['Series B'];
-    $scope.series = ['Series A', 'Series B'];
+    // $scope.series = ['Series A', 'Series B'];
 
     $scope.datac = [
-      [65, 59, 80, 81, 56, 55, 40],
+      // [65, 59, 80, 81, 56, 55, 40],
       [28, 48, 40, 19, 86, 27, 90]
     ];
     // $scope.datac = [
