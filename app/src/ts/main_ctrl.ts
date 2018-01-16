@@ -316,11 +316,18 @@ $scope.myFunction2=function(i,obj,ii){
        }
       }
       // var finalobj = new Finalobj();
+      $scope.mainhtml=true
+      $scope.tablehtml=false
+      $scope.chakanhtml=false
       $scope.fangzhen=function(){
 //仿真名称、仿真简介、备注-----------------------------------------------------
       //  $scope.sendobj.content1.push($scope.content1)
       //  $scope.sendobj.content2.push($scope.content2)
       //  $scope.sendobj.content3.push($scope.content3)
+
+      $scope.mainhtml=false;
+      $scope.tablehtml=true;
+      $scope.chakanhtml=false
 
 
         var finalobj = new Finalobj();
@@ -343,7 +350,6 @@ $scope.myFunction2=function(i,obj,ii){
       // {console.log(response)},
       //  function(){alert('err')});
 
-
       //  $http.post({
       //              url:'http://10.134.101.121:8888/ssh/schedule/parse',
       //              method:"POST",
@@ -357,7 +363,7 @@ $scope.myFunction2=function(i,obj,ii){
       //           {alert('suc')},
       //            function(){alert('err')});
 
-      $http.post('http://10.134.62.10:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),alert('suc'),
+      $http.post('http://10.134.62.10:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),
 
       // $http({
       //     method:'GET',
@@ -376,18 +382,24 @@ $scope.myFunction2=function(i,obj,ii){
 
 
        function(response){alert('err')});
+
+
+       $timeout(function(){
+         $scope.mainhtml=false
+         $scope.tablehtml=false
+         $scope.chakanhtml=true
+       }，4000)
       }
 
 
-$scope.mainhtml=true
-$scope.tablehtml=false
+
 $scope.chakan=function(){
 window.open("http://10.134.62.10:14567/result?no="+$scope.responseid)
 }
 
 
 
-//转圈
+//仿真等待
 
 
 

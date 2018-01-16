@@ -611,10 +611,7 @@
           <div class="md-display-1">开始</div>
         </md-button>
 
-        <md-button id="work-done" class="md-fab"  ng-click="chakan()">
-          <div >查看报告</div>
 
-        </md-button>
 
         <!-- <md-button id="work-done" class="md-fab"  href="http://www.w3school.com.cn?no={{responseid}}" target="_blank">
           <div >查看报告</div>
@@ -642,22 +639,21 @@
 
 
   <!-- 弹窗 -->
-  <!-- <div id="myModal" class="modal" ng-show="tablehtml" >
-    <div class="modal-content">
-      <md-progress-circular ng-disabled="!vm.activated" md-diameter="96"></md-progress-circular>
-
+  <div id="myModal" class="modal" ng-show="tablehtml" >
+    <div class="modal-content" style="position:absolute;left:700px;top:300px">
+      <md-progress-circular md-mode="indeterminate" class="md-warn md-hue-2" md-diameter="150" style="position:relative;margin-left:170px;color:white"></md-progress-circular>
+      <p class="md-display-3" style="color:red">正在仿真,请稍后...</p>
     </div>
-  </div> -->
 
+  </div>
 
+  <div ng-show="chakanhtml">
+    <md-button id="work-done" class="md-fab"  ng-click="chakan()">
+      <div class="md-display-2">查看报告</div>
 
+    </md-button>
 
-
-
-
-
-
-
+  </div>
 
 
 
