@@ -188,13 +188,13 @@
 
           <div id="mc-bottom">
             <div id="mc-tool-bar">
-              <ng-md-icon class="mc-tool-icon" icon="location_on" size="40">1</ng-md-icon>
-              <ng-md-icon class="mc-tool-icon" icon="star" size="40">2</ng-md-icon>
-              <ng-md-icon class="mc-tool-icon" icon="grid_on" size="40" ng-click="addship()">3</ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="location_on" size="40"></ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="star" size="40"></ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="grid_on" size="40" ng-click="addship()"></ng-md-icon>
 
-              <ng-md-icon class="mc-tool-icon" icon="language" size="40">4</ng-md-icon>
-              <ng-md-icon class="mc-tool-icon" icon="remove_red_eye" ng-click="toggle_map()" size="40">5</ng-md-icon>
-              <ng-md-icon class="mc-tool-icon" icon="clear" size="40" ng-click="clear_selected()">6</ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="language" size="40"></ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="remove_red_eye" ng-click="toggle_map()" size="40"></ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="clear" size="40" ng-click="clear_selected()"></ng-md-icon>
             </div>
             <div id="mc-select" ng-click="prevent_bubble($event)">
               <div class="mc-selected-point" ng-repeat="($index, $obj) in map.points" ng-if="$obj.selected" id="mcsp-{{$index}}" ng-click="handle_selected_point($index, $obj, $event)">
@@ -233,9 +233,9 @@
               <md-button class="md-raised" ng-click="search()">搜索</md-button>
             </div>
             <div id="search-switches">
-              <md-switch class="md-primary " name="special" ng-model="switchd" required>平台</md-switch>
-              <md-switch class="md-primary" name="" ng-model="switchb" required>载具</md-switch>
               <md-switch class="md-raised" name=""  required ng-model="switchc">基地</md-switch>
+              <md-switch class="md-primary" name="" ng-model="switchb" required>载具</md-switch>
+              <md-switch class="md-primary " name="special" ng-model="switchd" required>平台</md-switch>
               <md-switch class="md-accent md-raised md-hue-1" name="" ng-model="switcha" required>物资</md-switch>
 
             </div>
@@ -247,24 +247,26 @@
         <div layout="column" id="object-list-containers">
           <div layout="{{ vm.direction }}" layout-md="row" class="">
 
-            <div layout="column" class="object-list-container" ng-click="selectplatform()">
-              <div class="header platform">海上平台<span class="object-counter platform">99</span></div>
+            <div layout="column" class="object-list-container" ng-click="selectbase()">
+              <div class="header base">基地 <span class="object-counter base">99</span></div>
               <md-content flex>
-                <md-list-item class="goods-list-item"  ng-click="showplatform()" >
-                  <div>
-                    <div class="title">平台1</div>
-                    <div class="description">平台简介</div>
+                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.name)" ng-show="c">
+                  <div class="md-list-item-text" layout="column">
+                    <div class="title">{{ base.id}}</div>
+                    <div class="description">{{ base.name }}</div>
                   </div>
                 </md-list-item>
 
-                <md-list-item class="goods-list-item" ng-repeat="platform in platforms" ng-click="showplatform()" ng-show="dd">
+                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.name)" ng-show="cc">
                   <div class="md-list-item-text" layout="column">
-                    <div class="title">{{ platform.name }}</div>
-                    <div class="description">{{ platform.detail }}</div>
+                    <div class="title">{{ base.id }}</div>
+                    <div class="description">{{ base.name }}</div>
                   </div>
                 </md-list-item>
               </md-content>
             </div>
+
+
 
 
             <div layout="column" class="object-list-container" ng-click="seleceship()">
@@ -288,20 +290,22 @@
             </div>
 
 
-            <div layout="column" class="object-list-container" ng-click="selectbase()">
-              <div class="header base">基地 <span class="object-counter base">99</span></div>
+
+
+            <div layout="column" class="object-list-container" ng-click="selectplatform()">
+              <div class="header platform">海上平台<span class="object-counter platform">99</span></div>
               <md-content flex>
-                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.name)" ng-show="c">
-                  <div class="md-list-item-text" layout="column">
-                    <div class="title">{{ base.id}}</div>
-                    <div class="description">{{ base.name }}</div>
+                <md-list-item class="goods-list-item"  ng-click="showplatform()" >
+                  <div>
+                    <div class="title">平台1</div>
+                    <div class="description">平台简介</div>
                   </div>
                 </md-list-item>
 
-                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.name)" ng-show="cc">
+                <md-list-item class="goods-list-item" ng-repeat="platform in platforms" ng-click="showplatform()" ng-show="dd">
                   <div class="md-list-item-text" layout="column">
-                    <div class="title">{{ base.id }}</div>
-                    <div class="description">{{ base.name }}</div>
+                    <div class="title">{{ platform.name }}</div>
+                    <div class="description">{{ platform.detail }}</div>
                   </div>
                 </md-list-item>
               </md-content>
@@ -628,11 +632,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
 
 
 

@@ -62,33 +62,22 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     // }
     //添加物资------------------------------------
     //后台数据展示------------------------------------
-    $http.get("http://10.134.62.10:8888/ssh/material/list")
+    $http.get("http://10.134.92.94:8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
         $scope.materials = response.data;
       });
-    $http.get("http://10.134.62.10:8888/ssh/ship/list")
+    $http.get("http://10.134.92.94:8888/ssh/ship/list")
       .then(function(response) {
         console.log(response);
         $scope.ships = response.data;
       });
-    $http.get("http://10.134.62.10:8888/ssh/base/list")
+    $http.get("http://10.134.92.94:8888/ssh/base/list")
       .then(function(response) {
         console.log(response);
         $scope.bases = response.data;
       });
-    //搜索-----------------------------
-    /*$scope.search=function(theMax){
-    var req = {
-      method: 'GET',
-      url:  'http://10.134.92.116:8888/ssh/ship/get?ship.id='+$scope.theMax,
-      //params: {ship.id : $scope.theMax}
-    }
-    $http(req).then(function(response)
-                    {$scope.answers=response.data},
-                    function(response)
-                    {alert('erro')});
-    };*/
+
     //搜索物资、载具、平台-----------------------------
     $scope.a=true;
     $scope.b=true;
@@ -104,7 +93,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
       var reqmater={
         method:'GET',
-        url:'http://10.134.62.10:8888/ssh/material/match',
+        url:'http://10.134.92.94:8888/ssh/material/match',
         params: { s: $scope.theMax }
       }
       $http(reqmater).then(function(response)
@@ -117,7 +106,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       $scope.bb =true;
       var reqship = {
         method: 'GET',
-        url: 'http://10.134.62.10:8888/ssh/ship/match',
+        url: 'http://10.134.92.94:8888/ssh/ship/match',
         params: { s: $scope.theMax }
       }
       $http(reqship).then(function(response)
@@ -132,7 +121,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
      var reqbase={
        method:'GET',
-       url:'http://10.134.62.10:8888/ssh/base/match',
+       url:'http://10.134.92.94:8888/ssh/base/match',
        params: { s: $scope.theMax }
      }
      $http(reqbase).then(function(response)
@@ -363,7 +352,7 @@ $scope.myFunction2=function(i,obj,ii){
       //           {alert('suc')},
       //            function(){alert('err')});
 
-      $http.post('http://10.134.62.10:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),
+      $http.post('http://10.134.92.94:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),
 
       // $http({
       //     method:'GET',
@@ -374,7 +363,7 @@ $scope.myFunction2=function(i,obj,ii){
 
         $http({
             method:'GET',
-            url:'http://10.134.62.10:14567/result',
+            url:'http://10.134.92.94:14567/result',
             params: { no: $scope.responseid }
           }).then(function(response){console.log(response),$scope.modalBody=$sce.trustAsHtml(response.data)},
           function(){alert('sec err')});},
@@ -394,7 +383,7 @@ $scope.myFunction2=function(i,obj,ii){
 
 
 $scope.chakan=function(){
-window.open("http://10.134.62.10:14567/result?no="+$scope.responseid)
+window.open("http://10.134.92.94:14567/result?no="+$scope.responseid)
 }
 
 
