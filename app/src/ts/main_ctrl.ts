@@ -61,7 +61,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     //   alert('123')
     // }
     //添加物资------------------------------------
-    //后台数据展示------------------------------------
+    //后台数据展示-----------------------------------
     $http.get("http://10.134.92.94:8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
