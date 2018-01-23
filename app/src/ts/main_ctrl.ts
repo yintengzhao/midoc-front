@@ -61,7 +61,7 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     //   alert('123')
     // }
     //添加物资------------------------------------
-    //后台数据展示-----------------------------------
+    //后台数据展示------------------------------------
     $http.get("http://10.134.92.94:8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
@@ -132,7 +132,14 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
     //搜索平台-----------------------------
     $scope.sendobj=
     {
+      sch:[
+
+      ],
+      platform:[
+
+      ],
       base:[
+
       ],
       material:[
 
@@ -315,7 +322,14 @@ $scope.myFunction2=function(i,obj,ii){
       var selected_type='platform';
       $scope.addship=function()
       {
+        if(pointer_flag==false){
+          alert('请打开坐标')
+        }
+        else{
         $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type});
+
+        $scope.sendobj.platform.push({x:$scope.target.x,y:$scope.target.y})
+      }
 
 
       }
@@ -334,7 +348,7 @@ $scope.myFunction2=function(i,obj,ii){
       $scope.chakanhtml=false
       $scope.fangzhen=function(){
 //仿真名称、仿真简介、备注-----------------------------------------------------
-      //  $scope.sendobj.content1.push($scope.content1)
+       $scope.sendobj.sch.push({name:$scope.content1,info:$scope.content2,note:$scope.content3})
       //  $scope.sendobj.content2.push($scope.content2)
       //  $scope.sendobj.content3.push($scope.content3)
 
@@ -427,7 +441,7 @@ window.open("http://10.134.92.94:14567/result?no="+$scope.responseid)
     $scope.map = {
       slider: 100,
       points: [
-        { x: 535, y: 325, t: 'platform' },
+        // { x: 535, y: 325, t: 'platform' },
 
       ],
       coor_pointer: false,

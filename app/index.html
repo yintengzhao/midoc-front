@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <!--钟表--->
+      <!--钟表-->
       <div id="sys-time" class="diginum">
         <div class="frnum">{{nowtime|date:'HH:mm:ss'}}</div>
         <div class="bgnum">88:88:88</div>
@@ -205,12 +205,18 @@
 
             <div id="mc-coor">
               <div id="mc-coor-info">
-                <div>东经：{{target.x}}</div>
-                <div>北纬：{{target.y}}</div>
+                <div>东经：
+                  <input type="number" ng-model="target.x" style="width:50px"></input>
+
+                </div>
+                <div>北纬：
+                  <input type="number" ng-model="target.y" style="width:50px"></input>
+
+                </div>
                 <div>海拔：0米</div>
               </div>
               <div id="mc-coor-pointer" ng-click="handle_coor_pointer()" ng-class="{'enabled': map.coor_pointer}">
-                <ng-md-icon class="" icon="gps_fixed" size="72"></ng-md-icon>
+                <ng-md-icon class="" icon="gps_fixed" size="70"></ng-md-icon>
               </div>
             </div>
           </div>
@@ -373,11 +379,11 @@
 
       <div id="bottom-form">
           <div>仿真名称</div>
-          <textarea rows="1" ng-model="notice.content1">{{ notice.content1 }}</textarea>
+          <textarea rows="1" ng-model="content1">{{ content1 }}</textarea>
           <div>仿真简介</div>
-          <textarea rows="10" ng-model="notice.content2">{{ notice.content2 }}</textarea>
+          <textarea rows="10" ng-model="content2">{{ content2 }}</textarea>
           <div>备注</div>
-          <textarea rows="1" ng-model="notice.content3">{{ notice.content3 }}</textarea>
+          <textarea rows="1" ng-model="content3">{{ content3 }}</textarea>
       </div>
 
       <!--物资滑动条-------------------------------------------------------->
