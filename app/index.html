@@ -108,7 +108,7 @@
               </div>
               <div class="title">基地 </div>
               <div class="attr2">
-                <p>编号：<span class="attr2-value">{{baseid}}</span> <br>名称：<span class="attr2-value">{{storage_place}}</span><br><span class="attr2-value"></span><br><span class="attr2-value"><span></p>
+                <p>编号：<span class="attr2-value">{{baseid}}</span> <br>名称：<span class="attr2-value">{{storage_place}}</span><br>东经：<span class="attr2-value">{{base_x}}</span> <br>北纬：<span class="attr2-value">{{base_y}}</span> <br><span class="attr2-value"></span><br><span class="attr2-value"><span></p>
                 <p class="description"></p>
               </div>
             </div>
@@ -139,7 +139,7 @@
               <p class="description">简介：{{detail}}</p>
             </div>
           </div> -->
-          <md-button id="addbutton" ng-click="addmaterials()">添加</md-button>
+          <md-button id="addbutton" ng-click="addship()">添加</md-button>
           <md-button id="editbutton" ng-click='edit()'>编辑</md-button>
 
         </div>
@@ -190,7 +190,7 @@
             <div id="mc-tool-bar">
               <ng-md-icon class="mc-tool-icon" icon="location_on" size="40"></ng-md-icon>
               <ng-md-icon class="mc-tool-icon" icon="star" size="40"></ng-md-icon>
-              <ng-md-icon class="mc-tool-icon" icon="grid_on" size="40" ng-click="addship()"></ng-md-icon>
+              <ng-md-icon class="mc-tool-icon" icon="grid_on" size="40" ng-click=""></ng-md-icon>
 
               <ng-md-icon class="mc-tool-icon" icon="language" size="40"></ng-md-icon>
               <ng-md-icon class="mc-tool-icon" icon="remove_red_eye" ng-click="toggle_map()" size="40"></ng-md-icon>
@@ -250,10 +250,12 @@
             <div layout="column" class="object-list-container" ng-click="selectbase()">
               <div class="header base">基地 <span class="object-counter base">99</span></div>
               <md-content flex>
-                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.name)" ng-show="c">
+                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.name,base.x,base.y)" ng-show="c">
                   <div class="md-list-item-text" layout="column">
-                    <div class="title">{{ base.id}}</div>
-                    <div class="description">{{ base.name }}</div>
+                    <div class="title">{{ base.name}}</div>
+                    <div class="description">{{ base.x }}</div>
+                    <div class="description">{{ base.y }}</div>
+
                   </div>
                 </md-list-item>
 

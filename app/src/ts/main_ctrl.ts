@@ -130,7 +130,19 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
 
     };
     //搜索平台-----------------------------
+    $scope.sendobj=
+    {
+      base:[
+      ],
+      material:[
 
+      ],
+      ship:[
+
+      ]
+    }
+    $scope.selected_materials = [];
+    var pointer_flag=false;
     //展示详细信息-----------------------------
     $scope.sta = true;
     $scope.asta = false;
@@ -152,49 +164,40 @@ ng_app.controller("MainCtrl", ['$scope', '$interval', '$timeout', '$window', '$h
       // var selected_type='material';
       // $scope.addship=function(){
       //      $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
-    }
-    //添加物资-----------------------------
-    $scope.sendobj=
-    {
-      base:[
-      ],
-      material:[
 
-      ],
-      ship:[
+      //添加物资-----------------------------
 
-      ]
-    }
 
-    class Materobj {
-        id: number;
-        name:string;
-        constructor() {
-       }
-      }
-      $scope.selected_materials = [];
-      $scope.addmaterials=function()
-      {
-        // let materobj = new Greeter($scope.id,$scope.name);
-        // $scope.selected_materials.push(materobj);\
-        var flag=1;
-        for(let num of $scope.selected_materials)
+      class Materobj {
+          id: number;
+          name:string;
+          constructor() {
+         }
+        }
+        $scope.addship=function()
         {
-          if($scope.id==num.id)
+          // let materobj = new Greeter($scope.id,$scope.name);
+          // $scope.selected_materials.push(materobj);\
+          var flag=1;
+          for(let num of $scope.selected_materials)
           {
-            alert('物资不可重复添加');
-            var flag=0;
-            break;
+            if($scope.id==num.id)
+            {
+              alert('物资不可重复添加');
+              var flag=0;
+              break;
+            }
           }
-        }
-        if(flag==1)
-        {
-          var materobj = new Materobj();
-          materobj.name=$scope.name;
-          materobj.id=$scope.id;
-          $scope.selected_materials.push(materobj);
-        }
-      };
+          if(flag==1)
+          {
+            var materobj = new Materobj();
+            materobj.name=$scope.name;
+            materobj.id=$scope.id;
+            $scope.selected_materials.push(materobj);
+          }
+        };
+    }
+
 //将物资和数量存入数组-----------------------------
     class Materobjplus {
         id:number;
@@ -225,32 +228,40 @@ $scope.myFunction2=function(i,obj,ii){
     }
   $scope.shipvalues=[];
     $scope.showship = function(shipid,shipname, shipinfo, shipnation, shipport, shipseazone) {
-      $scope.sta = false;
-      $scope.asta = false;
-      $scope.bsta = true;
-      $scope.csta = false;
 
-      $scope.shipid = shipid;
-      $scope.shipname = shipname;
-      $scope.shipinfo = shipinfo;
-      $scope.nation = shipnation;
-      $scope.port = shipport;
-      $scope.seazone = shipseazone;
-      var selected_type='ship';
-      $scope.addship=function()
-      {
-        $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
 
-        var shipobj = new Shipobj();
-        shipobj.id=$scope.shipid;
-        shipobj.x=$scope.target.x;
-        shipobj.y=$scope.target.y;
-        $scope.shipvalues.push(shipobj);
 
-        $scope.sendobj.ship.push({shipid:$scope.shipid,x:$scope.target.x,y:$scope.target.y})
+        $scope.sta = false;
+        $scope.asta = false;
+        $scope.bsta = true;
+        $scope.csta = false;
 
+        $scope.shipid = shipid;
+        $scope.shipname = shipname;
+        $scope.shipinfo = shipinfo;
+        $scope.nation = shipnation;
+        $scope.port = shipport;
+        $scope.seazone = shipseazone;
+        var selected_type='ship';
+        $scope.addship=function()
+        {
+          if(pointer_flag==false){
+            alert('请打开坐标')
+          }
+          else{
+            $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
+
+            var shipobj = new Shipobj();
+            shipobj.id=$scope.shipid;
+            shipobj.x=$scope.target.x;
+            shipobj.y=$scope.target.y;
+            $scope.shipvalues.push(shipobj);
+
+            $scope.sendobj.ship.push({shipid:$scope.shipid,x:$scope.target.x,y:$scope.target.y})
+          }
 
       }
+
     }
 
     class Baseobj {
@@ -262,26 +273,39 @@ $scope.myFunction2=function(i,obj,ii){
      }
      $scope.basevalues=[];
 
-    $scope.showbase=function(baseid,storage_place){
-      $scope.sta = false;
-      $scope.asta = false;
-      $scope.bsta = false;
-      $scope.csta = true;
+    $scope.showbase=function(baseid,storage_place,base_x,base_y){
 
-      $scope.baseid = baseid;
-      $scope.storage_place = storage_place;
 
-      var selected_type='base';
-      $scope.addship=function(){
-           $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type});
+        $scope.sta = false;
+        $scope.asta = false;
+        $scope.bsta = false;
+        $scope.csta = true;
 
-           var baseobj = new Baseobj();
-           baseobj.id=$scope.baseid;
-           baseobj.x=$scope.target.x;
-           baseobj.y=$scope.target.y;
-           $scope.basevalues.push(baseobj);
+        $scope.baseid = baseid;
+        $scope.storage_place = storage_place;
+        $scope.base_x=base_x;
+        $scope.base_y=base_y;
 
-           $scope.sendobj.base.push({id:$scope.baseid,x:$scope.target.x,y:$scope.target.y})
+
+        var selected_type='base';
+        $scope.addship=function(){
+          // if(pointer_flag==false){
+          //   alert('请打开坐标')
+          // }
+          // else{
+             $scope.map.points.push({x:base_x,y:base_y,t:selected_type});
+
+             var baseobj = new Baseobj();
+             baseobj.id=$scope.baseid;
+             baseobj.x=$scope.target.x;
+             baseobj.y=$scope.target.y;
+             $scope.basevalues.push(baseobj);
+
+             $scope.sendobj.base.push({id:$scope.baseid,x:$scope.base_x,y:$scope.base_y})
+
+        // }
+
+
 
       }
 
@@ -468,6 +492,9 @@ window.open("http://10.134.92.94:14567/result?no="+$scope.responseid)
     }
 
     $scope.handle_coor_pointer = function() {
+      pointer_flag=!pointer_flag;
+
+
       $scope.map.coor_pointer = !$scope.map.coor_pointer;
       // console.log($scope.map.coor_pointer);
     }
