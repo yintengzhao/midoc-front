@@ -256,6 +256,22 @@ $scope.myFunction2=function(i,obj,ii){
             alert('请打开坐标')
           }
           else{
+
+            var flag=1;
+            for(let num of $scope.sendobj.ship)
+            {
+              if($scope.shipid==num.shipid)
+              {
+                alert('载具不可重复添加');
+                var flag=0;
+                break;
+              }
+            }
+
+
+            if(flag==1){
+
+
             $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
 
             var shipobj = new Shipobj();
@@ -265,6 +281,7 @@ $scope.myFunction2=function(i,obj,ii){
             $scope.shipvalues.push(shipobj);
 
             $scope.sendobj.ship.push({shipid:$scope.shipid,x:$scope.target.x,y:$scope.target.y})
+          }
           }
 
       }
@@ -300,6 +317,20 @@ $scope.myFunction2=function(i,obj,ii){
           //   alert('请打开坐标')
           // }
           // else{
+          var flag=1;
+          for(let num of $scope.sendobj.base)
+          {
+            if($scope.baseid==num.id)
+            {
+              alert('基地不可重复添加');
+              var flag=0;
+              break;
+            }
+          }
+
+
+          if(flag==1){
+
              $scope.map.points.push({x:base_x,y:base_y,t:selected_type});
 
              var baseobj = new Baseobj();
@@ -309,6 +340,7 @@ $scope.myFunction2=function(i,obj,ii){
              $scope.basevalues.push(baseobj);
 
              $scope.sendobj.base.push({id:$scope.baseid,x:$scope.base_x,y:$scope.base_y})
+           }
 
         // }
 
@@ -326,9 +358,30 @@ $scope.myFunction2=function(i,obj,ii){
           alert('请打开坐标')
         }
         else{
+
+          var flag=1;
+          for(let num of $scope.sendobj.platform)
+          {
+            if(1==num.platformid)
+            {
+              alert('平台不可重复添加');
+              var flag=0;
+              break;
+            }
+          }
+
+
+          if(flag==1){
+
+
+
+
         $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type});
 
-        $scope.sendobj.platform.push({x:$scope.target.x,y:$scope.target.y})
+        $scope.sendobj.platform.push({platformid:1,x:$scope.target.x,y:$scope.target.y})
+      }
+
+
       }
 
 
