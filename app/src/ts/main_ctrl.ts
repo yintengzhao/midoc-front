@@ -253,7 +253,7 @@ $scope.myFunction2=function(i,obj,ii){
         $scope.addship=function()
         {
           if(pointer_flag==false){
-            alert('请打开坐标')
+            alert('请打开定位器')
           }
           else{
 
@@ -355,7 +355,7 @@ $scope.myFunction2=function(i,obj,ii){
       $scope.addship=function()
       {
         if(pointer_flag==false){
-          alert('请打开坐标')
+          alert('请打开定位器')
         }
         else{
 
@@ -502,8 +502,8 @@ window.open("http://10.134.92.94:14567/result?no="+$scope.responseid)
     };
 
     $scope.target = {
-      x: 0,
-      y: 0
+      // x: 0,
+      // y: 0
     }
 
     $scope.map_header = {
@@ -582,13 +582,13 @@ window.open("http://10.134.92.94:14567/result?no="+$scope.responseid)
     }
     // ====mc-map-end====
 //柱状图-----------------------------------------
-    $scope.labelsc = ['石油', '柴油', '汽油', '淡水', '食物', '酒精', '饮料'];
+    $scope.labelsc = ['柴油','钻井水','生活用水','36套管','20套管','7套管','4油管','水泥'];
     $scope.series = ['Series B'];
     // $scope.series = ['Series A', 'Series B'];
 
     $scope.datac = [
       // [65, 59, 80, 81, 56, 55, 40],
-      [28, 48, 40, 19, 86, 27, 90]
+      [0.85,0.8,1,2, 1.5, 0.7,0.3,1]
     ];
     // $scope.datac = [
     //   [65, 59, 80, 81, 56, 55, 40],

@@ -204,18 +204,18 @@
             <!-- <md-button id="xuanding" class="md-raised" ng-click="addship()" style="position:absolute;left:10px">选定</md-button> -->
 
             <div id="mc-coor">
-              <div id="mc-coor-info">
+              <div id="mc-coor-info" ng-show="map.coor_pointer">
                 <div>东经：
-                  <input type="number" max="655" ng-model="target.x" style="width:50px"></input>
+                  <input type="number" min="0" max="655" ng-model="target.x" style="width:50px"></input>
 
                 </div>
                 <div>北纬：
-                  <input type="number" max="455" ng-model="target.y" style="width:50px"></input>
+                  <input type="number" min="0" max="455" ng-model="target.y" style="width:50px"></input>
 
                 </div>
                 <div>海拔：0米</div>
               </div>
-              <div id="mc-coor-pointer" ng-click="handle_coor_pointer()" ng-class="{'enabled': map.coor_pointer}">
+              <div id="mc-coor-pointer" ng-click="handle_coor_pointer()"  ng-class="{'enabled': map.coor_pointer}">
                 <ng-md-icon class="" icon="gps_fixed" size="70"></ng-md-icon>
               </div>
             </div>
@@ -327,6 +327,7 @@
         <div layout="column" id="chart-container">
           <div layout="{{ vm.direction }}" layout-md="row" class="">
             <div id="bar-chart">
+              重量：(吨)
               <canvas id="bar" class="chart chart-bar" chart-colors="[red]" chart-data="datac" chart-labels="labelsc" chart-series="series">
              </canvas>
             </div>
