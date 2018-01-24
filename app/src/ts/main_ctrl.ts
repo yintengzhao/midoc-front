@@ -524,6 +524,11 @@ window.open("http://10.134.92.94:14567/result?no="+$scope.responseid)
 
     };
 
+    $scope.$watch('target.x+target.y',function(){
+      $("#mc-current-point").css("left", $scope.target.x - 20);
+      $("#mc-current-point").css("top", $scope.target.y - 20);
+    });
+
     $scope.prevent_bubble = function(event) {
       // console.log(event);
       event.stopPropagation();

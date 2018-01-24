@@ -106,7 +106,7 @@
               <div class="logo2">
                 <img src="assets/ship615.png">
               </div>
-              <div class="title">基地 </div>
+              <div class="title">{{storage_place}}基地 </div>
               <div class="attr2">
                 <p>编号：<span class="attr2-value">{{baseid}}</span> <br>名称：<span class="attr2-value">{{storage_place}}</span><br>东经：<span class="attr2-value">{{base_x}}</span> <br>北纬：<span class="attr2-value">{{base_y}}</span> <br><span class="attr2-value"></span><br><span class="attr2-value"><span></p>
                 <p class="description"></p>
@@ -206,11 +206,11 @@
             <div id="mc-coor">
               <div id="mc-coor-info">
                 <div>东经：
-                  <input type="number" ng-model="target.x" style="width:50px"></input>
+                  <input type="number" max="655" ng-model="target.x" style="width:50px"></input>
 
                 </div>
                 <div>北纬：
-                  <input type="number" ng-model="target.y" style="width:50px"></input>
+                  <input type="number" max="455" ng-model="target.y" style="width:50px"></input>
 
                 </div>
                 <div>海拔：0米</div>
