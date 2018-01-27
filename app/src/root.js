@@ -30,6 +30,24 @@ require.config({
                 "ng_app", "angular-chart"
             ]
         },
+        require_sim_ctrl: {
+            exports: "RequireSimCtrl",
+            deps: [
+                "ng_app", "angular-chart"
+            ]
+        },
+        require_sim_ctrl: {
+            exports: "WatchGoodsCtrl",
+            deps: [
+                "ng_app", "angular-chart"
+            ]
+        },
+        trans_sim_ctrl: {
+            exports: "TransSimCtrl",
+            deps: [
+                "ng_app", "angular-chart"
+            ]
+        },
         angular: {
             exports: "angular"
         },
@@ -58,4 +76,9 @@ require.config({
 });
 
 
-require(['main_ctrl'])
+require([
+  'main_ctrl',
+  'require_sim_ctrl',
+  'watch_goods_ctrl',
+  'trans_sim_ctrl',
+])

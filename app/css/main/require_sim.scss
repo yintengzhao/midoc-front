@@ -1,0 +1,57 @@
+#require_sim{
+
+@import 'require_table';
+
+#sys-title-logo {
+	width: 500px;
+	padding-top: 16px;
+}
+
+#logo {
+	display: inline-block;
+
+	img {
+		width: 60px;
+	}
+	// top: 20px;
+}
+
+#sys-title {
+	color: white;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 36px;
+}
+
+#sys-subtitle{
+  color: rgb(208, 208, 208);
+  margin-left: 72px;
+  font-size: 28px;
+}
+#content{
+  border-radius: 4px;
+  margin-top: 32px;
+  padding: 16px 64px 72px;
+  margin: 32px 64px;
+  background-color: white;
+}
+#period{
+  width: 320px;
+  color: gray;
+  padding: 6px 24px 0px 0px;
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+#input-table-container{
+  width: 480px;
+  background-color: white;
+
+}
+
+#data-table-container{
+  margin-top: 96px;
+}
+
+
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="/build/vendor.css">
+  <link rel="stylesheet" href="/build/application.css">
+  <script src="require.js" defer async="true" data-main="build/root"></script>
+</head>
+
+<body ng-controller="RequireSimCtrl" id="require_sim" ng-class="" ng-cloak>
+
+  <div id="sys-title-logo">
+    <div id="logo">
+      <img src="assets/logo.png">
+    </div>
+    <div id="sys-title">保障体系模拟仿真系统</div>
+    <div id="sys-subtitle">物资需求验证</div>
+  </div>
+
+  <div id="content">
+
+    <div id="period">
+      保障周期
+      <md-input-container class="md-block">
+        <input required type="number" step="any" name="period" ng-model="period" min="0" max="999" />
+      </md-input-container>
+    </div>
+
+    <div id="input-table-container">
+      <table class="input-table">
+        <thead>
+          <tr>
+            <th>head1</th>
+            <th>head2</th>
+            <th>head3</th>
+            <th>head4</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr>
+            <td>cell1_1</td>
+            <td>cell2_1</td>
+            <td>cell3_1</td>
+            <td>cell4_1</td>
+          </tr>
+          <tr>
+            <td>cell1_2</td>
+            <td>cell2_2</td>
+            <td>cell3_2</td>
+            <td>cell4_2</td>
+          </tr>
+          <tr>
+            <td>cell1_3</td>
+            <td>cell2_3</td>
+            <td>cell3_3</td>
+            <td>cell4_3</td>
+          </tr>
+          <tr>
+            <td>cell1_4</td>
+            <td>cell2_4</td>
+            <td>cell3_4</td>
+            <td>cell4_4</td>
+          </tr>
+        </tbody>
+        </tr>
+      </table>
+    </div>
+
+    <div id="data-table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>head1</th>
+            <th>head2</th>
+            <th>head3</th>
+            <th>head4</th>
+            <th>head5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>cell1_1</td>
+            <td>cell2_1</td>
+            <td>cell3_1</td>
+            <td>cell4_1</td>
+            <td>cell5_1</td>
+          </tr>
+          <tr>
+            <td>cell1_2</td>
+            <td>cell2_2</td>
+            <td>cell3_2</td>
+            <td>cell4_2</td>
+            <td>cell5_2</td>
+          </tr>
+          <tr>
+            <td>cell1_3</td>
+            <td>cell2_3</td>
+            <td>cell3_3</td>
+            <td>cell4_3</td>
+            <td>cell5_3</td>
+          </tr>
+          <tr>
+            <td>cell1_4</td>
+            <td>cell2_4</td>
+            <td>cell3_4</td>
+            <td>cell4_4</td>
+            <td>cell5_4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+
+
+
+
+</body>
+
+</html>
