@@ -265,10 +265,12 @@
                   </div>
                 </md-list-item>
 
-                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.name)" ng-show="cc">
+                <md-list-item class="goods-list-item" ng-repeat="base in bases" ng-click="showbase(base.id,base.name,base.x,base.y)" ng-show="cc">
                   <div class="md-list-item-text" layout="column">
-                    <div class="title">{{ base.id }}</div>
-                    <div class="description">{{ base.name }}</div>
+                    <div class="title">{{ base.name }}</div>
+                    <div class="description">{{ base.x }}</div>
+                    <div class="description">{{ base.y }}</div>
+                    <!-- <div class="description">{{ base.name }}</div> -->
                   </div>
                 </md-list-item>
               </md-content>
