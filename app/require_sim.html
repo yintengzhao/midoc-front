@@ -25,62 +25,121 @@
       保障周期
       <md-input-container class="md-block">
         <input required type="number" step="any" name="period" ng-model="period" min="0" max="999" />
+        <span style="position:absolute;left:340px">天</span>
       </md-input-container>
     </div>
 
-    <div id="input-table-container">
-      <table class="input-table">
-        <thead>
-          <tr>
-            <th>head1</th>
-            <th>head2</th>
-            <th>head3</th>
-            <th>head4</th>
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-          </tr>
-        </tfoot>
-        <tbody>
-          <tr>
-            <td>cell1_1</td>
-            <td>cell2_1</td>
-            <td>cell3_1</td>
-            <td>cell4_1</td>
-          </tr>
-          <tr>
-            <td>cell1_2</td>
-            <td>cell2_2</td>
-            <td>cell3_2</td>
-            <td>cell4_2</td>
-          </tr>
-          <tr>
-            <td>cell1_3</td>
-            <td>cell2_3</td>
-            <td>cell3_3</td>
-            <td>cell4_3</td>
-          </tr>
-          <tr>
-            <td>cell1_4</td>
-            <td>cell2_4</td>
-            <td>cell3_4</td>
-            <td>cell4_4</td>
-          </tr>
-        </tbody>
-        </tr>
-      </table>
+    <div layout="column" class="test">
+      <div  layout="{{ vm.direction }}" layout-md="row" class="">
+
+        <div id="input-table-container">
+          <table class="input-table">
+            <thead>
+              <tr>
+                <th>作业类型</th>
+                <th>勘探井</th>
+                <th>生产平台</th>
+                <th>工程船</th>
+                <th>开发井</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+              </tr>
+            </tfoot>
+            <tbody>
+              <tr>
+                <td>低产量</td>
+                <td><input ng-show='abc' ng-model="data11"></input>
+                  <div ng-hide='abc'>{{data11}}</div>
+                </td>
+                <td><input ng-show='abc' ng-model="data12"></input>
+                  <div ng-hide='abc'>{{data12}}</div>
+                </td>
+                <td><input ng-show='abc' ng-model="data13"></input>
+                  <div ng-hide='abc'>{{data13}}</div>
+                </td>
+                <td><input ng-show='abc' ng-model="data14"></input>
+                  <div ng-hide='abc'>{{data14}}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>中产量</td>
+                <td><input ng-show='abc' ng-model="data21"></input>
+                  <div ng-hide='abc'>{{data21}}</div>
+                </td>
+                <td><input ng-show='abc' ng-model="data22"></input>
+                  <div ng-hide='abc'>{{data22}}</div>
+                </td>
+                <td><input ng-show='abc' ng-model="data23"></input>
+                  <div ng-hide='abc'>{{data23}}</div>
+                </td>
+                <td><input ng-show='abc' ng-model="data24"></input>
+                  <div ng-hide='abc'>{{data24}}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>高产量</td>
+                <td><input ng-show='abc' ng-model="data31"></input>
+                  <div ng-hide='abc'>{{data31}}</div>
+                </td>
+                <td><input ng-show='abc' ng-model="data32"></input>
+                  <div ng-hide='abc'>{{data32}}</div>
+                </td>
+                <td><input ng-show='abc' ng-model="data33"></input>
+                  <div ng-hide='abc'>{{data33}}</div>
+                </td>
+                <td><input ng-show='abc' ng-model="data34"></input>
+                  <div ng-hide='abc'>{{data34}}</div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+
+        <div style="position:relative;margin-left:50px">
+          <canvas style="height:250px;width:800px" id="line" class="chart chart-line" chart-data="data"
+          chart-labels="labels" chart-series="series" chart-options="options"
+          chart-dataset-override="datasetOverride" chart-click="onClick">
+        </canvas>
+
+        </div>
+      </div>
     </div>
+
+    <div layout="column" class="test">
+      <div  layout="{{ vm.direction }}" layout-md="row" class="">
+        <div>
+          <md-button class="md-raised md-primary" id="add" >添加</md-button>
+
+        </div>
+        <div>
+          <md-button class="md-raised md-primary" id="modify" ng-click="modifydata()">修改</md-button>
+
+        </div>
+        <div>
+          <md-button class="md-raised md-primary" id="confirm" ng-click="yes()">确认</md-button>
+
+        </div>
+        <div style="position:relative;margin-left:650px">周数</div>
+      </div>
+    </div>
+
+
+
+
 
     <div id="data-table-container">
       <table class="data-table">
         <thead>
           <tr>
-            <th>head1</th>
-            <th>head2</th>
-            <th>head3</th>
-            <th>head4</th>
-            <th>head5</th>
+            <th style="width:200px">物资</th>
+            <th>所需数量</th>
+            <th>占用空间</th>
+            <th>变量</th>
+            <th>备注</th>
           </tr>
         </thead>
         <tbody>
@@ -112,9 +171,60 @@
             <td>cell4_4</td>
             <td>cell5_4</td>
           </tr>
+          <tr>
+            <td>cell1_4</td>
+            <td>cell2_4</td>
+            <td>cell3_4</td>
+            <td>cell4_4</td>
+            <td>cell5_4</td>
+          </tr>
+          <tr>
+            <td>cell1_4</td>
+            <td>cell2_4</td>
+            <td>cell3_4</td>
+            <td>cell4_4</td>
+            <td>cell5_4</td>
+          </tr>
+          <tr>
+            <td>cell1_4</td>
+            <td>cell2_4</td>
+            <td>cell3_4</td>
+            <td>cell4_4</td>
+            <td>cell5_4</td>
+          </tr>
+          <tr>
+            <td>cell1_4</td>
+            <td>cell2_4</td>
+            <td>cell3_4</td>
+            <td>cell4_4</td>
+            <td>cell5_4</td>
+          </tr>
+          <tr>
+            <td>cell1_4</td>
+            <td>cell2_4</td>
+            <td>cell3_4</td>
+            <td>cell4_4</td>
+            <td>cell5_4</td>
+          </tr>
+          <tr>
+            <td>cell1_4</td>
+            <td>cell2_4</td>
+            <td>cell3_4</td>
+            <td>cell4_4</td>
+            <td>cell5_4</td>
+          </tr>
+
+
+
+
         </tbody>
       </table>
     </div>
+
+    <div id="verify-requirements" class="md-display-1">
+      <md-button class="md-raised md-primary" id="verify-button" ng-click="confirmFunction()">需求验证</md-button>
+    </div>
+
 
 
   </div>
