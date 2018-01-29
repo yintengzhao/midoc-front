@@ -62,17 +62,17 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
     // }
     //添加物资------------------------------------
     //后台数据展示------------------------------------
-    $http.get("http://10.134.84.11:8888/ssh/material/list")
+    $http.get("http://localhost:8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
         $scope.materials = response.data;
       });
-    $http.get("http://10.134.126.26:8888/ssh/ship/list")
+    $http.get("http://localhost:8888/ssh/ship/list")
       .then(function(response) {
         console.log(response);
         $scope.ships = response.data;
       });
-    $http.get("http://10.134.126.26:8888/ssh/base/list")
+    $http.get("http://localhost:8888/ssh/base/list")
       .then(function(response) {
         console.log(response);
         $scope.bases = response.data;
@@ -93,7 +93,7 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
 
       var reqmater={
         method:'GET',
-        url:'http://10.134.126.26:8888/ssh/material/match',
+        url:'http://localhost:8888/ssh/material/match',
         params: { s: $scope.theMax }
       }
       $http(reqmater).then(function(response)
@@ -106,7 +106,7 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
       $scope.bb =true;
       var reqship = {
         method: 'GET',
-        url: 'http://10.134.126.26:8888/ssh/ship/match',
+        url: 'http://localhost:8888/ssh/ship/match',
         params: { s: $scope.theMax }
       }
       $http(reqship).then(function(response)
@@ -121,7 +121,7 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
 
      var reqbase={
        method:'GET',
-       url:'http://10.134.126.26:8888/ssh/base/match',
+       url:'http://localhost:8888/ssh/base/match',
        params: { s: $scope.theMax }
      }
      $http(reqbase).then(function(response)
@@ -443,18 +443,18 @@ $scope.myFunction2=function(i,obj,ii){
       //           {alert('suc')},
       //            function(){alert('err')});
 
-      $http.post('http://10.134.126.26:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),
+      $http.post('http://localhost:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),
 
       // $http({
       //     method:'GET',
-      //     url:'http://10.134.75.163:4567/result_ok',
+      //     url:'http://localhost:4567/result_ok',
       //     params: { no: $scope.responseid }
       //   }).then(function(response){alert('sec suc'),console.log(response),$scope.responseans=response.data.feedback},
       //   function(){alert('sec err')});},
 
         $http({
             method:'GET',
-            url:'http://10.134.75.163:4567/result',
+            url:'http://localhost:4567/result',
             params: { no: $scope.responseid }
           }).then(function(response){console.log(response),$scope.modalBody=$sce.trustAsHtml(response.data)},
           function(){alert('sec err')});},
@@ -474,7 +474,7 @@ $scope.myFunction2=function(i,obj,ii){
 
 
 $scope.chakan=function(){
-window.open("http://10.134.75.163:4567/result?no="+$scope.responseid)
+window.open("http://localhost:4567/result?no="+$scope.responseid)
 }
 
 

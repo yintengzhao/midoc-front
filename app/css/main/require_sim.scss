@@ -66,9 +66,12 @@
 
 }
 
+
+
+
 #data-table-container{
 	height: auto;
-  margin-top: 20px;
+  margin-top: 50px;
 	.data-table{
 		text-align: center;
 	}
@@ -93,18 +96,23 @@
 #add{
 	position: relative;
 	margin-left: 250px;
+	margin-top: -100px;
 	background-color: rgb(96, 33, 52)
 }
 
 #modify{
 	position: relative;
 	margin-left: 20px;
+	margin-top: -100px;
+
 	background-color: rgb(193, 174, 46);
 }
 
 #confirm{
 	position: relative;
 	margin-left: 20px;
+	margin-top: -100px;
+
 	background-color: rgb(42, 82, 134);
 }
 

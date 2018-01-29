@@ -49,7 +49,13 @@
             </tfoot>
             <tbody>
               <tr>
-                <td>低产量</td>
+                <td>
+
+                  <md-select ng-model="dw">
+                    <md-option ng-repeat="dw in dws" value="{{dw}}">{{dw}}</md-option>
+                  </md-select>
+
+                </td>
                 <td><input type="number" min="0" ng-show='abc' ng-model="data11"></input>
                   <div ng-hide='abc'>{{data11}}</div>
                 </td>
@@ -63,36 +69,7 @@
                   <div ng-hide='abc'>{{data14}}</div>
                 </td>
               </tr>
-              <tr>
-                <td>中产量</td>
-                <td><input type="number" min="0" ng-show='abc' ng-model="data21"></input>
-                  <div ng-hide='abc'>{{data21}}</div>
-                </td>
-                <td><input type="number" min="0" ng-show='abc' ng-model="data22"></input>
-                  <div ng-hide='abc'>{{data22}}</div>
-                </td>
-                <td><input type="number" min="0" ng-show='abc' ng-model="data23"></input>
-                  <div ng-hide='abc'>{{data23}}</div>
-                </td>
-                <td><input type="number" min="0" ng-show='abc' ng-model="data24"></input>
-                  <div ng-hide='abc'>{{data24}}</div>
-                </td>
-              </tr>
-              <tr>
-                <td>高产量</td>
-                <td><input type="number" min="0" ng-show='abc' ng-model="data31"></input>
-                  <div ng-hide='abc'>{{data31}}</div>
-                </td>
-                <td><input type="number" min="0" ng-show='abc' ng-model="data32"></input>
-                  <div ng-hide='abc'>{{data32}}</div>
-                </td>
-                <td><input type="number" min="0" ng-show='abc' ng-model="data33"></input>
-                  <div ng-hide='abc'>{{data33}}</div>
-                </td>
-                <td><input type="number" min="0" ng-show='abc' ng-model="data34"></input>
-                  <div ng-hide='abc'>{{data34}}</div>
-                </td>
-              </tr>
+
 
             </tbody>
           </table>
@@ -123,7 +100,7 @@
           <md-button class="md-raised md-primary" id="confirm" ng-click="yes()">确认</md-button>
 
         </div>
-        <div style="position:relative;margin-left:650px">周数</div>
+        <div style="position:relative;margin-left:650px">物资</div>
       </div>
     </div>
 
