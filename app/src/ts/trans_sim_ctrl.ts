@@ -62,7 +62,7 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
     // }
     //添加物资------------------------------------
     //后台数据展示------------------------------------
-    $http.get("http://10.134.126.26:8888/ssh/material/list")
+    $http.get("http://10.134.84.11:8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
         $scope.materials = response.data;

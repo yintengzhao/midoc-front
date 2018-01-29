@@ -15,7 +15,7 @@
       <img src="assets/logo.png">
     </div>
     <div id="sys-title">保障体系模拟仿真系统</div>
-    <div id="sys-subtitle">物资动态监控</div>
+    <div id="sys-subtitle">保障平台库存动态监控</div>
   </div>
 
   <div id="content">
@@ -36,88 +36,99 @@
         </thead>
         <tbody>
           <tr>
-            <td>cell1_1</td>
-            <td>cell2_1</td>
-            <td>cell3_1</td>
+            <td>柴油</td>
+            <td>940</td>
+            <td>4700</td>
             <td>cell4_1</td>
             <td>cell5_1</td>
             <td>cell6_1</td>
             <td>cell7_1</td>
-            <td>cell8_1</td>
+            <td>液体 易燃易爆炸</td>
           </tr>
           <tr>
-            <td>cell1_2</td>
-            <td>cell2_2</td>
-            <td>cell3_2</td>
+            <td>生活用水</td>
+            <td>1960</td>
+            <td>9800</td>
             <td>cell4_2</td>
             <td>cell5_2</td>
             <td>cell6_2</td>
             <td>cell7_2</td>
-            <td>cell8_2</td>
+            <td>液体</td>
           </tr>
           <tr>
-            <td>cell1_3</td>
-            <td>cell2_3</td>
-            <td>cell3_3</td>
+            <td>土粉</td>
+            <td>740</td>
+            <td>18500</td>
             <td>cell4_3</td>
             <td>cell5_3</td>
             <td>cell6_3</td>
             <td>cell7_3</td>
-            <td>cell8_3</td>
+            <td>物料 体积大</td>
           </tr>
           <tr>
-            <td>cell1_4</td>
-            <td>cell2_4</td>
-            <td>cell3_4</td>
+            <td>重晶石</td>
+            <td>280</td>
+            <td>7000</td>
             <td>cell4_4</td>
             <td>cell5_4</td>
             <td>cell6_4</td>
             <td>cell7_4</td>
-            <td>cell8_4</td>
+            <td>物料 体积大</td>
           </tr>
           <tr>
-            <td>cell1_5</td>
-            <td>cell2_5</td>
-            <td>cell3_5</td>
+            <td>水泥</td>
+            <td>840</td>
+            <td>21000</td>
             <td>cell4_5</td>
             <td>cell5_5</td>
             <td>cell6_5</td>
             <td>cell7_5</td>
-            <td>cell8_5</td>
+            <td>物料 体积大</td>
           </tr>
           <tr>
-            <td>cell1_6</td>
-            <td>cell2_6</td>
-            <td>cell3_6</td>
+            <td>36套管</td>
+            <td>1320</td>
+            <td>13200</td>
             <td>cell4_6</td>
             <td>cell5_6</td>
             <td>cell6_6</td>
             <td>cell7_6</td>
-            <td>cell8_6</td>
+            <td>管</td>
           </tr>
           <tr>
-            <td>cell1_7</td>
-            <td>cell2_7</td>
-            <td>cell3_7</td>
+            <td>7套管</td>
+            <td>1720</td>
+            <td>43000</td>
             <td>cell4_7</td>
             <td>cell5_7</td>
             <td>cell6_7</td>
             <td>cell7_7</td>
-            <td>cell8_7</td>
+            <td>管</td>
           </tr>
           <tr>
-            <td>cell1_8</td>
-            <td>cell2_8</td>
-            <td>cell3_8</td>
+            <td>4油管</td>
+            <td>1000</td>
+            <td>25000</td>
             <td>cell4_8</td>
             <td>cell5_8</td>
             <td>cell6_8</td>
             <td>cell7_8</td>
-            <td>cell8_8</td>
+            <td>管</td>
           </tr>
+
         </tbody>
       </table>
     </div>
+
+    <div id="chart" >
+      <canvas style="width:100%;height:270px" id="bar" class="chart chart-bar"
+  chart-data="datac" chart-labels="labelsc" chart-series="series">
+</canvas>
+
+
+    </div>
+
+  </div>
 
 </body>
 
