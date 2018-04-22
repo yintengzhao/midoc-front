@@ -62,17 +62,18 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
     // }
     //添加物资------------------------------------
     //后台数据展示------------------------------------
-    $http.get("http://localhost:8888/ssh/material/list")
+    var IpAdress:string="10.134.65.96";
+    $http.get("http://"+IpAdress+":8888/ssh/material/list")
       .then(function(response) {
         console.log(response);
         $scope.materials = response.data;
       });
-    $http.get("http://localhost:8888/ssh/ship/list")
+    $http.get("http://"+IpAdress+":8888/ssh/ship/list")
       .then(function(response) {
         console.log(response);
         $scope.ships = response.data;
       });
-    $http.get("http://localhost:8888/ssh/base/list")
+    $http.get("http://"+IpAdress+":8888/ssh/base/list")
       .then(function(response) {
         console.log(response);
         $scope.bases = response.data;
@@ -83,6 +84,8 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
     $scope.b=true;
     $scope.c = true;
     $scope.aa=false;
+    $scope.aaa=false;
+
     $scope.bb=false;
     $scope.cc=false;
 
@@ -93,7 +96,7 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
 
       var reqmater={
         method:'GET',
-        url:'http://localhost:8888/ssh/material/match',
+        url:'http://"+IpAdress+":8888/ssh/material/match',
         params: { s: $scope.theMax }
       }
       $http(reqmater).then(function(response)
@@ -106,7 +109,7 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
       $scope.bb =true;
       var reqship = {
         method: 'GET',
-        url: 'http://localhost:8888/ssh/ship/match',
+        url: 'http://"+IpAdress+":8888/ssh/ship/match',
         params: { s: $scope.theMax }
       }
       $http(reqship).then(function(response)
@@ -121,7 +124,7 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
 
      var reqbase={
        method:'GET',
-       url:'http://localhost:8888/ssh/base/match',
+       url:'http://"+IpAdress+":8888/ssh/base/match',
        params: { s: $scope.theMax }
      }
      $http(reqbase).then(function(response)
@@ -156,7 +159,7 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
     $scope.bsta = false;
     $scope.csta = false;
 
-    $scope.showmaterial=function(materialname,materialdetail,materialid,materialtype,materialvolume,materialweight){
+    $scope.showmaterial=function(materialname,materialdetail,materialid,materialtype,materialvolume,materialweight,materialamount){
       $scope.sta = false;
       $scope.asta = true;
       $scope.bsta = false;
@@ -168,6 +171,7 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
       $scope.volume = materialvolume;
       $scope.weight = materialweight;
       $scope.detail = materialdetail;
+      $scope.materialamount=materialamount;
       // var selected_type='material';
       // $scope.addship=function(){
       //      $scope.map.points.push({x:$scope.target.x,y:$scope.target.y,t:selected_type})
@@ -178,9 +182,11 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
       class Materobj {
           id: number;
           name:string;
-          constructor() {
-         }
+          weight:number;
+          constructor() {          };
         }
+
+
         $scope.addship=function()
         {
           // let materobj = new Greeter($scope.id,$scope.name);
@@ -200,10 +206,84 @@ ng_app.controller("TransSimCtrl", ['$scope', '$interval', '$timeout', '$window',
             var materobj = new Materobj();
             materobj.name=$scope.name;
             materobj.id=$scope.id;
+            materobj.weight=$scope.weight;
+
             $scope.selected_materials.push(materobj);
           }
-        };
+        }
+
+
+
     }
+
+    //验证船只是否够用-----------------------------
+    $scope.edit=function(){
+       $scope.sum_mater=0;
+       $scope.sum_ship_mater=0;
+       $scope.verify_answer;
+      //  if($scope.labelsc[0]=="物资1")
+      //  {
+      //    $scope.labelsc.splice(0,$scope.labelsc.length);
+      //    $scope.datac[0].splice(0,$scope.datac[0].length);
+      //  }
+       $scope.labelsc.splice(0,$scope.labelsc.length);
+       $scope.datac[0].splice(0,$scope.datac[0].length);
+      for(let ma of $scope.sendobj.material)
+      {
+        $scope.sum_mater+=ma.weight*ma.num;
+        $scope.sum_mater=Math.round($scope.sum_mater);
+        $scope.labelsc.push(ma.name);
+        $scope.datac[0].push(ma.num)
+
+      }
+      if($scope.sendobj.ship==0)
+      {
+        $scope.verify_answer="成功";
+        $scope.suggestion4="可进行仿真(您没有选择载具，系统将默认所有载具可用)";
+        for(let ship of $scope.ships){
+          $scope.sum_ship_mater+=ship.deckweight;
+          $scope.sendobj.ship.push({shipid:ship.id,x:null,y:null,shipweight:ship.deckweight})
+        }
+
+      }
+      else
+      {
+        for(let ma of $scope.sendobj.ship)
+        {
+          $scope.sum_ship_mater+=ma.shipweight
+          if($scope.sum_ship_mater<$scope.sum_mater)
+          {
+            $scope.suggestion4="所选载具载重总量不足以运载所选货物，请继续选择船只";
+            $scope.verify_answer="失败";
+          }
+          else{
+            $scope.verify_answer="成功";
+            $scope.suggestion4="可进行仿真";
+
+          }
+        }
+      }
+
+
+    }
+
+
+
+
+
+
+
+    // if($scope.selected_materials==0){
+    //   alert('1');
+    // }
+    // else{
+    //   var sum_mater=0;
+    //   for(let ma of $scope.sendobj.material)
+    //   {
+    //     sum_mater+=ma.weight*ma.num
+    //   }
+    //   alert(sum_mater);
+    // }
 
 //将物资和数量存入数组-----------------------------
     class Materobjplus {
@@ -222,7 +302,7 @@ $scope.myFunction2=function(i,obj,ii){
   $scope.a=ii;
   console.log($scope.matervalues)
 
-  $scope.sendobj.material.push({materialid:obj.id,num:ii})
+  $scope.sendobj.material.push({materialid:obj.id,num:ii,weight:obj.weight,name:obj.name})
 
 }
 //展示详细信息-----------------------------
@@ -234,7 +314,7 @@ $scope.myFunction2=function(i,obj,ii){
       }
     }
   $scope.shipvalues=[];
-    $scope.showship = function(shipid,shipname, shipinfo, shipnation, shipport, shipseazone) {
+    $scope.showship = function(shipid,shipname, shipinfo, shipnation, shipport, shipseazone,shipweight) {
 
 
 
@@ -249,6 +329,7 @@ $scope.myFunction2=function(i,obj,ii){
         $scope.nation = shipnation;
         $scope.port = shipport;
         $scope.seazone = shipseazone;
+        $scope.ship_weight=shipweight;
         var selected_type='ship';
         $scope.addship=function()
         {
@@ -280,7 +361,7 @@ $scope.myFunction2=function(i,obj,ii){
             shipobj.y=$scope.target.y;
             $scope.shipvalues.push(shipobj);
 
-            $scope.sendobj.ship.push({shipid:$scope.shipid,x:$scope.target.x,y:$scope.target.y})
+            $scope.sendobj.ship.push({shipid:$scope.shipid,x:$scope.target.x,y:$scope.target.y,shipweight:$scope.ship_weight})
           }
           }
 
@@ -298,6 +379,16 @@ $scope.myFunction2=function(i,obj,ii){
      $scope.basevalues=[];
 
     $scope.showbase=function(baseid,storage_place,base_x,base_y){
+      $scope.a=false;
+      $scope.aa=false;
+      $scope.aaa=true;
+      $http.get("http://"+IpAdress+":8888/ssh/basegoods/tbquery?id="+baseid)
+        .then(function(response) {
+          console.log(response.data.Records);
+          $scope.materials = response.data.Records;
+        });
+
+
 
 
         $scope.sta = false;
@@ -404,6 +495,13 @@ $scope.myFunction2=function(i,obj,ii){
        $scope.sendobj.sch.push({name:$scope.content1,info:$scope.content2,note:$scope.content3})
       //  $scope.sendobj.content2.push($scope.content2)
       //  $scope.sendobj.content3.push($scope.content3)
+      if($scope.sendobj.ship==0){
+        for(let ship of $scope.ships){
+          $scope.sendobj.ship.push({shipid:ship.id,x:null,y:null,shipweight:ship.deckweight})
+
+        }
+      }
+
 
       $scope.mainhtml=false;
       $scope.tablehtml=true;
@@ -443,18 +541,18 @@ $scope.myFunction2=function(i,obj,ii){
       //           {alert('suc')},
       //            function(){alert('err')});
 
-      $http.post('http://localhost:8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),
+      $http.post('http://'+IpAdress+':8888/ssh/schedule/parse', $scope.sendobj).then(function(response){console.log(response),$scope.responseid=response.data.replace('\r\n',''),
 
       // $http({
       //     method:'GET',
-      //     url:'http://localhost:4567/result_ok',
+      //     url:'http://10.134.120.155:4567/result_ok',
       //     params: { no: $scope.responseid }
       //   }).then(function(response){alert('sec suc'),console.log(response),$scope.responseans=response.data.feedback},
       //   function(){alert('sec err')});},
 
         $http({
             method:'GET',
-            url:'http://localhost:4567/result',
+            url:'http://'+IpAdress+':14567/result',
             params: { no: $scope.responseid }
           }).then(function(response){console.log(response),$scope.modalBody=$sce.trustAsHtml(response.data)},
           function(){alert('sec err')});},
@@ -474,7 +572,8 @@ $scope.myFunction2=function(i,obj,ii){
 
 
 $scope.chakan=function(){
-window.open("http://localhost:4567/result?no="+$scope.responseid)
+window.open("http://"+IpAdress+":14567/result?no="+$scope.responseid);
+location.reload();
 }
 
 
@@ -582,13 +681,13 @@ window.open("http://localhost:4567/result?no="+$scope.responseid)
     }
     // ====mc-map-end====
 //柱状图-----------------------------------------
-    $scope.labelsc = ['柴油','钻井水','生活用水','36套管','20套管','7套管','4油管','水泥'];
+    $scope.labelsc = ['物资1','物资2','物资3','物资4'];
     $scope.series = ['Series B'];
     // $scope.series = ['Series A', 'Series B'];
 
     $scope.datac = [
       // [65, 59, 80, 81, 56, 55, 40],
-      [0.85,0.8,1,2, 1.5, 0.7,0.3,1]
+      [1,1,1,1]
     ];
     // $scope.datac = [
     //   [65, 59, 80, 81, 56, 55, 40],

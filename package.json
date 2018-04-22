@@ -10,9 +10,11 @@
     "angular-material-icons": "^0.7.1",
     "angular-messages": "^1.6.7",
     "angular-resource": "^1.6.7",
+    "angular-smart-table": "^2.1.11",
     "angular-weather-widget": "^1.2.4",
     "chart.js": "^2.7.1",
     "jquery": "^3.2.1",
+    "ng2-smart-table": "^1.2.2",
     "requirejs": "^2.3.5"
   },
   "devDependencies": {

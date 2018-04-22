@@ -19,104 +19,93 @@
   </div>
 
   <div id="content">
-
-    <div id="watch-table-container">
+     <div id="watch-table-container">
       <table class="watch-table">
-        <thead>
-          <tr>
-            <th>物资</th>
-            <th>所需数量</th>
-            <th>占用空间</th>
-            <th>head4</th>
-            <th>head5</th>
-            <th>head6</th>
-            <th>head7</th>
-            <th>备注</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>柴油</td>
-            <td>940</td>
-            <td>4700</td>
-            <td>cell4_1</td>
-            <td>cell5_1</td>
-            <td>cell6_1</td>
-            <td>cell7_1</td>
-            <td>液体 易燃易爆炸</td>
-          </tr>
-          <tr>
-            <td>生活用水</td>
-            <td>1960</td>
-            <td>9800</td>
-            <td>cell4_2</td>
-            <td>cell5_2</td>
-            <td>cell6_2</td>
-            <td>cell7_2</td>
-            <td>液体</td>
-          </tr>
-          <tr>
-            <td>土粉</td>
-            <td>740</td>
-            <td>18500</td>
-            <td>cell4_3</td>
-            <td>cell5_3</td>
-            <td>cell6_3</td>
-            <td>cell7_3</td>
-            <td>物料 体积大</td>
-          </tr>
-          <tr>
-            <td>重晶石</td>
-            <td>280</td>
-            <td>7000</td>
-            <td>cell4_4</td>
-            <td>cell5_4</td>
-            <td>cell6_4</td>
-            <td>cell7_4</td>
-            <td>物料 体积大</td>
-          </tr>
-          <tr>
-            <td>水泥</td>
-            <td>840</td>
-            <td>21000</td>
-            <td>cell4_5</td>
-            <td>cell5_5</td>
-            <td>cell6_5</td>
-            <td>cell7_5</td>
-            <td>物料 体积大</td>
-          </tr>
-          <tr>
-            <td>36套管</td>
-            <td>1320</td>
-            <td>13200</td>
-            <td>cell4_6</td>
-            <td>cell5_6</td>
-            <td>cell6_6</td>
-            <td>cell7_6</td>
-            <td>管</td>
-          </tr>
-          <tr>
-            <td>7套管</td>
-            <td>1720</td>
-            <td>43000</td>
-            <td>cell4_7</td>
-            <td>cell5_7</td>
-            <td>cell6_7</td>
-            <td>cell7_7</td>
-            <td>管</td>
-          </tr>
-          <tr>
-            <td>4油管</td>
-            <td>1000</td>
-            <td>25000</td>
-            <td>cell4_8</td>
-            <td>cell5_8</td>
-            <td>cell6_8</td>
-            <td>cell7_8</td>
-            <td>管</td>
-          </tr>
-
-        </tbody>
+      <thead>
+        <tr>
+          <th style="width:200px">物资</th>
+          <th>剩余数量</th>
+          <th>安全库存</th>
+          <th>岛礁基地库存</th>
+          <th>计划需求总量</th>
+          <th>剩余库存与计划需求的差值</th>
+          <th>预警情况</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>柴油</td>
+          <td>{{num11}}</td>
+          <td>{{vol12}}</td>
+          <td>4</td>
+          <td>液体</td>
+          <td>1500</td>
+          <td>库存充足</td>
+        </tr>
+        <tr>
+          <td>生活用水</td>
+          <td>{{num21}}</td>
+          <td>{{vol22}}</td>
+          <td>4</td>
+          <td>液体</td>
+          <td>1500</td>
+          <td>库存充足</td>
+        </tr>
+        <tr>
+          <td>土粉</td>
+          <td>{{num31}}</td>
+          <td>{{vol32}}</td>
+          <td>4</td>
+          <td>物料</td>
+          <td>1500</td>
+          <td>库存充足</td>
+        </tr>
+        <tr>
+          <td>重晶石</td>
+          <td>{{num41}}</td>
+          <td>{{vol42}}</td>
+          <td>4</td>
+          <td>物料</td>
+          <td>1500</td>
+          <td>库存充足</td>
+        </tr>
+        <tr>
+          <td>水泥</td>
+          <td>{{num51}}</td>
+          <td>{{vol52}}</td>
+          <td>4</td>
+          <td>物料</td>
+          <td>1500</td>
+          <td>库存充足</td>
+        </tr>
+        <tr>
+          <td>36套管</td>
+          <td>{{num61}}</td>
+          <td>{{vol62}}</td>
+          <td>4</td>
+          <td>管</td>
+          <td>1500</td>
+          <td>库存充足</td>
+        </tr>
+        <tr>
+          <td>7套管</td>
+          <td>{{num71}}</td>
+          <td>{{vol72}}</td>
+          <td>4</td>
+          <td>管</td>
+          <td>1500</td>
+          <td>库存充足</td>
+        </tr>
+        <tr>
+          <td>4油管</td>
+          <td>{{num81}}</td>
+          <td>{{vol82}}</td>
+          <td>4</td>
+          <td>管</td>
+          <td>1500</td>
+          <td>库存充足</td>
+        </tr>
+      </tbody>
       </table>
     </div>
 
@@ -129,6 +118,22 @@
     </div>
 
   </div>
+
+
+
+
+
+  <!-- <ng2-smart-table [settings]="settings"></ng2-smart-table> -->
+
+
+
+
+
+
+
+
+
+
 
 </body>
 

@@ -10,6 +10,7 @@ require.config({
       // "nixie-clock"   : libUrl+'nixie-clock/nixie',
       "chart"         : libUrl+'chart.js/dist/Chart',
       "angular-chart" : libUrl+'angular-chart.js/dist/angular-chart',
+      // "angular-smart-table":libUrl+'angular-smart-table.js/dist/smart-table',
       "simpleWeather" : libUrl+'monkeecreate-jquery.simpleWeather-0d95e82/jquery.simpleWeather',
       "simpleWeathermin" : libUrl+'monkeecreate-jquery.simpleWeather-0d95e82/jquery.simpleWeather.min',
 
@@ -81,4 +82,5 @@ require([
   'require_sim_ctrl',
   'watch_goods_ctrl',
   'trans_sim_ctrl',
+  'demo',
 ])

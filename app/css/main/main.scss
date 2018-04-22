@@ -29,7 +29,7 @@
 }
 
 #modules{
-  width: 1280px;
+  width: 1180px;
   margin: 32px auto;
   text-align: center;
 }
@@ -40,14 +40,16 @@
   height: 72px;
   border-radius: 12px;
   // margin-right: 48px;
-  margin: 0 32px;
+  margin: 0  32px;
   line-height: 72px;
   font-size: 30px;
   color: white;
 
   &.red{background-color: rgb(96, 33, 52);}
-  &.yellow{background-color: rgb(193, 174, 46);}
+  &.yellow{background-color: rgb(193, 174, 46);margin-top: 60px;}
   &.blue{background-color: rgb(42, 82, 134);}
+  &.green{background-color: rgb(55, 55, 79);}
+
 }
 
 

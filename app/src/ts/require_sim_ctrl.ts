@@ -7,7 +7,7 @@ ng_app.controller("RequireSimCtrl", ['$scope', '$interval', '$timeout', '$window
     $scope.labels = ["柴油", "生活用水", "土粉", "重晶石", "水泥", "36套管", "7套管","4油管"];
   $scope.series = [ '预测需求量'];
   $scope.data = [
-    // [75, 79, 80, 81, 85, 88, 90,80,79,70],
+    [75, 79, 80, 81, 85, 88, 90,80,79,70],
     [70, 75, 78, 83, 80, 80, 92,85]
   ];
 

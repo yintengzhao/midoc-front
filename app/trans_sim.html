@@ -140,7 +140,7 @@
             </div>
           </div> -->
           <md-button id="addbutton" ng-click="addship()">添加</md-button>
-          <md-button id="editbutton" ng-click='edit()'>编辑</md-button>
+          <md-button id="editbutton" ng-click='edit()'>验证</md-button>
 
         </div>
       </div>
@@ -251,7 +251,7 @@
 
         <!--物资、载具、海上平台---------------->
         <div layout="column" id="object-list-containers">
-          <div layout="{{ vm.direction }}" layout-md="row" class="">
+          <div layout="{{ vm.direction }}" layout-md="row">
 
             <div layout="column" class="object-list-container" ng-click="selectbase()">
               <div class="header base">基地 <span class="object-counter base">99</span></div>
@@ -282,7 +282,7 @@
             <div layout="column" class="object-list-container" ng-click="seleceship()">
               <div class="header boat">载具 <span class="object-counter boat">99</span></div>
               <md-content flex>
-                <md-list-item class="goods-list-item" ng-repeat="ship in ships" ng-click="showship(ship.id,ship.name,ship.info,ship.nation,ship.port,ship.seazone)" ng-show="b">
+                <md-list-item class="goods-list-item" ng-repeat="ship in ships" ng-click="showship(ship.id,ship.name,ship.info,ship.nation,ship.port,ship.seazone,ship.deckweight)" ng-show="b">
                   <div class="md-list-item-text" layout="column">
                     <div class="title">{{ ship.name }}</div>
                     <div class="description">{{ ship.info }}</div>
@@ -328,11 +328,7 @@
         <!--数据统计、柱状图 、、饼图---------------------------------------------------------------------------->
         <div layout="column" id="chart-container">
           <div layout="{{ vm.direction }}" layout-md="row" class="">
-            <div id="bar-chart">
-              重量：(吨)
-              <canvas id="bar" class="chart chart-bar" chart-colors="[red]" chart-data="datac" chart-labels="labelsc" chart-series="series">
-             </canvas>
-            </div>
+
 
           <div id="material-list-containers">
             <div layout="column" class="object-list-container">
@@ -342,6 +338,7 @@
                   <div>
                     <div class="title">{{ material.name }}</div>
                     <div class="description">{{ material.detail }}</div>
+                    <div class="description">{{ material.amount }}</div>
                   </div>
                 </md-list-item>
 
@@ -349,16 +346,49 @@
                   <div class="md-list-item-text" layout="column">
                     <div class="title">{{ material.name }}</div>
                     <div class="description">{{ material.detail }}</div>
+                    <div class="description">{{ material.amount }}</div>
+                  </div>
+                </md-list-item>
+
+                <md-list-item class="goods-list-item" ng-repeat="material in materials" ng-click="showmaterial(material.name,material.detail,material.materialid,material.type,material.volume,material.weight,material.amount)" ng-show="aaa">
+                  <div class="md-list-item-text" layout="column">
+                    <div class="title">{{ material.name }}</div>
+                    <div class="description">{{ material.amount }}</div>
                   </div>
                 </md-list-item>
               </md-content>
             </div>
           </div>
 
-            <div  id="pie-chart">
+          <div id="bar-chart">
+            <!-- 重量：(吨) -->
+            <canvas id="bar" class="chart chart-bar" chart-colors="[red]" chart-data="datac" chart-labels="labelsc" chart-series="series">
+           </canvas>
+          </div>
+
+          <div id="material-list-containers">
+            <div layout="column" class="object-list-container" style="background-color:rgb(255, 255, 255);border-radius:7px">
+              <div class="header material">验证结果<span class="object-counter material">99</span></div>
+
+              <div class="attr2">
+                <p>验证结果：<span style="color:rgb(195, 134, 30)">{{verify_answer}}</span> <br>需运送货物总量：<span style="color:rgb(63, 188, 221)">{{(sum_mater)}}</span><br>所选载具载重总量：<span style="color:rgb(31, 185, 74)">{{sum_ship_mater}}</span></p>
+                <p class="description">建议：<span style="color:rgb(158, 18, 35)">{{suggestion4}}</span></p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- <div>
+            <md-button ng-click="myFunction3()">{{suggestion1}}</md-button>
+            <md-button ng-click="myFunction3()">{{sum_mater}}</md-button>
+            <md-button ng-click="myFunction3()">{{sum_ship_mater}}</md-button>
+            <md-button ng-click="myFunction3()">{{suggestion4}}</md-button>
+          </div> -->
+
+            <!-- <div  id="pie-chart">
               <canvas class="chart chart-pie" chart-data="datab" chart-labels="labelb" chart-options="pieoptions">
               </canvas>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -368,7 +398,7 @@
 
     </div>
   </div>
-  <h3 class="md-display-3" style="position:absolute;left:420px;bottom:130px;color:#9E9E9E">添加物资</h3>
+  <h3 class="md-display-3" style="position:absolute;left:1150px;bottom:130px;color:#9E9E9E">添加物资</h3>
 
 
   <!--分割线--------------------------------------------------------------------------------->
@@ -389,21 +419,7 @@
           <textarea rows="1" ng-model="content3">{{ content3 }}</textarea>
       </div>
 
-      <!--物资滑动条-------------------------------------------------------->
-      <div id="bottom-slider-container">
-        <div id="bottom-slider-group">
-          <div class="bottom-slider-unit" ng-repeat="i in selected_materials track by $index" ng-click="myFunction2($index,i,matervalue)">
-            <md-slider-container>
-              <div class="slider-title-btn">{{i.name}}</div>
-              <md-slider flex min="0" class="md-primary" max="500" ng-model="matervalue" aria-label="white">
-              </md-slider>
-              <input type="text" ng-model="matervalue" ></input>
-            </md-slider-container>
-          </div>
-        </div>
-        <!-- <div id="bottom-slider-add" ng-click="addmaterials()">+</div> -->
 
-      </div>
 
       <!--天气/约束条件---------------------------------------------------------------------------->
 
@@ -568,6 +584,22 @@
 
       </div>
 
+      <!--物资滑动条-------------------------------------------------------->
+      <div id="bottom-slider-container">
+        <div id="bottom-slider-group">
+          <div class="bottom-slider-unit" ng-repeat="i in selected_materials track by $index" ng-click="myFunction2($index,i,matervalue)">
+            <md-slider-container>
+              <div class="slider-title-btn">{{i.name}}</div>
+              <md-slider flex min="0" class="md-primary" max="500" ng-model="matervalue" aria-label="white">
+              </md-slider>
+              <input type="text" ng-model="matervalue" ></input>
+            </md-slider-container>
+          </div>
+        </div>
+        <!-- <div id="bottom-slider-add" ng-click="addmaterials()">+</div> -->
+
+      </div>
+
 
       <!--设置/仿真开始------------------------------------------------------------------------------------->
       <div id="bottom-right-part">
@@ -643,8 +675,6 @@
     </div>
   </div>
 </div>
-
-
 
 
 
